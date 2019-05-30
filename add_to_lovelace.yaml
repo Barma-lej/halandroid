@@ -1,0 +1,471 @@
+  - title: Mäheroboter
+    cards:
+      - type: picture-elements
+        image: /local/mower/landroid_flower.webp
+        elements:
+          - type: state-icon
+            title: WLAN Qualität
+            entity: sensor.landroid_wifi
+            style:
+              opacity: 1
+              transform: 'translate(0%, 0%) scale(1, 1)'
+              left: 0%
+              '--iron-icon-fill-color': 'rgb(3, 169, 244)'
+              top: 0%
+          - type: state-label
+            title: WLAN Qualität
+            entity: sensor.landroid_wifi
+            style:
+              transform: 'translate(60%, 15%) scale(1, 1)'
+              color: 'rgb(3, 169, 244)'
+              top: 0%
+              opacity: 1
+              left: 0%
+              font-weight: bold
+          - type: state-icon
+            title: Online
+            entity: sensor.landroid_alive
+            style:
+              opacity: 1
+              transform: 'translate(-200%, 0%) scale(1, 1)'
+              right: 0%
+              '--iron-icon-fill-color': 'rgb(3, 169, 244)'
+              top: 0%
+          - type: state-icon
+            title: Akku Status
+            entity: sensor.landroid_bat
+            style:
+              opacity: 1
+              transform: 'translate(-130%, 0%) scale(1, 1)'
+              right: 0%
+              '--iron-icon-fill-color': 'rgb(3, 169, 244)'
+              top: 0%
+          - type: state-label
+            title: Akkuladung
+            entity: sensor.landroid_batlevel
+            style:
+              transform: 'translate(0%, 15%) scale(1, 1)'
+              right: 0%
+              color: 'rgb(3, 169, 244)'
+              top: 0%
+              opacity: 1
+              font-weight: bold
+          - type: state-icon
+            title: Akku Temperatur
+            entity: sensor.landroid_battemp
+            style:
+              opacity: 1
+              transform: 'translate(-130%, 0%) scale(1, 1)'
+              right: 0%
+              '--iron-icon-fill-color': 'rgb(3, 169, 244)'
+              top: 10%
+          - type: state-label
+            title: Akku Temperatur
+            entity: sensor.landroid_battemp
+            style:
+              transform: 'translate(0%, 15%) scale(1, 1)'
+              right: 0%
+              color: 'rgb(3, 169, 244)'
+              top: 10%
+              opacity: 1
+              font-weight: bold
+          - type: state-icon
+            title: Akku Ladungen
+            entity: sensor.landroid_batchargecycle
+            style:
+              opacity: 1
+              transform: 'translate(-130%, 0%) scale(1, 1)'
+              right: 0%
+              '--iron-icon-fill-color': 'rgb(3, 169, 244)'
+              top: 20%
+          - type: state-label
+            title: Akku Ladungen
+            entity: sensor.landroid_batchargecycle
+            style:
+              transform: 'translate(0%, 15%) scale(1, 1)'
+              right: 0%
+              color: 'rgb(3, 169, 244)'
+              top: 20%
+              opacity: 1
+              font-weight: bold
+          - type: state-icon
+            title: Akku Spannung
+            entity: sensor.landroid_batvoltage
+            style:
+              opacity: 1
+              transform: 'translate(-130%, 0%) scale(1, 1)'
+              right: 0%
+              '--iron-icon-fill-color': 'rgb(3, 169, 244)'
+              top: 30%
+          - type: state-label
+            title: Akku Spannung
+            entity: sensor.landroid_batvoltage
+            style:
+              transform: 'translate(0%, 15%) scale(1, 1)'
+              right: 0%
+              color: 'rgb(3, 169, 244)'
+              top: 30%
+              opacity: 1
+              font-weight: bold
+          - type: state-label
+            title: Status
+            entity: sensor.landroid_statusdesc
+            style:
+              transform: 'translate(20%, 100%) scale(1.5, 1.5)'
+              text-align: left
+              color: 'rgb(3, 169, 244)'
+              top: 0%
+              opacity: 1
+              left: 0%
+              font-weight: bold
+          - type: state-label
+            title: Status
+            entity: sensor.landroid_errordesc
+            style:
+              transform: 'translate(20%, 180%) scale(1.5, 1.5)'
+              text-align: left
+              color: 'rgb(3, 169, 244)'
+              top: 0%
+              opacity: 1
+              left: 0%
+              font-weight: bold
+          - type: state-icon
+            title: Gesamte Distanz
+            entity: sensor.landroid_dist
+            style:
+              opacity: 1
+              transform: 'translate(-100%, 0%) scale(1, 1)'
+              left: 42%
+              '--iron-icon-fill-color': 'rgb(3, 169, 244)'
+              top: 40%
+          - type: state-label
+            title: Gesamte Distanz
+            entity: sensor.landroid_dist
+            style:
+              transform: 'translate(0%, 15%) scale(1, 1)'
+              color: 'rgb(3, 169, 244)'
+              top: 40%
+              opacity: 1
+              left: 42%
+              font-weight: bold
+          - type: state-icon
+            title: Gesamte Arbeitszeit
+            entity: sensor.landroid_totaltime
+            style:
+              opacity: 1
+              transform: 'translate(-100%, 0%) scale(1, 1)'
+              left: 42%
+              '--iron-icon-fill-color': 'rgb(3, 169, 244)'
+              top: 50%
+          - type: state-label
+            title: Gesamte Arbeitszeit
+            entity: sensor.landroid_totaltime
+            style:
+              transform: 'translate(0%, 15%) scale(1, 1)'
+              color: 'rgb(3, 169, 244)'
+              top: 50%
+              opacity: 1
+              left: 42%
+              font-weight: bold
+          - type: state-icon
+            title: Klingenarbeitszeit
+            entity: sensor.landroid_bladetime
+            style:
+              opacity: 1
+              transform: 'translate(-100%, 0%) scale(1, 1)'
+              left: 42%
+              '--iron-icon-fill-color': 'rgb(3, 169, 244)'
+              top: 60%
+          - type: state-label
+            title: Klingenarbeitszeit
+            entity: sensor.landroid_bladetime
+            style:
+              transform: 'translate(0%, 15%) scale(1, 1)'
+              color: 'rgb(3, 169, 244)'
+              top: 60%
+              opacity: 1
+              left: 42%
+              font-weight: bold
+          - type: state-icon
+            title: Nicken/Тангаж
+            entity: sensor.landroid_pitch
+            style:
+              opacity: 1
+              transform: 'translate(-130%, 0%) scale(1, 1)'
+              right: 0%
+              '--iron-icon-fill-color': 'rgb(3, 169, 244)'
+              top: 40%
+          - type: state-label
+            title: Nicken/Тангаж
+            entity: sensor.landroid_pitch
+            style:
+              transform: 'translate(0%, 15%) scale(1, 1)'
+              right: 0%
+              color: 'rgb(3, 169, 244)'
+              top: 40%
+              opacity: 1
+              font-weight: bold
+          - type: state-label
+            title: Rollen/Крен
+            entity: sensor.landroid_roll
+            style:
+              transform: 'translate(0%, 15%) scale(1, 1)'
+              right: 0%
+              color: 'rgb(3, 169, 244)'
+              top: 50%
+              opacity: 1
+              font-weight: bold
+          - type: state-icon
+            title: Rollen/Крен
+            entity: sensor.landroid_roll
+            style:
+              opacity: 1
+              transform: 'translate(-130%, 0%) scale(1, 1)'
+              right: 0%
+              '--iron-icon-fill-color': 'rgb(3, 169, 244)'
+              top: 50%
+          - type: state-label
+            title: Gieren/Рысканье
+            entity: sensor.landroid_yaw
+            style:
+              transform: 'translate(0%, 15%) scale(1, 1)'
+              right: 0%
+              color: 'rgb(3, 169, 244)'
+              top: 60%
+              opacity: 1
+              font-weight: bold
+          - type: state-icon
+            title: Gieren/Рысканье
+            entity: sensor.landroid_yaw
+            style:
+              opacity: 1
+              transform: 'translate(-130%, 0%) scale(1, 1)'
+              right: 0%
+              '--iron-icon-fill-color': 'rgb(3, 169, 244)'
+              top: 60%
+          - state_image:
+              'on': /local/mower/timer.png
+            tap_action:
+              action: toggle
+            title: Mähplan
+            entity: input_boolean.landroid_sched_settings
+            image: /local/mower/timer-off.png
+            state_filter:
+              'on': brightness(90%) saturate(1)
+              'off': brightness(100%) saturate(1)
+            style:
+              transform: 'translate(-280%, 25%) scale(0.7, 0.7)'
+              left: 45%
+              bottom: 4%
+            type: image
+          - state_image:
+              'on': /local/mower/rainy.png
+            tap_action:
+              action: toggle
+            title: Regenverzögerung
+            entity: input_boolean.landroid_raindelay_settings
+            image: /local/mower/rainy-off.png
+            state_filter:
+              'on': brightness(90%) saturate(1)
+              'off': brightness(100%) saturate(1)
+            style:
+              transform: 'translate(-140%, 25%) scale(0.7, 0.7)'
+              left: 45%
+              bottom: 4%
+            type: image
+          - tap_action:
+              action: call-service
+              service: script.landroid_start
+            type: icon
+            title: Mähen
+            icon: 'mdi:play'
+            style:
+              transform: 'translate(0%, 0%) scale(1.6, 1.6)'
+              left: 45%
+              '--iron-icon-fill-color': 'rgb(250, 250, 250)'
+              bottom: 4%
+          - tap_action:
+              action: call-service
+              service: script.landroid_stop
+            type: icon
+            title: Stop & Nach Hause fahren
+            icon: 'mdi:home'
+            style:
+              transform: 'translate(260%, 0%) scale(1.6, 1.6)'
+              left: 45%
+              '--iron-icon-fill-color': 'rgb(250, 250, 250)'
+              bottom: 4%
+          - state_image:
+              'on': /local/mower/information.png
+            tap_action:
+              action: toggle
+            title: Information
+            entity: input_boolean.landroid_info_toggle
+            image: /local/mower/info-off.png
+            state_filter:
+              'on': brightness(90%) saturate(1)
+              'off': brightness(100%) saturate(1)
+            style:
+              transform: 'translate(240%, 25%) scale(0.7, 0.7)'
+              left: 45%
+              bottom: 4%
+            type: image
+      - type: conditional
+        card:
+          type: entities
+          entities:
+            - entity: sensor.landroid_raindelay
+            - entity: input_number.landroid_raindelay
+            - entity: script.landroid_set_raindelay
+          show_header_toggle: false
+          title: Regenverzögerung
+        conditions:
+          - state: 'on'
+            entity: input_boolean.landroid_raindelay_settings
+      - type: conditional
+        card:
+          type: entities
+          entities:
+            - entity: sensor.landroid_datetime
+            - entity: sensor.landroid_ip
+            - entity: sensor.landroid_firmware
+            - entity: sensor.landroid_sn
+            - entity: sensor.landroid_mac
+            - entity: sensor.landroid_lang
+          show_header_toggle: false
+          title: Information
+        conditions:
+          - state: 'on'
+            entity: input_boolean.landroid_info_toggle
+      - type: conditional
+        card:
+          type: vertical-stack
+          cards:
+            - type: entities
+              entities:
+                - sensor.landroid_timeext
+                - input_number.landroid_timeext
+                - script.landroid_set_timeext
+            - type: entities
+              show_header_toggle: false
+              entities:
+                - input_boolean.landroid_1
+                - script.landroid_set_scheduler1
+            - type: conditional
+              card:
+                type: entities
+                entities:
+                  - sensor.landroid_1_actual
+                  - input_datetime.landroid_1_time
+                  - input_number.landroid_1_duration
+                  - input_boolean.landroid_1_cuttoedge
+              conditions:
+                - state: 'on'
+                  entity: input_boolean.landroid_1
+            - type: entities
+              show_header_toggle: false
+              entities:
+                - input_boolean.landroid_2
+                - script.landroid_set_scheduler2
+            - type: conditional
+              card:
+                type: entities
+                entities:
+                  - sensor.landroid_2_actual
+                  - input_datetime.landroid_2_time
+                  - input_number.landroid_2_duration
+                  - input_boolean.landroid_2_cuttoedge
+              conditions:
+                - state: 'on'
+                  entity: input_boolean.landroid_2
+            - type: entities
+              show_header_toggle: false
+              entities:
+                - input_boolean.landroid_3
+                - script.landroid_set_scheduler3
+            - type: conditional
+              card:
+                type: entities
+                entities:
+                  - sensor.landroid_3_actual
+                  - input_datetime.landroid_3_time
+                  - input_number.landroid_3_duration
+                  - input_boolean.landroid_3_cuttoedge
+              conditions:
+                - state: 'on'
+                  entity: input_boolean.landroid_3
+            - type: entities
+              show_header_toggle: false
+              entities:
+                - input_boolean.landroid_4
+                - script.landroid_set_scheduler4
+            - type: conditional
+              card:
+                type: entities
+                entities:
+                  - sensor.landroid_4_actual
+                  - input_datetime.landroid_4_time
+                  - input_number.landroid_4_duration
+                  - input_boolean.landroid_4_cuttoedge
+              conditions:
+                - state: 'on'
+                  entity: input_boolean.landroid_4
+            - type: entities
+              show_header_toggle: false
+              entities:
+                - input_boolean.landroid_5
+                - script.landroid_set_scheduler5
+            - type: conditional
+              card:
+                type: entities
+                entities:
+                  - sensor.landroid_5_actual
+                  - input_datetime.landroid_5_time
+                  - input_number.landroid_5_duration
+                  - input_boolean.landroid_5_cuttoedge
+              conditions:
+                - state: 'on'
+                  entity: input_boolean.landroid_5
+            - type: entities
+              show_header_toggle: false
+              entities:
+                - input_boolean.landroid_6
+                - script.landroid_set_scheduler6
+            - type: conditional
+              card:
+                type: entities
+                entities:
+                  - sensor.landroid_6_actual
+                  - input_datetime.landroid_6_time
+                  - input_number.landroid_6_duration
+                  - input_boolean.landroid_6_cuttoedge
+              conditions:
+                - state: 'on'
+                  entity: input_boolean.landroid_6
+            - type: entities
+              show_header_toggle: false
+              entities:
+                - input_boolean.landroid_0
+                - script.landroid_set_scheduler0
+            - type: conditional
+              card:
+                type: entities
+                entities:
+                  - sensor.landroid_0_actual
+                  - input_datetime.landroid_0_time
+                  - input_number.landroid_0_duration
+                  - input_boolean.landroid_0_cuttoedge
+              conditions:
+                - state: 'on'
+                  entity: input_boolean.landroid_0
+            - type: entities
+              entities:
+                - entity: sensor.landroid_timeext
+                - entity: input_number.landroid_timeext
+                - entity: script.landroid_set_timeext
+        conditions:
+          - state: 'on'
+            entity: input_boolean.landroid_sched_settings
+    icon: 'mdi:robot-vacuum-variant'
+    badges: []
+    path: mower
