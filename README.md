@@ -9,9 +9,16 @@ sudo npm cache clean -f
 sudo npm install -g n
 sudo n stable
 ```
-Then buid Landroid Bridge
+Then i build Landroid Bridge
 ```ssh
 git clone https://github.com/virtualzone/landroid-bridge.git
 cd landroid-bridge
 npm install
+```
+I got a sqlite3 error here :( and need to install it
+
+```
+sudo apt-get install libsqlite3-dev
+npm install sqlite3 --build-from-source --sqlite=/usr
+npm run grunt
 ```
