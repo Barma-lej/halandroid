@@ -54,7 +54,6 @@ homeassistant:
 1. Add to your Lovelace config content from file **add_to_lovelace.yaml**
 1. If do you need translate strings in files **worx_landroid.yaml** section _customize_ and **add_to_lovelace.yaml** from German and Russian
 
-####_Enjoy_
+#### _Enjoy_
 
-___
-####_Удачи_:)
+#### _Удачи_:)
