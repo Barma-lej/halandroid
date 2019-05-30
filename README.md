@@ -30,12 +30,12 @@ sudo apt-get install libsqlite3-dev
 npm install sqlite3 --build-from-source --sqlite=/usr
 npm run grunt
 ```
-#### Set up a systemctl script to start the bridge on system startup:
 
-Adjust the username and paths (path to current node too!!!) in the file, and copy it to /lib/systemd/system/
+#### Setting up MQTT
+To connect to an MQTT broker without any authentication, please modify your **~/landroid-bridge/config.json**
+My **config.json** file without personal dates is here:
 
-My XML file without personal dates is here:
-```xml
+```json
 {
     "http": {
         "port": 3000
@@ -84,7 +84,11 @@ My XML file without personal dates is here:
 
 See here for details: https://github.com/virtualzone/landroid-bridge#setting-up-mqtt
 
-```
+#### Set up a systemctl script to start the bridge on system startup:
+
+Adjust the username and paths (path to current node too!!!) in the file **~/landroid-bridge/systemctl-script/landroid-bridge.service**, and copy it to /lib/systemd/system/
+
+```bash
 sudo cp landroid-bridge /lib/systemd/system/
 sudo systemctl daemon-reload
 sudo systemctl enable landroid-bridge.service
