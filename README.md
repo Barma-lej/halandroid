@@ -68,16 +68,16 @@ My **config.json** file without personal dates is here:
             "longitude": 0.742742
         },
         "db": "./scheduler.db",
-        "earliestStart": 11,
+        "earliestStart": 9,
         "latestStop": 21,
         "startEarly": false,
-        "offDays": 2,
-        "squareMeters": 300,
-        "perHour": 50,
-        "mowTime": 75,
+        "offDays": 0,
+        "squareMeters": 200,
+        "perHour": 100,
+        "mowTime": 90,
         "chargeTime": 75,
-        "daysForTotalCut": 2,
-        "rainDelay": 120,
+        "daysForTotalCut": 0,
+        "rainDelay": 240,
         "threshold": 30
     }
 }
