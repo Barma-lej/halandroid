@@ -33,9 +33,22 @@ npm run grunt
 #### Set up a systemctl script to start the bridge on system startup:
 
 Adjust the username and paths (path to current node too!!!) in the file, and copy it to /lib/systemd/system/
+
+See here for details: https://github.com/virtualzone/landroid-bridge#setting-up-mqtt
+
 ```
 sudo cp landroid-bridge /lib/systemd/system/
 sudo systemctl daemon-reload
 sudo systemctl enable landroid-bridge.service
 sudo systemctl start landroid-bridge.service
+```
+
+## Home Assistant
+
+1. Create folder named **packages** in your homeassistant folder
+1. Copy to your folder **packages** file **worx_landroid.yaml** from  folder **packages**
+1. In configuration.yaml add string packages: _!include_dir_named packages_:
+```yaml
+homeassistant:
+  packages: !include_dir_named packages
 ```
