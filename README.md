@@ -89,7 +89,7 @@ See here for details: https://github.com/virtualzone/landroid-bridge#setting-up-
 
 Adjust the username and paths (path to current node too!!!) in the file **~/landroid-bridge/systemctl-script/landroid-bridge.service**, and copy it to /lib/systemd/system/
 
-```bash
+```ssh
 sudo cp landroid-bridge /lib/systemd/system/
 sudo systemctl daemon-reload
 sudo systemctl enable landroid-bridge.service
