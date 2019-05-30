@@ -1,0 +1,1025 @@
+# Worx Landroid (M500 WR141E) package
+# Author Barma-lej
+# https://github.com/Barma-lej
+# Based on Landroid Bridge @Heiner virtualzone
+# https://github.com/virtualzone/landroid-bridge
+
+# Sensor ############################################################
+sensor:
+# Geräteinfo ######
+  - platform: mqtt
+    name: "Landroid Lang"
+    state_topic: "landroid/status/language"
+    icon: "mdi:translate"
+
+  - platform: mqtt
+    name: "Landroid SN"
+    state_topic: "landroid/status/serialNumber"
+    icon: "mdi:numeric"
+
+  - platform: mqtt
+    name: "Landroid MAC"
+    state_topic: "landroid/status/macAddress"
+    icon: "mdi:barcode"
+
+  - platform: mqtt
+    name: "Landroid Firmware"
+    state_topic: "landroid/status/firmware"
+    icon: "mdi:information-variant"
+
+# Status ##########
+  - platform: mqtt
+    name: "Landroid wifiQuality"
+    state_topic: "landroid/status/wifiQuality"
+    unit_of_measurement: "dB"
+
+  - platform: mqtt
+    name: "Landroid dateTime"
+    state_topic: "landroid/status/dateTime"
+    icon: "mdi:clock"
+    device_class: "timestamp"
+
+  - platform: mqtt
+    name: "Landroid Aktiv"
+    state_topic: "landroid/status/active"
+    icon: "mdi:heart-pulse"
+
+# 0 - Idle, 1 - Home, 2 - Starting, 3 - Leaving Home, 5 - Searching home, 6 - Searching wire, 7 - Mowing, 30 - Going Home, 32 - Cutting edge
+  - platform: mqtt
+    name: "Landroid Statuscode"
+    state_topic: "landroid/status/statusCode"
+    icon: "mdi:go-kart-track"
+
+  - platform: mqtt
+    name: "Landroid StatusDesc"
+    state_topic: "landroid/status/statusDescription"
+    icon: "mdi:go-kart-track"
+# Felhler #########
+# 4 -Outside wire
+  - platform: mqtt
+    name: "Landroid ErrorCode"
+    state_topic: "landroid/status/errorCode"
+    icon: "mdi:bug"
+
+  - platform: mqtt
+    name: "Landroid ErrorDesc"
+    state_topic: "landroid/status/errorDescription"
+    icon: "mdi:bug-check"
+
+
+# Einstellungen ###
+  - platform: mqtt
+    name: "Landroid RainDelay"
+    state_topic: "landroid/status/rainDelay"
+    icon: "mdi:weather-rainy"
+    unit_of_measurement: "Min."
+
+  - platform: mqtt
+    name: "Landroid TimeExt"
+    state_topic: "landroid/status/timeExtension"
+    icon: "mdi:clock-start"
+    unit_of_measurement: "%"
+
+# Statistiken
+  - platform: mqtt
+    name: "Landroid TotalTime"
+    state_topic: "landroid/status/totalTime"
+    icon: "mdi:bus-clock"
+    unit_of_measurement: "Min."
+
+  - platform: mqtt
+    name: "Landroid Dist"
+    state_topic: "landroid/status/totalDistance"
+    icon: "mdi:map-marker-distance"
+    unit_of_measurement: "m."
+
+  - platform: mqtt
+    name: "Landroid BladeTime"
+    state_topic: "landroid/status/totalBladeTime"
+    icon: "mdi:map-clock"
+    unit_of_measurement: "Min."
+
+  - platform: mqtt
+    name: "Landroid batChargeCycle"
+    state_topic: "landroid/status/batteryChargeCycle"
+    icon: "mdi:power-plug"
+
+# Akku ############
+  - platform: mqtt
+    name: "Landroid BatCharging"
+    state_topic: "landroid/status/batteryCharging"
+#    icon: "mdi:battery-charging"
+    device_class: "battery"
+
+  - platform: mqtt
+    name: "Landroid BatVoltage"
+    state_topic: "landroid/status/batteryVoltage"
+    unit_of_measurement: "V"
+    icon: "mdi:battery-charging-100"
+
+  - platform: mqtt
+    name: "Landroid BatTemp"
+    state_topic: "landroid/status/batteryTemperature"
+    unit_of_measurement: "°C"
+    device_class: "temperature"
+
+  - platform: mqtt
+    name: "Landroid BatLevel"
+    state_topic: "landroid/status/batteryLevel"
+    unit_of_measurement: "%"
+    device_class: "battery"
+
+# Lagewinkel ######
+  - platform: mqtt
+    name: "Landroid Pitch"
+    state_topic: "landroid/status/pitch"
+    icon: "mdi:seat-flat-angled"
+    unit_of_measurement: "°"
+
+  - platform: mqtt
+    name: "Landroid Roll"
+    state_topic: "landroid/status/roll"
+    icon: "mdi:axis-x-rotate-clockwise"
+    unit_of_measurement: "°"
+
+  - platform: mqtt
+    name: "Landroid Yaw"
+    state_topic: "landroid/status/yaw"
+    icon: "mdi:axis-z-rotate-clockwise"
+    unit_of_measurement: "°"
+
+# Zeitplan ########
+  - platform: mqtt
+    name: "Landroid Sched1"
+    state_topic: "landroid/status/schedule/1"
+    value_template: "{{ value_json.durationMinutes }}"
+    json_attributes_topic: "landroid/status/schedule/1"
+    icon: "mdi:timetable"
+
+  - platform: mqtt
+    name: "Landroid Sched2"
+    state_topic: "landroid/status/schedule/2"
+    value_template: "{{ value_json.durationMinutes }}"
+    json_attributes_topic: "landroid/status/schedule/2"
+    icon: "mdi:timetable"
+
+  - platform: mqtt
+    name: "Landroid Sched3"
+    state_topic: "landroid/status/schedule/3"
+    value_template: "{{ value_json.durationMinutes }}"
+    json_attributes_topic: "landroid/status/schedule/3"
+    icon: "mdi:timetable"
+
+  - platform: mqtt
+    name: "Landroid Sched4"
+    state_topic: "landroid/status/schedule/4"
+    value_template: "{{ value_json.durationMinutes }}"
+    json_attributes_topic: "landroid/status/schedule/4"
+    icon: "mdi:timetable"
+
+  - platform: mqtt
+    name: "Landroid Sched5"
+    state_topic: "landroid/status/schedule/5"
+    value_template: "{{ value_json.durationMinutes }}"
+    json_attributes_topic: "landroid/status/schedule/5"
+    icon: "mdi:timetable"
+
+  - platform: mqtt
+    name: "Landroid Sched6"
+    state_topic: "landroid/status/schedule/6"
+    value_template: "{{ value_json.durationMinutes }}"
+    json_attributes_topic: "landroid/status/schedule/6"
+    icon: "mdi:timetable"
+
+  - platform: mqtt
+    name: "Landroid Sched0"
+    state_topic: "landroid/status/schedule/0"
+    value_template: "{{ value_json.durationMinutes }}"
+    json_attributes_topic: "landroid/status/schedule/0"
+    icon: "mdi:timetable"
+
+# Templates #######
+  - platform: template
+    sensors:
+      landroid_ip:
+        friendly_name: "IP Address"
+        value_template: !secret landroid_ip
+        icon_template: "mdi:ip-network"
+
+      landroid_bat:
+        friendly_name: "Battery level"
+        value_template: >-
+          {% if is_state("sensor.landroid_batcharging","true") -%}Lädt
+          {%- else -%}Entlädt
+          {%- endif %}
+        icon_template: >-
+          {% if is_state("sensor.landroid_batcharging","true") -%}
+            {%- if states('sensor.landroid_batlevel')|float > 99 -%}mdi:battery-charging-100
+            {%- elif states('sensor.landroid_batlevel')|float > 89 -%}mdi:battery-charging-90
+            {%- elif states('sensor.landroid_batlevel')|float > 79 -%}mdi:battery-charging-80
+            {%- elif states('sensor.landroid_batlevel')|float > 69 -%}mdi:battery-charging-70
+            {%- elif states('sensor.landroid_batlevel')|float > 59 -%}mdi:battery-charging-60
+            {%- elif states('sensor.landroid_batlevel')|float > 49 -%}mdi:battery-charging-50
+            {%- elif states('sensor.landroid_batlevel')|float > 39 -%}mdi:battery-charging-40
+            {%- elif states('sensor.landroid_batlevel')|float > 29 -%}mdi:battery-charging-30
+            {%- elif states('sensor.landroid_batlevel')|float > 19 -%}mdi:battery-charging-20
+            {%- elif states('sensor.landroid_batlevel')|float > 9 -%}mdi:battery-charging-10
+            {%- else -%}mdi:battery-charging-outline
+            {%- endif %}
+          {%- else -%}
+            {%- if states('sensor.landroid_batlevel')|float > 99 -%}mdi:battery
+            {%- elif states('sensor.landroid_batlevel')|float > 89 -%}mdi:battery-90
+            {%- elif states('sensor.landroid_batlevel')|float > 79 -%}mdi:battery-80
+            {%- elif states('sensor.landroid_batlevel')|float > 69 -%}mdi:battery-70
+            {%- elif states('sensor.landroid_batlevel')|float > 59 -%}mdi:battery-60
+            {%- elif states('sensor.landroid_batlevel')|float > 49 -%}mdi:battery-50
+            {%- elif states('sensor.landroid_batlevel')|float > 39 -%}mdi:battery-40
+            {%- elif states('sensor.landroid_batlevel')|float > 29 -%}mdi:battery-30
+            {%- elif states('sensor.landroid_batlevel')|float > 19 -%}mdi:battery-20
+            {%- elif states('sensor.landroid_batlevel')|float > 9 -%}mdi:battery-10
+            {%- else -%}mdi:battery-outline
+            {%- endif %}
+          {%- endif %}
+
+# -55 or higher: 4 bars
+# -56 to -66: 3 bars
+# -67 to -77: 2 bars
+# -78 to -88: 1 bar
+# -89 or lower: 0 bars
+      landroid_wifi:
+        friendly_name: "Wifi quality"
+        unit_of_measurement: 'dB'
+        value_template: "{{ states('sensor.landroid_wifiquality') }}"
+        icon_template: >-
+          {% if states('sensor.landroid_wifiquality')|float > -56 -%}mdi:wifi-strength-4
+          {% elif states('sensor.landroid_wifiquality')|float > -67 -%}mdi:wifi-strength-3
+          {% elif states('sensor.landroid_wifiquality')|float > -78 -%}mdi:wifi-strength-2
+          {% elif states('sensor.landroid_wifiquality')|float > -89 -%}mdi:wifi-strength-1
+          {%- else -%}mdi:wifi-strength-outline
+          {%- endif %}
+
+      landroid_alive:
+        friendly_name: "Online"
+        value_template: >-
+          {% if is_state("sensor.landroid_aktiv","true") -%}Online
+          {%- else -%}Offline
+          {%- endif %}
+        icon_template: >-
+          {% if is_state("sensor.landroid_aktiv","true") -%}mdi:heart-pulse
+          {%- else -%}mdi:heart-broken
+          {%- endif %}
+
+# Actual scheduler
+      landroid_1_actual:
+        friendly_name: "Actual scheduler"
+        value_template: '{{ "%0.02d:%0.02d" | format(states.sensor.landroid_sched1.attributes.startHour | int, states.sensor.landroid_sched1.attributes.startMinute | int) }}, {{ states.sensor.landroid_sched1.attributes.durationMinutes }} Minuten{% if states.sensor.landroid_sched1.attributes.cutEdge == true -%}, Cut to Edge{%- endif %}'
+        icon_template: "mdi:calendar-clock"
+      landroid_2_actual:
+        friendly_name: "Actual scheduler"
+        value_template: '{{ "%0.02d:%0.02d" | format(states.sensor.landroid_sched2.attributes.startHour | int, states.sensor.landroid_sched2.attributes.startMinute | int) }}, {{ states.sensor.landroid_sched2.attributes.durationMinutes }} Minuten{% if states.sensor.landroid_sched2.attributes.cutEdge == true -%}, Cut to Edge{%- endif %}'
+        icon_template: "mdi:calendar-clock"
+      landroid_3_actual:
+        friendly_name: "Actual scheduler"
+        value_template: '{{ "%0.02d:%0.02d" | format(states.sensor.landroid_sched3.attributes.startHour | int, states.sensor.landroid_sched3.attributes.startMinute | int) }}, {{ states.sensor.landroid_sched3.attributes.durationMinutes }} Minuten{% if states.sensor.landroid_sched3.attributes.cutEdge == true -%}, Cut to Edge{%- endif %}'
+        icon_template: "mdi:calendar-clock"
+      landroid_4_actual:
+        friendly_name: "Actual scheduler"
+        value_template: '{{ "%0.02d:%0.02d" | format(states.sensor.landroid_sched4.attributes.startHour | int, states.sensor.landroid_sched4.attributes.startMinute | int) }}, {{ states.sensor.landroid_sched4.attributes.durationMinutes }} Minuten{% if states.sensor.landroid_sched4.attributes.cutEdge == true -%}, Cut to Edge{%- endif %}'
+        icon_template: "mdi:calendar-clock"
+      landroid_5_actual:
+        friendly_name: "Actual scheduler"
+        value_template: '{{ "%0.02d:%0.02d" | format(states.sensor.landroid_sched5.attributes.startHour | int, states.sensor.landroid_sched5.attributes.startMinute | int) }}, {{ states.sensor.landroid_sched5.attributes.durationMinutes }} Minuten{% if states.sensor.landroid_sched5.attributes.cutEdge == true -%}, Cut to Edge{%- endif %}'
+        icon_template: "mdi:calendar-clock"
+      landroid_6_actual:
+        friendly_name: "Actual scheduler"
+        value_template: '{{ "%0.02d:%0.02d" | format(states.sensor.landroid_sched6.attributes.startHour | int, states.sensor.landroid_sched6.attributes.startMinute | int) }}, {{ states.sensor.landroid_sched6.attributes.durationMinutes }} Minuten{% if states.sensor.landroid_sched6.attributes.cutEdge == true -%}, Cut to Edge{%- endif %}'
+        icon_template: "mdi:calendar-clock"
+      landroid_0_actual:
+        friendly_name: "Actual scheduler"
+        value_template: '{{ "%0.02d:%0.02d" | format(states.sensor.landroid_sched0.attributes.startHour | int, states.sensor.landroid_sched0.attributes.startMinute | int) }}, {{ states.sensor.landroid_sched0.attributes.durationMinutes }} Minuten{% if states.sensor.landroid_sched0.attributes.cutEdge == true -%}, Cut to Edge{%- endif %}'
+        icon_template: "mdi:calendar-clock"
+
+# Switch ############################################################
+switch:
+# Payload "start" starts the mower, "stop" stops the mower
+  - platform: mqtt
+    name: "Landroid mowing"
+    command_topic: "landroid/set/mow"
+    state_topic: "landroid/status/statusCode"
+    payload_on: "start"
+    payload_off: "stop"
+    state_on: 7
+    state_off: 1
+    icon: "mdi:play-box-outline"
+
+# Input Number ######################################################
+input_number:
+  landroid_raindelay:
+    name: "Rain delay"
+    initial: 120
+    min: 0
+    max: 750
+    step: 30
+    unit_of_measurement: "Min."
+    icon: "mdi:weather-lightning-rainy"
+#    mode: box
+  landroid_timeext:
+    name: "Time extension"
+    initial: 0
+    min: -100
+    max: 100
+    step: 10
+    unit_of_measurement: "%"
+    icon: "mdi:clock-start"
+
+# Scheduler #######
+  landroid_0_duration:
+    name: "Duration (min)"
+    initial: 0
+    min: 0
+    max: 1425
+    step: 15
+    unit_of_measurement: "min"
+    icon: "mdi:clock-end"
+    mode: box
+
+  landroid_1_duration:
+    name: "Duration (min)"
+    initial: 0
+    min: 0
+    max: 1425
+    step: 15
+    unit_of_measurement: "min"
+    icon: "mdi:clock-end"
+    mode: box
+
+  landroid_2_duration:
+    name: "Duration (min)"
+    initial: 0
+    min: 0
+    max: 1425
+    step: 15
+    unit_of_measurement: "min"
+    icon: "mdi:clock-end"
+    mode: box
+
+  landroid_3_duration:
+    name: "Duration (min)"
+    initial: 0
+    min: 0
+    max: 1425
+    step: 15
+    unit_of_measurement: "min"
+    icon: "mdi:clock-end"
+    mode: box
+
+  landroid_4_duration:
+    name: "Duration (min)"
+    initial: 0
+    min: 0
+    max: 1425
+    step: 15
+    unit_of_measurement: "min"
+    icon: "mdi:clock-end"
+    mode: box
+
+  landroid_5_duration:
+    name: "Duration (min)"
+    initial: 0
+    min: 0
+    max: 1425
+    step: 15
+    unit_of_measurement: "min"
+    icon: "mdi:clock-end"
+    mode: box
+
+  landroid_6_duration:
+    name: "Duration (min)"
+    initial: 0
+    min: 0
+    max: 1425
+    step: 15
+    unit_of_measurement: "min"
+    icon: "mdi:clock-end"
+    mode: box
+
+# input DateTime ####################################################
+input_datetime:
+  landroid_1_time:
+    name: "Time to start"
+    has_date: false
+    has_time: true
+    icon: "mdi:clock-start"
+  landroid_2_time:
+    name: "Time to start"
+    has_date: false
+    has_time: true
+    icon: "mdi:clock-start"
+  landroid_3_time:
+    name: "Time to start"
+    has_date: false
+    has_time: true
+    icon: "mdi:clock-start"
+  landroid_4_time:
+    name: "Time to start"
+    has_date: false
+    has_time: true
+    icon: "mdi:clock-start"
+  landroid_5_time:
+    name: "Time to start"
+    has_date: false
+    has_time: true
+    icon: "mdi:clock-start"
+  landroid_6_time:
+    name: "Time to start"
+    has_date: false
+    has_time: true
+    icon: "mdi:clock-start"
+  landroid_0_time:
+    name: "Time to start"
+    has_date: false
+    has_time: true
+    icon: "mdi:clock-start"
+
+# Input Boolean #####################################################
+input_boolean:
+  landroid_raindelay_settings:
+    name: Raindelay Settings
+    icon: "mdi:file-hidden"
+    initial: false
+  landroid_timext_settings:
+    name: TimeExt Settings
+    icon: "mdi:file-hidden"
+    initial: false
+  landroid_sched_settings:
+    name: Scheduler Settings
+    icon: "mdi:file-hidden"
+    initial: false
+  landroid_info_toggle:
+    name: Info toggle
+    icon: "mdi:file-hidden"
+    initial: false
+
+# Scheduler #######
+  landroid_0:
+    name: Sunday
+    icon: "mdi:calendar"
+  landroid_0_cuttoedge:
+    name: Sunday Cut to Edge
+    icon: "mdi:scissors-cutting"
+  landroid_1:
+    name: Monday
+    icon: "mdi:calendar-today"
+  landroid_1_cuttoedge:
+    name: Monday Cut to Edge
+    icon: "mdi:scissors-cutting"
+  landroid_2:
+    name: Tuesday
+    icon: "mdi:calendar-minus"
+  landroid_2_cuttoedge:
+    name: Tuesday Cut to Edge
+    icon: "mdi:scissors-cutting"
+  landroid_3:
+    name: Wednesday
+    icon: "mdi:calendar-range"
+  landroid_3_cuttoedge:
+    name: Wednesday Cut to Edge
+    icon: "mdi:scissors-cutting"
+  landroid_4:
+    name: Thursday
+    icon: "mdi:calendar-multiselect"
+  landroid_4_cuttoedge:
+    name: Thursday Cut to Edge
+    icon: "mdi:scissors-cutting"
+  landroid_5:
+    name: Friday
+    icon: "mdi:calendar-heart"
+  landroid_5_cuttoedge:
+    name: Friday Cut to Edge
+    icon: "mdi:scissors-cutting"
+  landroid_6:
+    name: Saturday
+    icon: "mdi:calendar-check"
+  landroid_6_cuttoedge:
+    name: Saturday Cut to Edge
+    icon: "mdi:scissors-cutting"
+
+# Automations #######################################################
+automation:
+  - alias: Landroid sync values
+    trigger:
+      platform: mqtt
+      topic: "landroid/status/dateTime"
+    action:
+# Get rain delay
+      - service: input_number.set_value
+        data_template:
+          entity_id: input_number.landroid_raindelay
+          value: "{{ states.sensor.landroid_raindelay.state }}"
+# Get time extension
+      - service: input_number.set_value
+        data_template:
+          entity_id: input_number.landroid_timeext
+          value: "{{ states.sensor.landroid_timeext.state }}"
+# Get Monday ######
+      - service_template: >
+          {% if states.sensor.landroid_sched1.attributes.durationMinutes == 0 -%}input_boolean.turn_off
+          {%- else -%}input_boolean.turn_on
+          {%- endif %}
+        entity_id: input_boolean.landroid_1
+      - service_template: >
+          {% if states.sensor.landroid_sched1.attributes.cutEdge == false -%}input_boolean.turn_off
+          {%- else -%}input_boolean.turn_on
+          {%- endif %}
+        entity_id: input_boolean.landroid_1_cuttoedge
+      - service: input_datetime.set_datetime
+        data_template:
+          entity_id: input_datetime.landroid_1_time
+          time: '{{ "%0.02d:%0.02d" | format(states.sensor.landroid_sched1.attributes.startHour | int, states.sensor.landroid_sched1.attributes.startMinute | int) }}'
+      - service: input_number.set_value
+        data_template:
+          entity_id: input_number.landroid_1_duration
+          value: "{{ states.sensor.landroid_sched1.attributes.durationMinutes }}"
+# Get Thuesday ####
+      - service_template: >
+          {% if states.sensor.landroid_sched2.attributes.durationMinutes == 0 -%}input_boolean.turn_off
+          {%- else -%}input_boolean.turn_on
+          {%- endif %}
+        entity_id: input_boolean.landroid_2
+      - service_template: >
+          {% if states.sensor.landroid_sched2.attributes.cutEdge == false -%}input_boolean.turn_off
+          {%- else -%}input_boolean.turn_on
+          {%- endif %}
+        entity_id: input_boolean.landroid_2_cuttoedge
+      - service: input_datetime.set_datetime
+        data_template:
+          entity_id: input_datetime.landroid_2_time
+          time: '{{ "%0.02d:%0.02d" | format(states.sensor.landroid_sched2.attributes.startHour | int, states.sensor.landroid_sched2.attributes.startMinute | int) }}'
+      - service: input_number.set_value
+        data_template:
+          entity_id: input_number.landroid_2_duration
+          value: "{{ states.sensor.landroid_sched2.attributes.durationMinutes }}"
+# Get Wednesday ###
+      - service_template: >
+          {% if states.sensor.landroid_sched3.attributes.durationMinutes == 0 -%}input_boolean.turn_off
+          {%- else -%}input_boolean.turn_on
+          {%- endif %}
+        entity_id: input_boolean.landroid_3
+      - service_template: >
+          {% if states.sensor.landroid_sched3.attributes.cutEdge == false -%}input_boolean.turn_off
+          {%- else -%}input_boolean.turn_on
+          {%- endif %}
+        entity_id: input_boolean.landroid_3_cuttoedge
+      - service: input_datetime.set_datetime
+        data_template:
+          entity_id: input_datetime.landroid_3_time
+          time: '{{ "%0.02d:%0.02d" | format(states.sensor.landroid_sched3.attributes.startHour | int, states.sensor.landroid_sched3.attributes.startMinute | int) }}'
+      - service: input_number.set_value
+        data_template:
+          entity_id: input_number.landroid_3_duration
+          value: "{{ states.sensor.landroid_sched3.attributes.durationMinutes }}"
+# Get Thursday ####
+      - service_template: >
+          {% if states.sensor.landroid_sched4.attributes.durationMinutes == 0 -%}input_boolean.turn_off
+          {%- else -%}input_boolean.turn_on
+          {%- endif %}
+        entity_id: input_boolean.landroid_4
+      - service_template: >
+          {% if states.sensor.landroid_sched4.attributes.cutEdge == false -%}input_boolean.turn_off
+          {%- else -%}input_boolean.turn_on
+          {%- endif %}
+        entity_id: input_boolean.landroid_4_cuttoedge
+      - service: input_datetime.set_datetime
+        data_template:
+          entity_id: input_datetime.landroid_4_time
+          time: '{{ "%0.02d:%0.02d" | format(states.sensor.landroid_sched4.attributes.startHour | int, states.sensor.landroid_sched4.attributes.startMinute | int) }}'
+      - service: input_number.set_value
+        data_template:
+          entity_id: input_number.landroid_4_duration
+          value: "{{ states.sensor.landroid_sched4.attributes.durationMinutes }}"
+# Get Friday ######
+      - service_template: >
+          {% if states.sensor.landroid_sched5.attributes.durationMinutes == 0 -%}input_boolean.turn_off
+          {%- else -%}input_boolean.turn_on
+          {%- endif %}
+        entity_id: input_boolean.landroid_5
+      - service_template: >
+          {% if states.sensor.landroid_sched5.attributes.cutEdge == false -%}input_boolean.turn_off
+          {%- else -%}input_boolean.turn_on
+          {%- endif %}
+        entity_id: input_boolean.landroid_5_cuttoedge
+      - service: input_datetime.set_datetime
+        data_template:
+          entity_id: input_datetime.landroid_5_time
+          time: '{{ "%0.02d:%0.02d" | format(states.sensor.landroid_sched5.attributes.startHour | int, states.sensor.landroid_sched5.attributes.startMinute | int) }}'
+      - service: input_number.set_value
+        data_template:
+          entity_id: input_number.landroid_5_duration
+          value: "{{ states.sensor.landroid_sched5.attributes.durationMinutes }}"
+# Get Saturday ####
+      - service_template: >
+          {% if states.sensor.landroid_sched6.attributes.durationMinutes == 0 -%}input_boolean.turn_off
+          {%- else -%}input_boolean.turn_on
+          {%- endif %}
+        entity_id: input_boolean.landroid_6
+      - service_template: >
+          {% if states.sensor.landroid_sched6.attributes.cutEdge == false -%}input_boolean.turn_off
+          {%- else -%}input_boolean.turn_on
+          {%- endif %}
+        entity_id: input_boolean.landroid_6_cuttoedge
+      - service: input_datetime.set_datetime
+        data_template:
+          entity_id: input_datetime.landroid_6_time
+          time: '{{ "%0.02d:%0.02d" | format(states.sensor.landroid_sched6.attributes.startHour | int, states.sensor.landroid_sched6.attributes.startMinute | int) }}'
+      - service: input_number.set_value
+        data_template:
+          entity_id: input_number.landroid_6_duration
+          value: "{{ states.sensor.landroid_sched6.attributes.durationMinutes }}"
+# Get Sunday ######
+      - service_template: >
+          {% if states.sensor.landroid_sched0.attributes.durationMinutes == 0 -%}input_boolean.turn_off
+          {%- else -%}input_boolean.turn_on
+          {%- endif %}
+        entity_id: input_boolean.landroid_0
+      - service_template: >
+          {% if states.sensor.landroid_sched0.attributes.cutEdge == false -%}input_boolean.turn_off
+          {%- else -%}input_boolean.turn_on
+          {%- endif %}
+        entity_id: input_boolean.landroid_0_cuttoedge
+      - service: input_datetime.set_datetime
+        data_template:
+          entity_id: input_datetime.landroid_0_time
+          time: '{{ "%0.02d:%0.02d" | format(states.sensor.landroid_sched0.attributes.startHour | int, states.sensor.landroid_sched0.attributes.startMinute | int) }}'
+      - service: input_number.set_value
+        data_template:
+          entity_id: input_number.landroid_0_duration
+          value: "{{ states.sensor.landroid_sched0.attributes.durationMinutes }}"
+
+# Scripts ###########################################################
+script:
+# Starts the mower
+  landroid_start:
+    alias: "Start the mower"
+    sequence:
+      service: mqtt.publish
+      data:
+        topic: "landroid/set/start"
+        payload: "on"
+
+# Stops the mower and sends it home
+  landroid_stop:
+    alias: "Stop the mower"
+    sequence:
+      service: mqtt.publish
+      data:
+        topic: "landroid/set/stop"
+        payload: "on"
+
+# Sets rain delay in minutes, supply delay value as payload
+  landroid_set_raindelay:
+    alias: "Rain delay save"
+    sequence:
+      service: mqtt.publish
+      data:
+        topic: "landroid/set/rainDelay"
+        payload_template: "{{ states('input_number.landroid_raindelay') | int }}"
+
+
+# Sets time extension in percent, supply percentage value as payload
+  landroid_set_timeext:
+    alias: "Time extension save"
+    sequence:
+      - service: mqtt.publish
+        data:
+          topic: "landroid/set/timeExtension"
+          payload_template: "{{ states('input_number.landroid_timeext') | int }}"
+
+# Sets work time for weekday n, where 0 is Sunday
+# Beispiel: mosquitto_pub -t landroid/set/schedule/6 -m '{"startHour":10,"startMinute":30,"durationMinutes":60,"cutEdge":false}'
+# {"startHour":{{ states.input_number.landroid_2_hour.state | int }},"startMinute":{{ states.input_number.landroid_2_minutes.state | int }},"durationMinutes":{{ states.input_number.landroid_2_duration.state | int }},"cutEdge":{% if states.input_boolean.landroid_1_cuttoedge.state == "on" -%}true{%- else -%}false{%- endif %}"}
+  landroid_set_scheduler1:
+    alias: "Monday save"
+    sequence:
+      - service: mqtt.publish
+        data:
+          topic: "landroid/set/schedule/1"
+          payload_template: >-
+            {% if states.input_boolean.landroid_1.state == "on" -%}
+            {"startHour":{{ states.input_datetime.landroid_1_time.attributes.hour | int }},"startMinute":{{ states.input_datetime.landroid_1_time.attributes.minute | int }},"durationMinutes":{{ states.input_number.landroid_1_duration.state | int }},"cutEdge":{% if states.input_boolean.landroid_1_cuttoedge.state == "on" -%}true{%- else -%}false{%- endif %}}
+            {%- else -%}
+            {"startHour":0,"startMinute":0,"durationMinutes":0,"cutEdge":false}
+            {%- endif %}
+
+  landroid_set_scheduler2:
+    alias: "Thuesday save"
+    sequence:
+      - service: mqtt.publish
+        data:
+          topic: "landroid/set/schedule/2"
+          payload_template: >-
+            {% if states.input_boolean.landroid_2.state == "on" -%}
+            {"startHour":{{ states.input_datetime.landroid_2_time.attributes.hour | int }},"startMinute":{{ states.input_datetime.landroid_2_time.attributes.minute | int }},"durationMinutes":{{ states.input_number.landroid_2_duration.state | int }},"cutEdge":{% if states.input_boolean.landroid_2_cuttoedge.state == "on" -%}true{%- else -%}false{%- endif %}}
+            {%- else -%}
+            {"startHour":0,"startMinute":0,"durationMinutes":0,"cutEdge":false}
+            {%- endif %}
+
+  landroid_set_scheduler3:
+    alias: "Wednesday save"
+    sequence:
+      - service: mqtt.publish
+        data:
+          topic: "landroid/set/schedule/3"
+          payload_template: >-
+            {% if states.input_boolean.landroid_3.state == "on" -%}
+            {"startHour":{{ states.input_datetime.landroid_3_time.attributes.hour | int }},"startMinute":{{ states.input_datetime.landroid_3_time.attributes.minute | int }},"durationMinutes":{{ states.input_number.landroid_3_duration.state | int }},"cutEdge":{% if states.input_boolean.landroid_3_cuttoedge.state == "on" -%}true{%- else -%}false{%- endif %}}
+            {%- else -%}
+            {"startHour":0,"startMinute":0,"durationMinutes":0,"cutEdge":false}
+            {%- endif %}
+
+  landroid_set_scheduler4:
+    alias: "Thursday save"
+    sequence:
+      - service: mqtt.publish
+        data:
+          topic: "landroid/set/schedule/4"
+          payload_template: >-
+            {% if states.input_boolean.landroid_4.state == "on" -%}
+            {"startHour":{{ states.input_datetime.landroid_4_time.attributes.hour | int }},"startMinute":{{ states.input_datetime.landroid_4_time.attributes.minute | int }},"durationMinutes":{{ states.input_number.landroid_4_duration.state | int }},"cutEdge":{% if states.input_boolean.landroid_4_cuttoedge.state == "on" -%}true{%- else -%}false{%- endif %}}
+            {%- else -%}
+            {"startHour":0,"startMinute":0,"durationMinutes":0,"cutEdge":false}
+            {%- endif %}
+
+  landroid_set_scheduler5:
+    alias: "Friday save"
+    sequence:
+      - service: mqtt.publish
+        data:
+          topic: "landroid/set/schedule/5"
+          payload_template: >-
+            {% if states.input_boolean.landroid_5.state == "on" -%}
+            {"startHour":{{ states.input_datetime.landroid_5_time.attributes.hour | int }},"startMinute":{{ states.input_datetime.landroid_5_time.attributes.minute | int }},"durationMinutes":{{ states.input_number.landroid_5_duration.state | int }},"cutEdge":{% if states.input_boolean.landroid_5_cuttoedge.state == "on" -%}true{%- else -%}false{%- endif %}}
+            {%- else -%}
+            {"startHour":0,"startMinute":0,"durationMinutes":0,"cutEdge":false}
+            {%- endif %}
+
+  landroid_set_scheduler6:
+    alias: "Saturday save"
+    sequence:
+      - service: mqtt.publish
+        data:
+          topic: "landroid/set/schedule/6"
+          payload_template: >-
+            {% if states.input_boolean.landroid_6.state == "on" -%}
+            {"startHour":{{ states.input_datetime.landroid_6_time.attributes.hour | int }},"startMinute":{{ states.input_datetime.landroid_6_time.attributes.minute | int }},"durationMinutes":{{ states.input_number.landroid_6_duration.state | int }},"cutEdge":{% if states.input_boolean.landroid_6_cuttoedge.state == "on" -%}true{%- else -%}false{%- endif %}}
+            {%- else -%}
+            {"startHour":0,"startMinute":0,"durationMinutes":0,"cutEdge":false}
+            {%- endif %}
+
+  landroid_set_scheduler0:
+    alias: "Sunday save"
+    sequence:
+      - service: mqtt.publish
+        data:
+          topic: "landroid/set/schedule/0"
+          payload_template: >-
+            {% if states.input_boolean.landroid_0.state == "on" -%}
+            {"startHour":{{ states.input_datetime.landroid_0_time.attributes.hour | int }},"startMinute":{{ states.input_datetime.landroid_0_time.attributes.minute | int }},"durationMinutes":{{ states.input_number.landroid_0_duration.state | int }},"cutEdge":{% if states.input_boolean.landroid_0_cuttoedge.state == "on" -%}true{%- else -%}false{%- endif %}}
+            {%- else -%}
+            {"startHour":0,"startMinute":0,"durationMinutes":0,"cutEdge":false}
+            {%- endif %}
+
+# Customize #########################################################
+## Sensors #########
+homeassistant:
+  customize:
+# Sensor ##########
+    sensor.landroid_lang:
+      friendly_name: "Sprache"
+      icon: "mdi:translate"
+    sensor.landroid_sn:
+      friendly_name: "Seriennummer"
+    sensor.landroid_mac:
+      friendly_name: "MAC-Adresse"
+    sensor.landroid_firmware:
+      friendly_name: "Firmwareversion"
+
+    sensor.landroid_wifiquality:
+      friendly_name: "WLAN Qualität"
+      device_class: "signal_strength"
+    sensor.landroid_datetime:
+      friendly_name: "Aktualisiert seit"
+      icon: "mdi:update"
+    sensor.landroid_aktiv:
+      friendly_name: "Online"
+    sensor.landroid_statuscode:
+      friendly_name: "Statuscode"
+    sensor.landroid_statusdesc:
+      friendly_name: "Status"
+    sensor.landroid_errorcode:
+      friendly_name: "Fehlercode"
+    sensor.landroid_errordesc:
+      friendly_name: "Fehler"
+
+    sensor.landroid_raindelay:
+      friendly_name: "Regenverzögerung"
+    sensor.landroid_timeext:
+      friendly_name: "Zeit erhöhen / verringen"
+
+    sensor.landroid_totaltime:
+      friendly_name: "Arbeitszeit"
+    sensor.landroid_dist:
+      friendly_name: "Ges. Distanz"
+    sensor.landroid_bladetime:
+      friendly_name: "Klingenarbeitszeit"
+    sensor.landroid_batchargecycle:
+      friendly_name: "Akku Ladungen"
+
+    sensor.landroid_batcharging:
+      friendly_name: "Akku Status"
+    sensor.landroid_batvoltage:
+      friendly_name: "Akku Spannung"
+    sensor.landroid_battemp:
+      friendly_name: "Akku Temperatur"
+    sensor.landroid_batlevel:
+      friendly_name: "Akkuladung"
+
+    sensor.landroid_pitch:
+      friendly_name: "Nicken/Тангаж"
+    sensor.landroid_roll:
+      friendly_name: "Rollen/Крен"
+    sensor.landroid_yaw:
+      friendly_name: "Gieren/Рысканье"
+
+    sensor.landroid_sched1:
+      friendly_name: "Zeitplan Montag"
+    sensor.landroid_sched2:
+      friendly_name: "Zeitplan Dienstag"
+    sensor.landroid_sched3:
+      friendly_name: "Zeitplan Mittwoch"
+    sensor.landroid_sched4:
+      friendly_name: "Zeitplan Donnerstag"
+    sensor.landroid_sched5:
+      friendly_name: "Zeitplan Freitag"
+    sensor.landroid_sched6:
+      friendly_name: "Zeitplan Samstag"
+    sensor.landroid_sched0:
+      friendly_name: "Zeitplan Sonntag"
+
+    sensor.landroid_ip:
+      friendly_name: "IP-Adresse"
+    sensor.landroid_bat:
+      friendly_name: "Akku Status"
+    sensor.landroid_wifi:
+      friendly_name: "WLAN Qualität"
+    sensor.landroid_alive:
+      friendly_name: "Online"
+
+    sensor.landroid_1_actual:
+      friendly_name: "Aktueller Mähplan"
+    sensor.landroid_2_actual:
+      friendly_name: "Aktueller Mähplan"
+    sensor.landroid_3_actual:
+      friendly_name: "Aktueller Mähplan"
+    sensor.landroid_4_actual:
+      friendly_name: "Aktueller Mähplan"
+    sensor.landroid_5_actual:
+      friendly_name: "Aktueller Mähplan"
+    sensor.landroid_6_actual:
+      friendly_name: "Aktueller Mähplan"
+    sensor.landroid_0_actual:
+      friendly_name: "Aktueller Mähplan"
+
+##    sensor.landroid_akkuladung:
+##      device_class: "battery"
+##    sensor.landroid_wlan_qualitat:
+##      device_class: "signal_strength"
+
+# Switch ##########
+    switch.landroid_mowing:
+      friendly_name: "Rasen mähen"
+      assumed_state: true
+
+# Input Number ####
+    input_number.landroid_raindelay:
+      friendly_name: "Regenverzögerung"
+      icon: "mdi:weather-lightning-rainy"
+    input_number.landroid_timeext:
+      friendly_name: "Zeit Erhöhen"
+      icon: "mdi:clock-out"
+
+    input_number.landroid_1_duration:
+      friendly_name: "Dauer (Min.)"
+      unit_of_measurement: "Min."
+    input_number.landroid_2_duration:
+      friendly_name: "Dauer (Min.)"
+      unit_of_measurement: "Min."
+    input_number.landroid_3_duration:
+      friendly_name: "Dauer (Min.)"
+      unit_of_measurement: "Min."
+    input_number.landroid_4_duration:
+      friendly_name: "Dauer (Min.)"
+      unit_of_measurement: "Min."
+    input_number.landroid_5_duration:
+      friendly_name: "Dauer (Min.)"
+      unit_of_measurement: "Min."
+    input_number.landroid_6_duration:
+      friendly_name: "Dauer (Min.)"
+      unit_of_measurement: "Min."
+    input_number.landroid_0_duration:
+      friendly_name: "Dauer (Min.)"
+      unit_of_measurement: "Min."
+
+# Input DateTime ##
+    input_datetime.landroid_1_time:
+      friendly_name: "Beginn"
+    input_datetime.landroid_2_time:
+      friendly_name: "Beginn"
+    input_datetime.landroid_3_time:
+      friendly_name: "Beginn"
+    input_datetime.landroid_4_time:
+      friendly_name: "Beginn"
+    input_datetime.landroid_5_time:
+      friendly_name: "Beginn"
+    input_datetime.landroid_6_time:
+      friendly_name: "Beginn"
+    input_datetime.landroid_0_time:
+      friendly_name: "Beginn"
+
+# Input Boolean ###
+    input_boolean.landroid_raindelay_settings:
+      friendly_name: "Regenverzögerung"
+    input_boolean.landroid_timext_settings:
+      friendly_name: "Zeiterhöhung"
+    input_boolean.landroid_sched_settings:
+      friendly_name: "Mähplan"
+    input_boolean.landroid_info_toggle:
+      friendly_name: "Information"
+
+    input_boolean.landroid_0:
+      friendly_name: "Sonntag"
+    input_boolean.landroid_0_cuttoedge:
+      friendly_name: "Cut to edge"
+    input_boolean.landroid_1:
+      friendly_name: "Montag"
+    input_boolean.landroid_1_cuttoedge:
+      friendly_name: "Cut to edge"
+    input_boolean.landroid_2:
+      friendly_name: "Dienstag"
+    input_boolean.landroid_2_cuttoedge:
+      friendly_name: "Cut to edge"
+    input_boolean.landroid_3:
+      friendly_name: "Mittwoch"
+    input_boolean.landroid_3_cuttoedge:
+      friendly_name: "Cut to edge"
+    input_boolean.landroid_4:
+      friendly_name: "Donnerstag"
+    input_boolean.landroid_4_cuttoedge:
+      friendly_name: "Cut to edge"
+    input_boolean.landroid_5:
+      friendly_name: "Freitag"
+    input_boolean.landroid_5_cuttoedge:
+      friendly_name: "Cut to edge"
+    input_boolean.landroid_6:
+      friendly_name: "Samstag"
+    input_boolean.landroid_6_cuttoedge:
+      friendly_name: "Cut to edge"
+
+# Automation ######
+    automation.landroid_sync_values:
+      friendly_name: "Landroid Sync"
+      icon: "mdi:sync"
+# Scripts #########
+    script.landroid_start:
+      friendly_name: "Rasen mähen"
+      icon: "mdi:play"
+    script.landroid_stop:
+      friendly_name: "Mähen beenden"
+      icon: "mdi:home"
+
+    script.landroid_set_raindelay:
+      friendly_name: "Regenverzögerung speichern"
+      icon: "mdi:content-save-settings"
+    script.landroid_set_timeext:
+      friendly_name: "Zeiterhöung speichern"
+      icon: "mdi:content-save-settings"
+    script.landroid_set_scheduler1:
+      friendly_name: "Montag speichern"
+      icon: "mdi:content-save-settings"
+    script.landroid_set_scheduler2:
+      friendly_name: "Dienstag speichern"
+      icon: "mdi:content-save-settings"
+    script.landroid_set_scheduler3:
+      friendly_name: "Mittwoch speichern"
+      icon: "mdi:content-save-settings"
+    script.landroid_set_scheduler4:
+      friendly_name: "Donnerstag speichern"
+      icon: "mdi:content-save-settings"
+    script.landroid_set_scheduler5:
+      friendly_name: "Freitag speichern"
+      icon: "mdi:content-save-settings"
+    script.landroid_set_scheduler6:
+      friendly_name: "Samstag speichern"
+      icon: "mdi:content-save-settings"
+    script.landroid_set_scheduler0:
+      friendly_name: "Sonntag speichern"
+      icon: "mdi:content-save-settings"
