@@ -34,6 +34,54 @@ npm run grunt
 
 Adjust the username and paths (path to current node too!!!) in the file, and copy it to /lib/systemd/system/
 
+My XML file without personal dates is here:
+```xml
+{
+    "http": {
+        "port": 3000
+    },
+    "landroid-s": {
+        "enable": true,
+        "email": "EMAIL_FOR_MYWORX",
+        "pwd": "PASSWORD_FOR_MYWORX",
+        "dev_sel": 0
+    },
+    "mqtt": {
+        "enable": true,
+        "url": "mqtt://MQTT_USER:MQTT_PASSWORD@localhost",
+        "topic": "landroid",
+        "//clientId": "optional",
+        "//caFile": "./optional_path_to_ca_file.crt",
+        "//keyFile": "./optional_path_to_key_file.key",
+        "//certFile": "./optional_path_to_cert_file.crt",
+        "//allowSelfSigned": true
+    },
+    "logLevel": "info",
+    "scheduler": {
+        "enable": true,
+        "cron": false,
+        "weather": {
+            "provider": "darksky",
+            "apiKey": "DARKSKY_API_KEY",
+            "latitude": 0.481478,
+            "longitude": 0.742742
+        },
+        "db": "./scheduler.db",
+        "earliestStart": 11,
+        "latestStop": 21,
+        "startEarly": false,
+        "offDays": 2,
+        "squareMeters": 300,
+        "perHour": 50,
+        "mowTime": 75,
+        "chargeTime": 75,
+        "daysForTotalCut": 2,
+        "rainDelay": 120,
+        "threshold": 30
+    }
+}
+```
+
 See here for details: https://github.com/virtualzone/landroid-bridge#setting-up-mqtt
 
 ```
