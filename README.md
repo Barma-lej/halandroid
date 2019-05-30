@@ -45,10 +45,14 @@ sudo systemctl start landroid-bridge.service
 
 ## Home Assistant
 
-1. Create folder named **packages** in your homeassistant folder
-1. Copy to your folder **packages** file **worx_landroid.yaml** from  folder **packages**
-1. In configuration.yaml add string packages: _!include_dir_named packages_:
+1. Copy folders **www** and **packages** with all content in your homeassistant folder
+1. In configuration.yaml add string _packages: !include_dir_named packages_:
 ```yaml
 homeassistant:
   packages: !include_dir_named packages
 ```
+1. Add to your Lovelace config content from file **add_to_lovelace.yaml**
+1. If do you need translate strings in files **worx_landroid.yaml** section _customize_ and **add_to_lovelace.yaml** from German and Russian
+
+####_Enjoy_
+####_Удачи_:)
