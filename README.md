@@ -33,6 +33,7 @@ npm run grunt
 
 #### Setting up MQTT
 To connect to an MQTT broker without any authentication, please modify your **~/landroid-bridge/config.json**
+
 My **config.json** file without personal dates is here:
 
 ```json
