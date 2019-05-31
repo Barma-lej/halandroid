@@ -1,6 +1,8 @@
 # Worx Landroid package for Home Assistant
 Worx Landroid package for Home Assistant based on Landroid Bridge by Heiner virtualzone
 
+![Landroid](/www/mower/halandroid1.png)
+
 ![Landroid](/www/mower/halandroid.png)
 
 ## Landroid Bridge installation
