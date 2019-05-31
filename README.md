@@ -36,7 +36,7 @@ npm run grunt
 #### Setting up MQTT
 To connect to an MQTT broker without any authentication, please modify your **~/landroid-bridge/config.json**
 
-My **config.json** file without personal dates is here:
+My **config.json** file without personal info is here:
 
 ```json
 {
@@ -108,6 +108,14 @@ homeassistant:
 ```
 3. Add to your Lovelace config content from file **add_to_lovelace.yaml**
 4. If do you need translate strings in files **worx_landroid.yaml** section _customize_ and **add_to_lovelace.yaml** from German and Russian
+5. If you use a Google Assistant, then use switch **landroid_mowing**:
+```yaml
+  switch.landroid_mowing:
+    name: Mähroboter
+    room: Garten
+    expose: true
+```
+
 
 #### _Enjoy_
 
