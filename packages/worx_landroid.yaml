@@ -55,7 +55,7 @@ sensor:
     state_topic: "landroid/status/statusDescription"
     icon: "mdi:go-kart-track"
 # Felhler #########
-# 4 -Outside wire
+# 4 -Outside wire, 2 - (E5) Lifted
   - platform: mqtt
     name: "Landroid ErrorCode"
     state_topic: "landroid/status/errorCode"
@@ -506,7 +506,36 @@ input_boolean:
 
 # Automations #######################################################
 automation:
-  - alias: Landroid sync values
+  - id: 'landroid_status_notify'
+    alias: 'Landroid Status Notification'
+    trigger:
+    - platform: state
+      entity_id: sensor.landroid_statusdesc
+    condition:
+    - condition: template
+      value_template: '{{ trigger.to_state.state != trigger.from_state.state }}'
+    action:
+    - service: persistent_notification.create
+      data_template:
+        title: Lanroid Status
+        message: 'Landroid Ameise {{ states.sensor.date_time.state }}: {{ trigger.to_state.state }} ({{ states.sensor.landroid_statuscode.state }})'
+
+  - id: 'landroid_error_notify'
+    alias: 'Landroid Error Notification'
+    trigger:
+    - platform: state
+      entity_id: sensor.landroid_errordesc
+    condition:
+    - condition: template
+      value_template: '{{ trigger.to_state.state != trigger.from_state.state }}'
+    action:
+    - service: persistent_notification.create
+      data_template:
+        title: Lanroid Status
+        message: 'Landroid Ameise {{ states.sensor.date_time.state }}: {{ trigger.to_state.state }} ({{ states.sensor.landroid_errorcode.state }})'
+
+  - id: 'landroid_sync_values'
+    alias: Landroid sync values
     trigger:
       platform: mqtt
       topic: "landroid/status/dateTime"
@@ -789,7 +818,6 @@ script:
             {%- endif %}
 
 # Customize #########################################################
-## Sensors #########
 homeassistant:
   customize:
 # Sensor ##########
