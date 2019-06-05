@@ -115,8 +115,7 @@ homeassistant:
     room: Garten
     expose: true
 ```
-
-https://www.buymeacoffee.com/barma
+<a href="https://www.buymeacoffee.com/barma" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/white_img.png" alt="Buy Me A Coffee" style="height: auto !important;width: auto !important;" ></a>
 
 #### _Enjoy_
 
