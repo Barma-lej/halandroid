@@ -1,3 +1,5 @@
+<a href="https://www.buymeacoffee.com/barma" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: auto !important;width: auto !important;" ></a>
+
 # Worx Landroid package for Home Assistant
 Worx Landroid package for Home Assistant based on Landroid Bridge by Heiner virtualzone
 
