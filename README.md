@@ -116,6 +116,7 @@ homeassistant:
     expose: true
 ```
 
+https://www.buymeacoffee.com/barma
 
 #### _Enjoy_
 
