@@ -33,7 +33,7 @@
 
 10. Paste content in the new line after key "views:" in your lovelace config
 
-![Landroid](ha5.png)
+![Landroid](ha5_.png)
 
 11. Click on "Save" button
 
