@@ -41,4 +41,4 @@
 
 12. Place the new view to the desired position
 
-![Landroid](ha7.png)
+![Landroid](ha8.png)
