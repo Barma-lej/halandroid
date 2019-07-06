@@ -109,7 +109,7 @@ homeassistant:
   packages: !include_dir_named packages
 ```
 3. Add to your Lovelace config content from file **add_to_lovelace.yaml** ([How? See here](/help/work_with_lovelace.md))
-4. If do you need translate strings in files **worx_landroid.yaml** section _customize_ and **add_to_lovelace.yaml** from German and Russian
+4. If you need, translate strings in files **worx_landroid.yaml** section _customize_ and **add_to_lovelace.yaml** from German and Russian
 5. If you use a Google Assistant, then use switch **landroid_mowing**:
 ```yaml
   switch.landroid_mowing:
