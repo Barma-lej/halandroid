@@ -508,6 +508,7 @@ input_boolean:
 automation:
   - id: 'landroid_status_notify'
     alias: 'Landroid Status Notification'
+    initial_state: false
     trigger:
     - platform: state
       entity_id: sensor.landroid_statusdesc
@@ -522,6 +523,7 @@ automation:
 
   - id: 'landroid_error_notify'
     alias: 'Landroid Error Notification'
+    initial_state: true
     trigger:
     - platform: state
       entity_id: sensor.landroid_errordesc
