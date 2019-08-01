@@ -92,6 +92,27 @@ See here for details: https://github.com/virtualzone/landroid-bridge#setting-up-
 #### Set up a systemctl script to start the bridge on system startup:
 
 Adjust the username and paths (path to current node too!!!) in the file **~/landroid-bridge/systemctl-script/landroid-bridge.service**, and copy it to /lib/systemd/system/
+```
+[Unit]
+Description=Landroid Bridge
+Documentation=https://github.com/weweave/landroid-bridge
+After=network.target
+
+[Service]
+ExecStart=/usr/local/bin/node /home/pi/landroid-bridge/dist/server.js
+WorkingDirectory=/home/pi/landroid-bridge
+Restart=on-failure
+RestartSec=10
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=landroid-bridge
+User=pi
+Group=pi
+Environment=NODE_ENV=production PORT=3000
+
+[Install]
+WantedBy=multi-user.target
+```
 
 ```bash
 sudo cp systemctl-script/landroid-bridge.service /lib/systemd/system/
