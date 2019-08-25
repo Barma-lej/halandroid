@@ -206,6 +206,36 @@ sensor:
         value_template: !secret landroid_ip
         icon_template: "mdi:ip-network"
 
+      landroid_totaltime_h:
+        friendly_name: "Landroid TotalTime"
+        value_template: >
+          {% set t = states('sensor.landroid_totaltime') | int %}
+          {% if t == 0 %}
+            Unavailable
+          {% elif t > 60 %}
+            {{ '{:02d}:{:02d}'.format( t // 60, t % 60) }}
+          {% endif %}
+        icon_template: "mdi:bus-clock"
+        unit_of_measurement: "Std."
+
+      landroid_dist_km:
+        friendly_name: "Landroid Dist"
+        value_template: "{{ (states.sensor.landroid_dist.state | float) / 1000 }}"
+        icon_template: "mdi:map-marker-distance"
+        unit_of_measurement: "Km."
+
+      landroid_bladetime_h:
+        friendly_name: "Landroid BladeTime"
+        value_template: >
+          {% set t = states('sensor.landroid_bladetime') | int %}
+          {% if t == 0 %}
+            Unavailable
+          {% elif t > 60 %}
+            {{ '{:02d}:{:02d}'.format( t // 60, t % 60) }}
+          {% endif %}
+        icon_template: "mdi:map-clock"
+        unit_of_measurement: "Std."
+
       landroid_bat:
         friendly_name: "Battery level"
         value_template: >-
@@ -860,6 +890,12 @@ homeassistant:
     sensor.landroid_dist:
       friendly_name: "Ges. Distanz"
     sensor.landroid_bladetime:
+      friendly_name: "Klingenarbeitszeit"
+    sensor.landroid_totaltime_h:
+      friendly_name: "Arbeitszeit"
+    sensor.landroid_dist_km:
+      friendly_name: "Ges. Distanz"
+    sensor.landroid_bladetime_h:
       friendly_name: "Klingenarbeitszeit"
     sensor.landroid_batchargecycle:
       friendly_name: "Akku Ladungen"
