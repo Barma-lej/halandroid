@@ -131,7 +131,7 @@
               font-weight: bold
           - type: state-icon
             title: Gesamte Distanz
-            entity: sensor.landroid_dist
+            entity: sensor.landroid_dist_km
             style:
               opacity: 1
               transform: 'translate(-100%, 0%) scale(1, 1)'
@@ -140,7 +140,7 @@
               top: 40%
           - type: state-label
             title: Gesamte Distanz
-            entity: sensor.landroid_dist
+            entity: sensor.landroid_dist_km
             style:
               transform: 'translate(0%, 15%) scale(1, 1)'
               color: 'rgb(3, 169, 244)'
@@ -150,7 +150,7 @@
               font-weight: bold
           - type: state-icon
             title: Gesamte Arbeitszeit
-            entity: sensor.landroid_totaltime
+            entity: sensor.landroid_totaltime_h
             style:
               opacity: 1
               transform: 'translate(-100%, 0%) scale(1, 1)'
@@ -159,7 +159,7 @@
               top: 50%
           - type: state-label
             title: Gesamte Arbeitszeit
-            entity: sensor.landroid_totaltime
+            entity: sensor.landroid_totaltime_h
             style:
               transform: 'translate(0%, 15%) scale(1, 1)'
               color: 'rgb(3, 169, 244)'
@@ -169,7 +169,7 @@
               font-weight: bold
           - type: state-icon
             title: Klingenarbeitszeit
-            entity: sensor.landroid_bladetime
+            entity: sensor.landroid_bladetime_h
             style:
               opacity: 1
               transform: 'translate(-100%, 0%) scale(1, 1)'
@@ -178,7 +178,7 @@
               top: 60%
           - type: state-label
             title: Klingenarbeitszeit
-            entity: sensor.landroid_bladetime
+            entity: sensor.landroid_bladetime_h
             style:
               transform: 'translate(0%, 15%) scale(1, 1)'
               color: 'rgb(3, 169, 244)'
