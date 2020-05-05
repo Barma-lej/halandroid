@@ -8,6 +8,17 @@ landroid_cloud:
   email: !secret landroid_mail
   password: !secret landroid_pass
 
+# Switch ############################################################
+switch:
+  - platform: template
+    switches:
+      landroid_mowing:
+        value_template: "{{ is_state_attr('sensor.landroid_m500_status', 'status_id', 7) }}"
+        turn_on:
+          service: script.landroid_start
+        turn_off:
+          service: script.landroid_stop
+
 # Sensor ############################################################
 # sensor.landroid_m500_battery
 # sensor.landroid_m500_error
