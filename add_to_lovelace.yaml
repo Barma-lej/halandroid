@@ -286,19 +286,13 @@
             type: picture-elements
           - card:
               entities:
-                - entities:
-                    - entity: sensor.landroid_ip
-                    - entity: sensor.landroid_sn
-                    - entity: sensor.landroid_mac
-                  head: sensor.landroid_lastupdate
-                  type: 'custom:fold-entity-row'
-                - entities:
-                    - entity: automation.landroid_error_notification
-                    - entity: automation.landroid_status_notification
-                  head:
-                    label: Automations
-                    type: section
-                  type: 'custom:fold-entity-row'
+                - entity: sensor.landroid_ip
+                - entity: sensor.landroid_sn
+                - entity: sensor.landroid_mac
+                - entity: sensor.landroid_lastupdate
+                - type: divider
+                - entity: automation.landroid_error_notification
+                - entity: automation.landroid_status_notification
               show_header_toggle: false
               title: Information
               type: entities
