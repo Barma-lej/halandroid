@@ -1,0 +1,124 @@
+# Customize #########################################################
+homeassistant:
+  customize:
+# Sensor ##########
+    sensor.landroid_m500_battery:
+      friendly_name: Akkuladung
+    sensor.landroid_m500_error:
+      friendly_name: Fehler
+    sensor.landroid_m500_status:
+      friendly_name: Status
+
+    sensor.landroid_ip:
+      friendly_name: IP-Adresse
+    sensor.landroid_sn:
+      friendly_name: Seriennummer
+    sensor.landroid_mac:
+      friendly_name: MAC-Adresse
+    sensor.landroid_bat:
+      friendly_name: Akkuladung
+
+    sensor.landroid_bladetime:
+      friendly_name: Klingenarbeitszeit
+    sensor.landroid_totaltime:
+      friendly_name: Arbeitszeit
+    sensor.landroid_dist:
+      friendly_name: Ges. Distanz
+    sensor.landroid_lastupdate:
+      friendly_name: Aktualisiert seit
+      icon: mdi:update
+    sensor.landroid_wifi:
+      friendly_name: WLAN Qualität
+    sensor.landroid_yaw:
+      friendly_name: Gieren/Рысканье
+    sensor.landroid_roll:
+      friendly_name: Rollen/Крен
+    sensor.landroid_pitch:
+      friendly_name: Nicken/Тангаж
+
+
+# Input Number ####
+    input_number.landroid_raindelay:
+      friendly_name: Regenverzögerung
+    input_number.landroid_timeextension:
+      friendly_name: Dauer anpassen
+
+# Input Boolean ###
+    input_boolean.landroid_0_sched_enable:
+      friendly_name: Sonntag
+    input_boolean.landroid_1_sched_enable:
+      friendly_name: Montag
+    input_boolean.landroid_2_sched_enable:
+      friendly_name: Dienstag
+    input_boolean.landroid_3_sched_enable:
+      friendly_name: Mittwoch
+    input_boolean.landroid_4_sched_enable:
+      friendly_name: Donnerstag
+    input_boolean.landroid_5_sched_enable:
+      friendly_name: Freitag
+    input_boolean.landroid_6_sched_enable:
+      friendly_name: Samstag
+
+    input_boolean.landroid_0_cuttoedge:
+      friendly_name: Cut to edge
+    input_boolean.landroid_1_cuttoedge:
+      friendly_name: Cut to edge
+    input_boolean.landroid_2_cuttoedge:
+      friendly_name: Cut to edge
+    input_boolean.landroid_3_cuttoedge:
+      friendly_name: Cut to edge
+    input_boolean.landroid_4_cuttoedge:
+      friendly_name: Cut to edge
+    input_boolean.landroid_5_cuttoedge:
+      friendly_name: Cut to edge
+    input_boolean.landroid_6_cuttoedge:
+      friendly_name: Cut to edge
+
+    input_boolean.landroid_sched_settings:
+      friendly_name: Mähplan
+    input_boolean.landroid_info_toggle:
+      friendly_name: Information
+    input_boolean.landroid_view_0:
+      friendly_name: So.
+    input_boolean.landroid_view_1:
+      friendly_name: Mo.
+    input_boolean.landroid_view_2:
+      friendly_name: Di.
+    input_boolean.landroid_view_3:
+      friendly_name: Mi.
+    input_boolean.landroid_view_4:
+      friendly_name: Do.
+    input_boolean.landroid_view_5:
+      friendly_name: Fr.
+    input_boolean.landroid_view_6:
+      friendly_name: Sa.
+    input_boolean.landroid_view_config:
+      friendly_name: Konf.
+
+# Automation ######
+    automation.landroid_notify_status:
+      friendly_name: Landroid Status Benachrichtigung
+      icon: mdi:bell
+    automation.landroid_notify_error:
+      friendly_name: Landroid Fehler Benachrichtigung
+      icon: mdi:bell
+
+    automation.landroid_sync_values:
+      friendly_name: Landroid Datenaktualisierung
+      icon: mdi:sync
+# Scripts #########
+    script.landroid_start:
+      friendly_name: Mähen
+      icon: mdi:play
+    script.landroid_pause:
+      friendly_name: Mähen pausieren
+      icon: mdi:home
+    script.landroid_stop:
+      friendly_name: Mähen beenden
+      icon: mdi:stop
+    script.landroid_set_config:
+      friendly_name: Konfiguration speichern
+      icon: mdi:content-save-settings
+    script.landroid_views_toggle:
+      friendly_name: Tabs umschalten
+      icon: mdi:tab
