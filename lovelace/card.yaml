@@ -28,7 +28,7 @@ cards:
           transform: none
         title: Battery Status
         type: state-icon
-      - entity: sensor.landroid_m500_battery
+      - entity: sensor.landroid_mower_battery
         style:
           color: 'rgb(3, 169, 244)'
           font-weight: bold
@@ -38,7 +38,7 @@ cards:
           transform: none
         title: Battery
         type: state-label
-      - entity: sensor.landroid_m500_status
+      - entity: sensor.landroid_mower_status
         style:
           color: 'rgb(3, 169, 244)'
           font-size: 150%
@@ -49,7 +49,7 @@ cards:
           transform: none
         title: Status
         type: state-label
-      - entity: sensor.landroid_m500_error
+      - entity: sensor.landroid_mower_error
         style:
           color: 'rgb(3, 169, 244)'
           font-size: 150%
@@ -257,7 +257,7 @@ cards:
             - entity: sensor.landroid_sn
             - entity: sensor.landroid_mac
             - attribute: firmware_version
-              entity: sensor.landroid_m500_status
+              entity: sensor.landroid_mower_status
               icon: 'mdi:information-variant'
               name: Firmware
               type: attribute
@@ -266,13 +266,13 @@ cards:
         - label: Configuration
           type: section
         - attribute: raindelay
-          entity: sensor.landroid_m500_status
+          entity: sensor.landroid_mower_status
           icon: 'mdi:weather-lightning-rainy'
           name: Rain delay
           suffix: min
           type: attribute
         - attribute: timeextension
-          entity: sensor.landroid_m500_status
+          entity: sensor.landroid_mower_status
           icon: 'mdi:clock'
           name: Time extension
           suffix: '%'
