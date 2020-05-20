@@ -2,11 +2,11 @@
 homeassistant:
   customize:
 # Sensor ##########
-    sensor.landroid_m500_battery:
+    sensor.landroid_mower_battery:
       friendly_name: Akkuladung
-    sensor.landroid_m500_error:
+    sensor.landroid_mower_error:
       friendly_name: Fehler
-    sensor.landroid_m500_status:
+    sensor.landroid_mower_status:
       friendly_name: Status
 
     sensor.landroid_ip:
