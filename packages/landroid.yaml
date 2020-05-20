@@ -47,16 +47,16 @@ switch:
   - platform: template
     switches:
       landroid_mowing:
-        value_template: "{{ is_state_attr('sensor.landroid_m500_status', 'status_id', 7) }}"
+        value_template: "{{ is_state_attr('sensor.landroid_mower_status', 'status_id', 7) }}"
         turn_on:
           service: script.landroid_start
         turn_off:
           service: script.landroid_stop
 
 # Sensor ############################################################
-# sensor.landroid_m500_battery
-# sensor.landroid_m500_error
-# sensor.landroid_m500_status
+# sensor.landroid_mower_battery
+# sensor.landroid_mower_error
+# sensor.landroid_mower_status
 
 sensor:
   - platform: template
@@ -81,12 +81,12 @@ sensor:
       landroid_bat:
         friendly_name: Battery level
         value_template: >-
-          {% if is_state_attr('sensor.landroid_m500_battery', 'charging', 1) -%}Lädt
+          {% if is_state_attr('sensor.landroid_mower_battery', 'charging', 1) -%}Lädt
           {%- else -%}Entlädt
           {%- endif %}
         icon_template: >-
-          {% set level = states('sensor.landroid_m500_battery') | float -%}
-          {%- if is_state_attr('sensor.landroid_m500_battery', 'charging', 1) -%}
+          {% set level = states('sensor.landroid_mower_battery') | float -%}
+          {%- if is_state_attr('sensor.landroid_mower_battery', 'charging', 1) -%}
             {%- if level > 99 -%}mdi:battery-charging-100
             {%- elif level > 89 -%}mdi:battery-charging-90
             {%- elif level > 79 -%}mdi:battery-charging-80
@@ -117,10 +117,10 @@ sensor:
 # Status ##########
       landroid_bladetime:
         friendly_name: Landroid Blade Time
-        value_template: "{{ state_attr('sensor.landroid_m500_status', 'blade_time') }}"
+        value_template: "{{ state_attr('sensor.landroid_mower_status', 'blade_time') }}"
         attribute_templates:
           time_formatted: >
-            {% set t = state_attr('sensor.landroid_m500_status', 'blade_time') | int %}
+            {% set t = state_attr('sensor.landroid_mower_status', 'blade_time') | int %}
             {% if t != 0 %}
               {{ '%0d d %0.02d h %0.02d min' | format(t // 1440, ((t % 1440) // 60), t % 60) }}
             {% endif %}
@@ -129,10 +129,10 @@ sensor:
 
       landroid_totaltime:
         friendly_name: Landroid Total Time
-        value_template: "{{ state_attr('sensor.landroid_m500_status', 'work_time') }}"
+        value_template: "{{ state_attr('sensor.landroid_mower_status', 'work_time') }}"
         attribute_templates:
           time_formatted: >
-            {% set t = state_attr('sensor.landroid_m500_status', 'work_time') | int %}
+            {% set t = state_attr('sensor.landroid_mower_status', 'work_time') | int %}
             {% if t != 0 %}
               {{ '%0d d %0.02d h %0.02d min' | format(t // 1440, ((t % 1440) // 60), t % 60) }}
             {% endif %}
@@ -141,13 +141,13 @@ sensor:
 
       landroid_dist:
         friendly_name: Landroid Distance
-        value_template: "{{ (state_attr('sensor.landroid_m500_status', 'distance') | float) / 1000 }}"
+        value_template: "{{ (state_attr('sensor.landroid_mower_status', 'distance') | float) / 1000 }}"
         icon_template: mdi:map-marker-distance
         unit_of_measurement: "km"
 
       landroid_lastupdate:
         friendly_name: Landroid last update
-        value_template: "{{ as_timestamp(strptime( state_attr('sensor.landroid_m500_status', 'last_update'), '%H:%M:%S %d/%m/%Y')) | timestamp_custom('%d.%m.%Y %H:%M:%S') }}"
+        value_template: "{{ as_timestamp(strptime( state_attr('sensor.landroid_mower_status', 'last_update'), '%H:%M:%S %d/%m/%Y')) | timestamp_custom('%d.%m.%Y %H:%M:%S') }}"
         icon_template: mdi:clock
 
 # -55 or higher: 4 bars
@@ -157,9 +157,9 @@ sensor:
 # -89 or lower: 0 bars
       landroid_wifi:
         friendly_name: Landroid WIFI Quality
-        value_template: "{{ state_attr('sensor.landroid_m500_status', 'rssi') }}"
+        value_template: "{{ state_attr('sensor.landroid_mower_status', 'rssi') }}"
         icon_template: >-
-          {% set strength = state_attr('sensor.landroid_m500_status', 'rssi') | float -%}
+          {% set strength = state_attr('sensor.landroid_mower_status', 'rssi') | float -%}
           {%- if strength > -56 -%}mdi:wifi-strength-4
           {% elif strength > -67 -%}mdi:wifi-strength-3
           {% elif strength > -78 -%}mdi:wifi-strength-2
@@ -170,19 +170,19 @@ sensor:
 
       landroid_yaw:
         friendly_name: Landroid Yaw
-        value_template: "{{ state_attr('sensor.landroid_m500_status', 'yaw') }}"
+        value_template: "{{ state_attr('sensor.landroid_mower_status', 'yaw') }}"
         icon_template: mdi:axis-z-rotate-clockwise
         unit_of_measurement: "°"
 
       landroid_roll:
         friendly_name: Landroid Roll
-        value_template: "{{ state_attr('sensor.landroid_m500_status', 'roll') }}"
+        value_template: "{{ state_attr('sensor.landroid_mower_status', 'roll') }}"
         icon_template: mdi:axis-x-rotate-clockwise
         unit_of_measurement: "°"
 
       landroid_pitch:
         friendly_name: Landroid Pitch
-        value_template: "{{ state_attr('sensor.landroid_m500_status', 'pitch') }}"
+        value_template: "{{ state_attr('sensor.landroid_mower_status', 'pitch') }}"
         icon_template: mdi:seat-flat-angled
         unit_of_measurement: "°"
 
@@ -202,7 +202,7 @@ automation:
     initial_state: false
     trigger:
     - platform: state
-      entity_id: sensor.landroid_m500_status
+      entity_id: sensor.landroid_mower_status
     condition:
     - condition: template
       value_template: "{{ trigger.to_state.state != trigger.from_state.state }}"
@@ -218,7 +218,7 @@ automation:
     initial_state: true
     trigger:
     - platform: state
-      entity_id: sensor.landroid_m500_error
+      entity_id: sensor.landroid_mower_error
     condition:
     - condition: template
       value_template: "{{ trigger.to_state.state != trigger.from_state.state }}"
