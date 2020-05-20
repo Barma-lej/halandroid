@@ -1,0 +1,295 @@
+cards:
+  - elements:
+      - entity: sensor.landroid_wifi
+        style:
+          '--iron-icon-fill-color': 'rgb(3, 169, 244)'
+          left: 0%
+          opacity: 1
+          top: 0%
+          transform: none
+        title: WLAN Qualität
+        type: state-icon
+      - entity: sensor.landroid_wifi
+        style:
+          color: 'rgb(3, 169, 244)'
+          font-weight: bold
+          left: 9%
+          opacity: 1
+          top: 1%
+          transform: none
+        title: WLAN Qualität
+        type: state-label
+      - entity: sensor.landroid_bat
+        style:
+          '--iron-icon-fill-color': 'rgb(3, 169, 244)'
+          opacity: 1
+          right: 0%
+          top: 0%
+          transform: none
+        title: Akku Status
+        type: state-icon
+      - entity: sensor.landroid_m500_battery
+        style:
+          color: 'rgb(3, 169, 244)'
+          font-weight: bold
+          opacity: 1
+          right: 8%
+          top: 1%
+          transform: none
+        title: Akkuladung
+        type: state-label
+      - entity: sensor.landroid_m500_status
+        style:
+          color: 'rgb(3, 169, 244)'
+          font-size: 150%
+          font-weight: bold
+          left: 0%
+          opacity: 1
+          top: 7%
+          transform: none
+        title: Status
+        type: state-label
+      - entity: sensor.landroid_m500_error
+        style:
+          color: 'rgb(3, 169, 244)'
+          font-size: 150%
+          font-weight: bold
+          left: 0%
+          opacity: 1
+          top: 13%
+          transform: none
+        title: Status
+        type: state-label
+      - entity: sensor.landroid_pitch
+        style:
+          '--iron-icon-fill-color': 'rgb(3, 169, 244)'
+          opacity: 1
+          right: 0%
+          top: 9%
+          transform: none
+        title: Nicken/Тангаж
+        type: state-icon
+      - entity: sensor.landroid_pitch
+        style:
+          color: 'rgb(3, 169, 244)'
+          font-weight: bold
+          opacity: 1
+          right: 8%
+          top: 10%
+          transform: none
+        title: Nicken/Тангаж
+        type: state-label
+      - entity: sensor.landroid_roll
+        style:
+          '--iron-icon-fill-color': 'rgb(3, 169, 244)'
+          opacity: 1
+          right: 0%
+          top: 18%
+          transform: none
+        title: Rollen/Крен
+        type: state-icon
+      - entity: sensor.landroid_roll
+        style:
+          color: 'rgb(3, 169, 244)'
+          font-weight: bold
+          opacity: 1
+          right: 8%
+          top: 19%
+          transform: none
+        title: Rollen/Крен
+        type: state-label
+      - entity: sensor.landroid_yaw
+        style:
+          '--iron-icon-fill-color': 'rgb(3, 169, 244)'
+          opacity: 1
+          right: 0%
+          top: 26%
+          transform: none
+        title: Gieren/Рысканье
+        type: state-icon
+      - entity: sensor.landroid_yaw
+        style:
+          color: 'rgb(3, 169, 244)'
+          font-weight: bold
+          opacity: 1
+          right: 8%
+          top: 27%
+          transform: none
+        title: Gieren/Рысканье
+        type: state-label
+      - entity: sensor.landroid_dist
+        style:
+          '--iron-icon-fill-color': 'rgb(3, 169, 244)'
+          left: 31%
+          opacity: 1
+          top: 26%
+          transform: none
+        title: Gesamte Distanz
+        type: state-icon
+      - entity: sensor.landroid_dist
+        style:
+          color: 'rgb(3, 169, 244)'
+          font-weight: bold
+          left: 40%
+          opacity: 1
+          top: 27%
+          transform: none
+        title: Gesamte Distanz
+        type: state-label
+      - entity: sensor.landroid_totaltime
+        style:
+          '--iron-icon-fill-color': 'rgb(3, 169, 244)'
+          left: 31%
+          opacity: 1
+          top: 41%
+          transform: none
+        title: Gesamte Arbeitszeit
+        type: state-icon
+      - entity: sensor.landroid_totaltime
+        style:
+          color: 'rgb(3, 169, 244)'
+          font-weight: bold
+          left: 40%
+          opacity: 1
+          top: 40%
+          transform: none
+        title: Gesamte Arbeitszeit
+        type: state-label
+      - attribute: time_formatted
+        entity: sensor.landroid_totaltime
+        style:
+          color: 'rgb(3, 169, 244)'
+          font-size: 10px
+          font-style: italic
+          font-weight: bold
+          left: 40%
+          opacity: 1
+          top: 45%
+          transform: none
+        title: Gesamte Arbeitszeit
+        type: state-label
+      - entity: sensor.landroid_bladetime
+        style:
+          '--iron-icon-fill-color': 'rgb(3, 169, 244)'
+          left: 31%
+          opacity: 1
+          top: 56%
+          transform: none
+        title: Klingenarbeitszeit
+        type: state-icon
+      - entity: sensor.landroid_bladetime
+        style:
+          color: 'rgb(3, 169, 244)'
+          font-weight: bold
+          left: 40%
+          opacity: 1
+          top: 55%
+          transform: none
+        title: Klingenarbeitszeit
+        type: state-label
+      - attribute: time_formatted
+        entity: sensor.landroid_bladetime
+        style:
+          color: 'rgb(3, 169, 244)'
+          font-size: 10px
+          font-style: italic
+          font-weight: bold
+          left: 40%
+          opacity: 1
+          top: 60%
+          transform: none
+        title: Klingenarbeitszeit
+        type: state-label
+      - icon: 'mdi:play'
+        style:
+          '--iron-icon-fill-color': 'rgb(250, 250, 250)'
+          bottom: 4%
+          left: 45%
+          transform: 'translate(-260%, 0%) scale(1.6, 1.6)'
+        tap_action:
+          action: call-service
+          service: script.landroid_start
+        title: Mähen
+        type: icon
+      - icon: 'mdi:pause'
+        style:
+          '--iron-icon-fill-color': 'rgb(250, 250, 250)'
+          bottom: 4%
+          left: 45%
+          transform: 'translate(0%, 0%) scale(1.6, 1.6)'
+        tap_action:
+          action: call-service
+          service: script.landroid_pause
+        title: Pause
+        type: icon
+      - icon: 'mdi:home'
+        style:
+          '--iron-icon-fill-color': 'rgb(250, 250, 250)'
+          bottom: 4%
+          left: 45%
+          transform: 'translate(260%, 0%) scale(1.6, 1.6)'
+        tap_action:
+          action: call-service
+          service: script.landroid_home
+        title: Stop & Nach Hause fahren
+        type: icon
+      - entity: input_boolean.landroid_info_toggle
+        image: /local/mower/info-off.png
+        state_filter:
+          'off': brightness(100%) saturate(1)
+          'on': brightness(90%) saturate(1)
+        state_image:
+          'on': /local/mower/information.png
+        style:
+          bottom: 4%
+          left: 45%
+          transform: 'translate(240%, 25%) scale(0.7, 0.7)'
+        tap_action:
+          action: toggle
+        title: Information
+        type: image
+    image: /local/mower/landroid_flower.png
+    type: picture-elements
+  - card:
+      entities:
+        - entities:
+            - entity: sensor.landroid_ip
+            - entity: sensor.landroid_sn
+            - entity: sensor.landroid_mac
+            - attribute: firmware_version
+              entity: sensor.landroid_m500_status
+              icon: 'mdi:information-variant'
+              name: Firmware
+              type: attribute
+          head: sensor.landroid_lastupdate
+          type: 'custom:fold-entity-row'
+        - label: Konfiguration
+          type: section
+        - attribute: raindelay
+          entity: sensor.landroid_m500_status
+          icon: 'mdi:weather-lightning-rainy'
+          name: Regenverzögerung
+          suffix: min
+          type: attribute
+        - attribute: timeextension
+          entity: sensor.landroid_m500_status
+          icon: 'mdi:clock'
+          name: Daueranpassung
+          suffix: '%'
+          type: attribute
+        - entities:
+            - entity: automation.landroid_notify_error
+            - entity: automation.landroid_notify_status
+            - entity: automation.landroid_sync_values
+          head:
+            label: Automatisierungen
+            type: section
+          type: 'custom:fold-entity-row'
+      show_header_toggle: false
+      title: Information
+      type: entities
+    conditions:
+      - entity: input_boolean.landroid_info_toggle
+        state: 'on'
+    type: conditional
+type: vertical-stack
