@@ -28,7 +28,7 @@ cards:
           transform: none
         title: Akku Status
         type: state-icon
-      - entity: sensor.landroid_m500_battery
+      - entity: sensor.landroid_mower_battery
         style:
           color: 'rgb(3, 169, 244)'
           font-weight: bold
@@ -38,7 +38,7 @@ cards:
           transform: none
         title: Akkuladung
         type: state-label
-      - entity: sensor.landroid_m500_status
+      - entity: sensor.landroid_mower_status
         style:
           color: 'rgb(3, 169, 244)'
           font-size: 150%
@@ -49,7 +49,7 @@ cards:
           transform: none
         title: Status
         type: state-label
-      - entity: sensor.landroid_m500_error
+      - entity: sensor.landroid_mower_error
         style:
           color: 'rgb(3, 169, 244)'
           font-size: 150%
