@@ -1,12 +1,44 @@
 # Worx Landroid (M500 WR141E) package
 # https://github.com/Barma-lej/halandroid
-# Based on Landroid Bridge @MTrab virtualzone
+# Based on Landroid Cloud by @MTrab
 # https://github.com/MTrab/landroid_cloud
 
 # Cloud #############################################################
 landroid_cloud:
   email: !secret landroid_mail
   password: !secret landroid_pass
+
+# Recorder ##########################################################
+recorder:
+  exclude:
+    entities:
+      - sensor.landroid_ip
+      - sensor.landroid_sn
+      - sensor.landroid_mac
+      - sensor.landroid_bat
+      - sensor.landroid_mac
+      - sensor.landroid_lastupdate
+      - automation.landroid_notify_status
+      - automation.landroid_notify_error
+      - script.landroid_start
+      - script.landroid_stop
+      - script.landroid_pause
+
+# Logbook ###########################################################
+logbook:
+  exclude:
+    entities:
+      - sensor.landroid_ip
+      - sensor.landroid_sn
+      - sensor.landroid_mac
+      - sensor.landroid_bat
+      - sensor.landroid_mac
+      - sensor.landroid_lastupdate
+      - automation.landroid_notify_status
+      - automation.landroid_notify_error
+      - script.landroid_start
+      - script.landroid_stop
+      - script.landroid_pause
 
 # Switch ############################################################
 switch:
@@ -30,131 +62,91 @@ sensor:
 
 # Info ############
       landroid_ip:
-        friendly_name: "IP Address"
+        friendly_name: IP Address
         value_template: !secret landroid_ip
-        icon_template: "mdi:ip-network"
+        icon_template: mdi:ip-network
 
       landroid_sn:
-        friendly_name: "Landroid SN"
+        friendly_name: Serial number
         value_template: !secret landroid_sn
-        icon_template: "mdi:numeric"
+        icon_template: mdi:numeric
 
       landroid_mac:
-        friendly_name: "Landroid MAC"
+        friendly_name: MAC-Address
         value_template: !secret landroid_mac
-        icon_template: "mdi:barcode"
-
-# Battery #########
-#      landroid_batvoltage:
-#        friendly_name: "Landroid BatVoltage"
-#        value_template: "{{ state_attr('sensor.landroid_m500_battery', 'battery_voltage') }}"
-#        icon_template: "mdi:battery-charging-100"
-#        unit_of_measurement: "V"
-
-#      landroid_battemp:
-#        friendly_name: "Landroid BatTemp"
-#        value_template: "{{ state_attr('sensor.landroid_m500_battery', 'battery_temperature') }}"
-#        unit_of_measurement: "°C"
-#        device_class: "temperature"
-
-#      landroid_batchargecycles:
-#        friendly_name: "Landroid batChargeCycles"
-#        value_template: "{{ state_attr('sensor.landroid_m500_battery', 'charge_cycles') }}"
-#        icon_template: "mdi:power-plug"
-
-#      landroid_batcharging:
-#        friendly_name: "Landroid BatCharging"
-#        value_template: "{{ state_attr('sensor.landroid_m500_battery', 'charging') }}"
+        icon_template: mdi:barcode
 
       landroid_bat:
-        friendly_name: "Battery level"
+        friendly_name: Battery level
         value_template: >-
           {% if is_state_attr('sensor.landroid_m500_battery', 'charging', 1) -%}Lädt
           {%- else -%}Entlädt
           {%- endif %}
         icon_template: >-
-          {% if is_state_attr('sensor.landroid_m500_battery', 'charging', 1) -%}
-            {%- if states('sensor.landroid_m500_battery')|float > 99 -%}mdi:battery-charging-100
-            {%- elif states('sensor.landroid_m500_battery')|float > 89 -%}mdi:battery-charging-90
-            {%- elif states('sensor.landroid_m500_battery')|float > 79 -%}mdi:battery-charging-80
-            {%- elif states('sensor.landroid_m500_battery')|float > 69 -%}mdi:battery-charging-70
-            {%- elif states('sensor.landroid_m500_battery')|float > 59 -%}mdi:battery-charging-60
-            {%- elif states('sensor.landroid_m500_battery')|float > 49 -%}mdi:battery-charging-50
-            {%- elif states('sensor.landroid_m500_battery')|float > 39 -%}mdi:battery-charging-40
-            {%- elif states('sensor.landroid_m500_battery')|float > 29 -%}mdi:battery-charging-30
-            {%- elif states('sensor.landroid_m500_battery')|float > 19 -%}mdi:battery-charging-20
-            {%- elif states('sensor.landroid_m500_battery')|float > 9 -%}mdi:battery-charging-10
+          {% set level = states('sensor.landroid_m500_battery') | float -%}
+          {%- if is_state_attr('sensor.landroid_m500_battery', 'charging', 1) -%}
+            {%- if level > 99 -%}mdi:battery-charging-100
+            {%- elif level > 89 -%}mdi:battery-charging-90
+            {%- elif level > 79 -%}mdi:battery-charging-80
+            {%- elif level > 69 -%}mdi:battery-charging-70
+            {%- elif level > 59 -%}mdi:battery-charging-60
+            {%- elif level > 49 -%}mdi:battery-charging-50
+            {%- elif level > 39 -%}mdi:battery-charging-40
+            {%- elif level > 29 -%}mdi:battery-charging-30
+            {%- elif level > 19 -%}mdi:battery-charging-20
+            {%- elif level > 9 -%}mdi:battery-charging-10
             {%- else -%}mdi:battery-charging-outline
-            {%- endif %}
+            {%- endif -%}
           {%- else -%}
-            {%- if states('sensor.landroid_m500_battery')|float > 99 -%}mdi:battery
-            {%- elif states('sensor.landroid_m500_battery')|float > 89 -%}mdi:battery-90
-            {%- elif states('sensor.landroid_m500_battery')|float > 79 -%}mdi:battery-80
-            {%- elif states('sensor.landroid_m500_battery')|float > 69 -%}mdi:battery-70
-            {%- elif states('sensor.landroid_m500_battery')|float > 59 -%}mdi:battery-60
-            {%- elif states('sensor.landroid_m500_battery')|float > 49 -%}mdi:battery-50
-            {%- elif states('sensor.landroid_m500_battery')|float > 39 -%}mdi:battery-40
-            {%- elif states('sensor.landroid_m500_battery')|float > 29 -%}mdi:battery-30
-            {%- elif states('sensor.landroid_m500_battery')|float > 19 -%}mdi:battery-20
-            {%- elif states('sensor.landroid_m500_battery')|float > 9 -%}mdi:battery-10
+            {%- if level > 99 -%}mdi:battery
+            {%- elif level > 89 -%}mdi:battery-90
+            {%- elif level > 79 -%}mdi:battery-80
+            {%- elif level > 69 -%}mdi:battery-70
+            {%- elif level > 59 -%}mdi:battery-60
+            {%- elif level > 49 -%}mdi:battery-50
+            {%- elif level > 39 -%}mdi:battery-40
+            {%- elif level > 29 -%}mdi:battery-30
+            {%- elif level > 19 -%}mdi:battery-20
+            {%- elif level > 9 -%}mdi:battery-10
             {%- else -%}mdi:battery-outline
-            {%- endif %}
+            {%- endif -%}
           {%- endif %}
-
 
 # Status ##########
       landroid_bladetime:
-        friendly_name: "Landroid BladeTime"
+        friendly_name: Landroid Blade Time
         value_template: "{{ state_attr('sensor.landroid_m500_status', 'blade_time') }}"
-        icon_template: "mdi:fan"
+        attribute_templates:
+          time_formatted: >
+            {% set t = state_attr('sensor.landroid_m500_status', 'blade_time') | int %}
+            {% if t != 0 %}
+              {{ '%0d d %0.02d h %0.02d min' | format(t // 1440, ((t % 1440) // 60), t % 60) }}
+            {% endif %}
+        icon_template: mdi:fan
         unit_of_measurement: "min"
-
-      landroid_bladetime_h:
-        friendly_name: "Landroid BladeTime"
-        value_template: >
-          {% set t = states('sensor.landroid_bladetime') | int %}
-          {% if t == 0 %}
-            Unavailable
-          {% elif t > 60 %}
-            {{ t // 1440 }} Tg. {{ (t % 1440) // 60 }} Std. {{ t % 60 }} Min.
-          {% endif %}
-        icon_template: "mdi:fan"
-        unit_of_measurement: ""
 
       landroid_totaltime:
-        friendly_name: "Landroid TotalTime"
+        friendly_name: Landroid Total Time
         value_template: "{{ state_attr('sensor.landroid_m500_status', 'work_time') }}"
-        icon_template: "mdi:bus-clock"
+        attribute_templates:
+          time_formatted: >
+            {% set t = state_attr('sensor.landroid_m500_status', 'work_time') | int %}
+            {% if t != 0 %}
+              {{ '%0d d %0.02d h %0.02d min' | format(t // 1440, ((t % 1440) // 60), t % 60) }}
+            {% endif %}
+        icon_template: mdi:bus-clock
         unit_of_measurement: "min"
 
-      landroid_totaltime_h:
-        friendly_name: "Landroid TotalTime"
-        value_template: >
-          {% set t = states('sensor.landroid_totaltime') | int %}
-          {% if t == 0 %}
-            Unavailable
-          {% elif t > 60 %}
-            {{ t // 1440 }} Tg. {{ (t % 1440) // 60 }} Std. {{ t % 60 }} Min.
-          {% endif %}
-        icon_template: "mdi:bus-clock"
-        unit_of_measurement: ""
-
       landroid_dist:
-        friendly_name: "Landroid Dist"
-        value_template: "{{ state_attr('sensor.landroid_m500_status', 'distance') }}"
-        icon_template: "mdi:map-marker-distance"
-        unit_of_measurement: "m"
-
-      landroid_dist_km:
-        friendly_name: "Landroid Dist"
-        value_template: "{{ (states('sensor.landroid_dist') | float) / 1000 }}"
-        icon_template: "mdi:map-marker-distance"
+        friendly_name: Landroid Distance
+        value_template: "{{ (state_attr('sensor.landroid_m500_status', 'distance') | float) / 1000 }}"
+        icon_template: mdi:map-marker-distance
         unit_of_measurement: "km"
 
       landroid_lastupdate:
-        friendly_name: "Last update"
+        friendly_name: Landroid last update
         value_template: "{{ as_timestamp(strptime( state_attr('sensor.landroid_m500_status', 'last_update'), '%H:%M:%S %d/%m/%Y')) | timestamp_custom('%d.%m.%Y %H:%M:%S') }}"
-        icon_template: "mdi:clock"
+        icon_template: mdi:clock
 
 # -55 or higher: 4 bars
 # -56 to -66: 3 bars
@@ -162,59 +154,42 @@ sensor:
 # -78 to -88: 1 bar
 # -89 or lower: 0 bars
       landroid_wifi:
-        friendly_name: "Wifi quality"
+        friendly_name: Landroid WIFI Quality
         value_template: "{{ state_attr('sensor.landroid_m500_status', 'rssi') }}"
         icon_template: >-
-          {% if state_attr('sensor.landroid_m500_status', 'rssi')|float > -56 -%}mdi:wifi-strength-4
-          {% elif state_attr('sensor.landroid_m500_status', 'rssi')|float > -67 -%}mdi:wifi-strength-3
-          {% elif state_attr('sensor.landroid_m500_status', 'rssi')|float > -78 -%}mdi:wifi-strength-2
-          {% elif state_attr('sensor.landroid_m500_status', 'rssi')|float > -89 -%}mdi:wifi-strength-1
+          {% set strength = state_attr('sensor.landroid_m500_status', 'rssi') | float -%}
+          {%- if strength > -56 -%}mdi:wifi-strength-4
+          {% elif strength > -67 -%}mdi:wifi-strength-3
+          {% elif strength > -78 -%}mdi:wifi-strength-2
+          {% elif strength > -89 -%}mdi:wifi-strength-1
           {%- else -%}mdi:wifi-strength-outline
           {%- endif %}
         unit_of_measurement: "dBm"
 
       landroid_yaw:
-        friendly_name: "Landroid Yaw"
+        friendly_name: Landroid Yaw
         value_template: "{{ state_attr('sensor.landroid_m500_status', 'yaw') }}"
-        icon_template: "mdi:axis-z-rotate-clockwise"
+        icon_template: mdi:axis-z-rotate-clockwise
         unit_of_measurement: "°"
 
       landroid_roll:
-        friendly_name: "Landroid Roll"
+        friendly_name: Landroid Roll
         value_template: "{{ state_attr('sensor.landroid_m500_status', 'roll') }}"
-        icon_template: "mdi:axis-x-rotate-clockwise"
+        icon_template: mdi:axis-x-rotate-clockwise
         unit_of_measurement: "°"
 
       landroid_pitch:
-        friendly_name: "Landroid Pitch"
+        friendly_name: Landroid Pitch
         value_template: "{{ state_attr('sensor.landroid_m500_status', 'pitch') }}"
-        icon_template: "mdi:seat-flat-angled"
+        icon_template: mdi:seat-flat-angled
         unit_of_measurement: "°"
-
-# Input Boolean #####################################################
-input_boolean:
-  landroid_raindelay_settings:
-    name: Raindelay Settings
-    icon: "mdi:file-hidden"
-    initial: false
-  landroid_timext_settings:
-    name: TimeExt Settings
-    icon: "mdi:file-hidden"
-    initial: false
-  landroid_sched_settings:
-    name: Scheduler Settings
-    icon: "mdi:file-hidden"
-    initial: false
-  landroid_info_toggle:
-    name: Info toggle
-    icon: "mdi:file-hidden"
-    initial: false
 
 # Automations #######################################################
 automation:
-  - id: "landroid_status_notify"
-    alias: "Landroid Status Notification"
-    initial_state: true
+# Status notificaion
+  - id: landroid_notify_status
+    alias: Landroid Notify Status
+    initial_state: false
     trigger:
     - platform: state
       entity_id: sensor.landroid_m500_status
@@ -224,11 +199,12 @@ automation:
     action:
     - service: persistent_notification.create
       data_template:
-        title: Lanroid Status
-        message: "{{ trigger.from_state.state }} -> {{ trigger.to_state.state }} - {{ states('sensor.date_time') }}"
+        title: 🏎️ Lanroid
+        message: "*{{ trigger.to_state.state }}* <- {{ trigger.from_state.state }} - {{ states('sensor.date_time') }}"
 
-  - id: "landroid_error_notify"
-    alias: "Landroid Error Notification"
+# Error notificaion
+  - id: landroid_notify_error
+    alias: Landroid Notify Error
     initial_state: true
     trigger:
     - platform: state
@@ -239,117 +215,36 @@ automation:
     action:
     - service: persistent_notification.create
       data_template:
-        title: Lanroid Status
-        message: "{{ trigger.from_state.state }} -> {{ trigger.to_state.state }} - {{ states('sensor.date_time') }}"
+        title: 🏎️ Lanroid
+        message: "*{{ trigger.to_state.state }}* <- {{ trigger.from_state.state }} - {{ states('sensor.date_time') }}"
 
 # Scripts ###########################################################
-script:
+# Services
 # landroid_cloud.start
 # landroid_cloud.stop
 # landroid_cloud.pause
 
+script:
 # Starts the mower
   landroid_start:
-    alias: "Start the mower"
+    alias: Landroid Start
     sequence:
       service: landroid_cloud.start
       data:
-        id: YOUR_ID_HERE
+        id: !secret landroid_id
 
 # Stops the mower and sends it home
-  landroid_stop:
-    alias: "Stop the mower"
+  landroid_home:
+    alias: Landroid Home
     sequence:
-      service: landroid_cloud.stop
+      service: landroid_cloud.home
       data:
-        id: YOUR_ID_HERE
+        id: !secret landroid_id
 
 # Pause the mower
   landroid_pause:
-    alias: "Pause the mower"
+    alias: Landroid Pause
     sequence:
       service: landroid_cloud.pause
       data:
-        id: YOUR_ID_HERE
-
-# Customize #########################################################
-homeassistant:
-  customize:
-# Sensor ##########
-    sensor.landroid_m500_battery:
-      friendly_name: "Akkuladung"
-    sensor.landroid_m500_error:
-      friendly_name: "Fehler"
-    sensor.landroid_m500_status:
-      friendly_name: "Status"
-
-    sensor.landroid_ip:
-      friendly_name: "IP-Adresse"
-    sensor.landroid_sn:
-      friendly_name: "Seriennummer"
-    sensor.landroid_mac:
-      friendly_name: "MAC-Adresse"
-
-#    sensor.landroid_batvoltage:
-#      friendly_name: "Akkuspannung"
-#    sensor.landroid_battemp:
-#      friendly_name: "Akkutemperatur"
-#    sensor.landroid_batchargecycles:
-#      friendly_name: "Akkuladungen"
-#    sensor.landroid_batcharging:
-#      friendly_name: "Akkustatus"
-    sensor.landroid_bat:
-      friendly_name: "Akkuladung"
-
-    sensor.landroid_bladetime:
-      friendly_name: "Klingenarbeitszeit"
-    sensor.landroid_bladetime_h:
-      friendly_name: "Klingenarbeitszeit"
-    sensor.landroid_totaltime:
-      friendly_name: "Arbeitszeit"
-    sensor.landroid_totaltime_h:
-      friendly_name: "Arbeitszeit"
-    sensor.landroid_dist:
-      friendly_name: "Ges. Distanz"
-    sensor.landroid_dist_km:
-      friendly_name: "Ges. Distanz"
-    sensor.landroid_lastupdate:
-      friendly_name: "Aktualisiert seit"
-      icon: "mdi:update"
-    sensor.landroid_wifi:
-      friendly_name: "WLAN Qualität"
-    sensor.landroid_pitch:
-      friendly_name: "Nicken/Тангаж"
-    sensor.landroid_roll:
-      friendly_name: "Rollen/Крен"
-    sensor.landroid_yaw:
-      friendly_name: "Gieren/Рысканье"
-
-# Input Boolean ###
-    input_boolean.landroid_raindelay_settings:
-      friendly_name: "Regenverzögerung"
-    input_boolean.landroid_timext_settings:
-      friendly_name: "Zeiterhöhung"
-    input_boolean.landroid_sched_settings:
-      friendly_name: "Mähplan"
-    input_boolean.landroid_info_toggle:
-      friendly_name: "Information"
-
-# Automation ######
-    automation.landroid_status_notification:
-      friendly_name: "Landroid Status Benachrichtigung"
-      icon: "mdi:bell"
-    automation.landroid_error_notification:
-      friendly_name: "Landroid Fehler Benachrichtigung"
-      icon: "mdi:bell"
-
-# Scripts #########
-    script.landroid_start:
-      friendly_name: "Mähen"
-      icon: "mdi:play"
-    script.landroid_pause:
-      friendly_name: "Mähen pausieren"
-      icon: "mdi:home"
-    script.landroid_stop:
-      friendly_name: "Mähen beenden"
-      icon: "mdi:home"
+        id: !secret landroid_id
