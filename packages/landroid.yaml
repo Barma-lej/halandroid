@@ -18,6 +18,7 @@ recorder:
       - sensor.landroid_bat
       - sensor.landroid_mac
       - sensor.landroid_lastupdate
+      - input_boolean.landroid_info_toggle
       - automation.landroid_notify_status
       - automation.landroid_notify_error
       - script.landroid_start
@@ -34,6 +35,7 @@ logbook:
       - sensor.landroid_bat
       - sensor.landroid_mac
       - sensor.landroid_lastupdate
+      - input_boolean.landroid_info_toggle
       - automation.landroid_notify_status
       - automation.landroid_notify_error
       - script.landroid_start
@@ -183,6 +185,14 @@ sensor:
         value_template: "{{ state_attr('sensor.landroid_m500_status', 'pitch') }}"
         icon_template: mdi:seat-flat-angled
         unit_of_measurement: "°"
+
+# Input Boolean #####################################################
+input_boolean:
+# Booleans for Lovelace
+  landroid_info_toggle:
+    name: Info toggle
+    icon: mdi:file-hidden
+    initial: false
 
 # Automations #######################################################
 automation:
