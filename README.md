@@ -48,6 +48,7 @@ Search `sensor.landroid_mower_battery`, `sensor.landroid_mower_error`, `sensor.l
     expose: true
 ```
 8. Check config and restart Home Assistant
+#### NOTE: you will require the "fold-entity-row" plugin. This can be found using HACS or via the repository https://github.com/thomasloven/lovelace-fold-entity-row
 
 #### _Enjoy_
 
