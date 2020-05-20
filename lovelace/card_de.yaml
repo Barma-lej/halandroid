@@ -257,7 +257,7 @@ cards:
             - entity: sensor.landroid_sn
             - entity: sensor.landroid_mac
             - attribute: firmware_version
-              entity: sensor.landroid_m500_status
+              entity: sensor.landroid_mower_status
               icon: 'mdi:information-variant'
               name: Firmware
               type: attribute
@@ -266,13 +266,13 @@ cards:
         - label: Konfiguration
           type: section
         - attribute: raindelay
-          entity: sensor.landroid_m500_status
+          entity: sensor.landroid_mower_status
           icon: 'mdi:weather-lightning-rainy'
           name: Regenverzögerung
           suffix: min
           type: attribute
         - attribute: timeextension
-          entity: sensor.landroid_m500_status
+          entity: sensor.landroid_mower_status
           icon: 'mdi:clock'
           name: Daueranpassung
           suffix: '%'
