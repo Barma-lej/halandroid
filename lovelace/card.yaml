@@ -2,7 +2,7 @@ cards:
   - elements:
       - entity: sensor.landroid_wifi
         style:
-          '--iron-icon-fill-color': 'rgb(3, 169, 244)'
+          '--paper-item-icon-color': 'rgb(3, 169, 244)'
           left: 0%
           opacity: 1
           top: 0%
@@ -21,7 +21,7 @@ cards:
         type: state-label
       - entity: sensor.landroid_bat
         style:
-          '--iron-icon-fill-color': 'rgb(3, 169, 244)'
+          '--paper-item-icon-color': 'rgb(3, 169, 244)'
           opacity: 1
           right: 0%
           top: 0%
@@ -62,7 +62,7 @@ cards:
         type: state-label
       - entity: sensor.landroid_pitch
         style:
-          '--iron-icon-fill-color': 'rgb(3, 169, 244)'
+          '--paper-item-icon-color': 'rgb(3, 169, 244)'
           opacity: 1
           right: 0%
           top: 9%
@@ -81,7 +81,7 @@ cards:
         type: state-label
       - entity: sensor.landroid_roll
         style:
-          '--iron-icon-fill-color': 'rgb(3, 169, 244)'
+          '--paper-item-icon-color': 'rgb(3, 169, 244)'
           opacity: 1
           right: 0%
           top: 18%
@@ -100,7 +100,7 @@ cards:
         type: state-label
       - entity: sensor.landroid_yaw
         style:
-          '--iron-icon-fill-color': 'rgb(3, 169, 244)'
+          '--paper-item-icon-color': 'rgb(3, 169, 244)'
           opacity: 1
           right: 0%
           top: 26%
@@ -119,7 +119,7 @@ cards:
         type: state-label
       - entity: sensor.landroid_dist
         style:
-          '--iron-icon-fill-color': 'rgb(3, 169, 244)'
+          '--paper-item-icon-color': 'rgb(3, 169, 244)'
           left: 31%
           opacity: 1
           top: 26%
@@ -138,7 +138,7 @@ cards:
         type: state-label
       - entity: sensor.landroid_totaltime
         style:
-          '--iron-icon-fill-color': 'rgb(3, 169, 244)'
+          '--paper-item-icon-color': 'rgb(3, 169, 244)'
           left: 31%
           opacity: 1
           top: 41%
@@ -170,7 +170,7 @@ cards:
         type: state-label
       - entity: sensor.landroid_bladetime
         style:
-          '--iron-icon-fill-color': 'rgb(3, 169, 244)'
+          '--paper-item-icon-color': 'rgb(3, 169, 244)'
           left: 31%
           opacity: 1
           top: 56%
@@ -202,7 +202,7 @@ cards:
         type: state-label
       - icon: 'mdi:play'
         style:
-          '--iron-icon-fill-color': 'rgb(250, 250, 250)'
+          '--paper-item-icon-color': 'rgb(250, 250, 250)'
           bottom: 4%
           left: 45%
           transform: 'translate(-260%, 0%) scale(1.6, 1.6)'
@@ -213,7 +213,7 @@ cards:
         type: icon
       - icon: 'mdi:pause'
         style:
-          '--iron-icon-fill-color': 'rgb(250, 250, 250)'
+          '--paper-item-icon-color': 'rgb(250, 250, 250)'
           bottom: 4%
           left: 45%
           transform: 'translate(0%, 0%) scale(1.6, 1.6)'
@@ -224,7 +224,7 @@ cards:
         type: icon
       - icon: 'mdi:home'
         style:
-          '--iron-icon-fill-color': 'rgb(250, 250, 250)'
+          '--paper-item-icon-color': 'rgb(250, 250, 250)'
           bottom: 4%
           left: 45%
           transform: 'translate(260%, 0%) scale(1.6, 1.6)'
