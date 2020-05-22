@@ -21,6 +21,7 @@
 6. Delete all contents
 
 ![Landroid](card05.png)
+
 ![Landroid](card06.png)
 
 7. Open file (lovelace/card.yaml)
