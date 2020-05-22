@@ -5,7 +5,7 @@ Worx Landroid package for Home Assistant based on Landroid Cloud by @MTrab
 
 [Discussion in Home Assistant community](https://community.home-assistant.io/t/worx-landroid-package/119345)
 
-![Landroid](halandroid202005.png)
+![Landroid](media/halandroid20200522.png)
 
 ## Landroid Cloud installation
 For the package to work, you need to install Landroid Cloud Integration: https://github.com/MTrab/landroid_cloud
