@@ -36,7 +36,6 @@ homeassistant:
     sensor.landroid_pitch:
       friendly_name: Nicken/Тангаж
 
-
 # Input Number ####
     input_number.landroid_raindelay:
       friendly_name: Regenverzögerung
