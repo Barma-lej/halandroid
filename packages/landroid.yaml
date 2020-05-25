@@ -326,3 +326,4 @@ script:
         id: !secret landroid_id
         raindelay: "{{ states('input_number.landroid_raindelay') | int }}"
         timeextension: "{{ states('input_number.landroid_timeextension') | int }}"
+        
