@@ -324,5 +324,5 @@ script:
       service: landroid_cloud.config
       data_template:
         id: !secret landroid_id
-        raindelay: "{{ states('input_number.landroid_raindelay') }}"
-        timeextension: "{{ states('input_number.landroid_timeextension') }}"
+        raindelay: "{{ states('input_number.landroid_raindelay') | int }}"
+        timeextension: "{{ states('input_number.landroid_timeextension') | int }}"
