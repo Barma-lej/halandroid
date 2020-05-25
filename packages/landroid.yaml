@@ -18,12 +18,17 @@ recorder:
       - sensor.landroid_bat
       - sensor.landroid_mac
       - sensor.landroid_lastupdate
+      - input_number.landroid_raindelay
+      - input_number.landroid_timeextension
+      - input_boolean.landroid_sched_settings
       - input_boolean.landroid_info_toggle
       - automation.landroid_notify_status
       - automation.landroid_notify_error
+      - automation.landroid_sync_values
       - script.landroid_start
       - script.landroid_stop
       - script.landroid_pause
+      - script.landroid_set_config
 
 # Logbook ###########################################################
 logbook:
@@ -35,12 +40,17 @@ logbook:
       - sensor.landroid_bat
       - sensor.landroid_mac
       - sensor.landroid_lastupdate
+      - input_number.landroid_raindelay
+      - input_number.landroid_timeextension
+      - input_boolean.landroid_sched_settings
       - input_boolean.landroid_info_toggle
       - automation.landroid_notify_status
       - automation.landroid_notify_error
+      - automation.landroid_sync_values
       - script.landroid_start
       - script.landroid_stop
       - script.landroid_pause
+      - script.landroid_set_config
 
 # Switch ############################################################
 switch:
@@ -186,9 +196,33 @@ sensor:
         icon_template: mdi:seat-flat-angled
         unit_of_measurement: "°"
 
+# Input Number ######################################################
+input_number:
+  landroid_raindelay:
+    name: Rain delay
+    initial: 150
+    min: 0
+    max: 300
+    step: 30
+    unit_of_measurement: "min"
+    icon: mdi:weather-lightning-rainy
+
+  landroid_timeextension:
+    name: Time extension
+    initial: 0
+    min: -100
+    max: 100
+    step: 10
+    unit_of_measurement: "%"
+    icon: mdi:clock-out
+
 # Input Boolean #####################################################
 input_boolean:
 # Booleans for Lovelace
+  landroid_sched_settings:
+    name: Scheduler settings
+    icon: mdi:file-hidden
+    initial: false
   landroid_info_toggle:
     name: Info toggle
     icon: mdi:file-hidden
@@ -203,9 +237,11 @@ automation:
     trigger:
     - platform: state
       entity_id: sensor.landroid_mower_status
+
     condition:
     - condition: template
       value_template: "{{ trigger.to_state.state != trigger.from_state.state }}"
+
     action:
     - service: persistent_notification.create
       data_template:
@@ -215,24 +251,46 @@ automation:
 # Error notificaion
   - id: landroid_notify_error
     alias: Landroid Notify Error
-    initial_state: true
+    initial_state: false
     trigger:
     - platform: state
       entity_id: sensor.landroid_mower_error
+
     condition:
     - condition: template
       value_template: "{{ trigger.to_state.state != trigger.from_state.state }}"
+
     action:
     - service: persistent_notification.create
       data_template:
         title: 🏎️ Lanroid
         message: "*{{ trigger.to_state.state }}* <- {{ trigger.from_state.state }} - {{ states('sensor.date_time') }}"
 
+# Sync Landroid states
+  - id: landroid_sync_values
+    alias: Landroid sync values
+    trigger:
+      platform: state
+      entity_id: sensor.landroid_lastupdate
+
+    action:
+# Get rain delay
+      - service: input_number.set_value
+        data_template:
+          entity_id: input_number.landroid_raindelay
+          value: "{{ state_attr('sensor.landroid_mower_status','raindelay') | int }}"
+# Get time extension
+      - service: input_number.set_value
+        data_template:
+          entity_id: input_number.landroid_timeextension
+          value: "{{ state_attr('sensor.landroid_mower_status','timeextension') | int }}"
+
 # Scripts ###########################################################
 # Services
 # landroid_cloud.start
 # landroid_cloud.stop
 # landroid_cloud.pause
+# landroid_cloud.config
 
 script:
 # Starts the mower
@@ -258,3 +316,13 @@ script:
       service: landroid_cloud.pause
       data:
         id: !secret landroid_id
+
+# Set rain delay and time extension
+  landroid_set_config:
+    alias: Landroid set config
+    sequence:
+      service: landroid_cloud.config
+      data_template:
+        id: !secret landroid_id
+        raindelay: "{{ states('input_number.landroid_raindelay') }}"
+        timeextension: "{{ states('input_number.landroid_timeextension') }}"
