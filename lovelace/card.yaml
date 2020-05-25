@@ -307,6 +307,7 @@ cards:
         - entities:
             - entity: automation.landroid_notify_error
             - entity: automation.landroid_notify_status
+            - entity: automation.landroid_sync_values
           head:
             label: Automation
             type: section
