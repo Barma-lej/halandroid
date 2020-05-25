@@ -200,6 +200,21 @@ cards:
           transform: none
         title: Blade Time
         type: state-label
+      - entity: input_boolean.landroid_sched_settings
+        image: /local/mower/timer-off.png
+        state_filter:
+          'off': brightness(100%) saturate(1)
+          'on': brightness(90%) saturate(1)
+        state_image:
+          'on': /local/mower/timer.png
+        style:
+          bottom: 4%
+          left: 45%
+          transform: 'translate(-280%, 25%) scale(0.7, 0.7)'
+        tap_action:
+          action: toggle
+        title: Scheduler
+        type: image
       - icon: 'mdi:play'
         style:
           color: 'rgb(250, 250, 250)'
@@ -250,6 +265,18 @@ cards:
         type: image
     image: /local/mower/landroid_flower.png
     type: picture-elements
+  - type: conditional
+    conditions:
+      - entity: input_boolean.landroid_sched_settings
+        state: 'on'
+    card:
+      type: entities
+      entities:
+        - entity: input_number.landroid_raindelay
+        - entity: input_number.landroid_timeextension
+        - entity: script.landroid_set_config
+      title: Config
+      show_header_toggle: false
   - card:
       entities:
         - entities:
