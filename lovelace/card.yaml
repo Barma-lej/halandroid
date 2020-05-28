@@ -1,5 +1,14 @@
 cards:
   - elements:
+      - entity: sensor.landroid_name
+        style:
+          color: 'rgb(3, 169, 244)'
+          font-size: 200%
+          font-weight: bold
+          left: 50%
+          top: 1%
+          transform: translate(-50%, 0%)
+        type: state-label
       - entity: sensor.landroid_wifi
         style:
           '--paper-item-icon-color': 'rgb(3, 169, 244)'
@@ -280,6 +289,7 @@ cards:
   - card:
       entities:
         - entities:
+            - entity: sensor.landroid_name
             - entity: sensor.landroid_id
             - entity: sensor.landroid_ip
             - entity: sensor.landroid_sn

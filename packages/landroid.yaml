@@ -17,6 +17,7 @@ recorder:
       - sensor.landroid_mac
       - sensor.landroid_bat
       - sensor.landroid_id
+      - sensor.landroid_name
       - sensor.landroid_lastupdate
       - input_number.landroid_raindelay
       - input_number.landroid_timeextension
@@ -39,6 +40,7 @@ logbook:
       - sensor.landroid_mac
       - sensor.landroid_bat
       - sensor.landroid_id
+      - sensor.landroid_name
       - sensor.landroid_lastupdate
       - input_number.landroid_raindelay
       - input_number.landroid_timeextension
@@ -92,6 +94,10 @@ sensor:
         friendly_name: Id number
         value_template: "{{ state_attr('sensor.landroid_mower_status', 'id') }}"
         icon_template: mdi:numeric
+
+      landroid_name:
+        friendly_name: Mower name
+        value_template: "{{ state_attr('sensor.landroid_mower_status', 'friendly_name')[:-7] }}"
 
       landroid_bat:
         friendly_name: Battery level
