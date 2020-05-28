@@ -102,8 +102,8 @@ sensor:
       landroid_bat:
         friendly_name: Battery level
         value_template: >-
-          {% if is_state_attr('sensor.landroid_mower_battery', 'charging', 1) -%}Lädt
-          {%- else -%}Entlädt
+          {% if is_state_attr('sensor.landroid_mower_battery', 'charging', 1) -%}Charging
+          {%- else -%}Discharging
           {%- endif %}
         icon_template: >-
           {% set level = states('sensor.landroid_mower_battery') | float -%}
