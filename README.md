@@ -22,7 +22,6 @@ homeassistant:
 ```yaml
 landroid_mail: YOUR_EMAIL_IN_MY_LANDROID
 landroid_pass: YOUR_PASSWORD_IN_MY_LANDROID
-landroid_id: ID_FROM_SENSOR_sensor.landroid_mower_status
 landroid_ip: YOUR_LANDROID_IP_ADDRESS_IF_YOU_NEED_IT_OR_''
 landroid_sn: LANDROID_SERIAL_NUMBER_IF_YOU_NEED_IT_OR_''
 landroid_mac: LANDROID_MAC_ADDRESS_IF_YOU_NEED_IT_OR_''

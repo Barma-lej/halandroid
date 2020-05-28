@@ -280,6 +280,7 @@ cards:
   - card:
       entities:
         - entities:
+            - entity: sensor.landroid_id
             - entity: sensor.landroid_ip
             - entity: sensor.landroid_sn
             - entity: sensor.landroid_mac

@@ -16,7 +16,7 @@ recorder:
       - sensor.landroid_sn
       - sensor.landroid_mac
       - sensor.landroid_bat
-      - sensor.landroid_mac
+      - sensor.landroid_id
       - sensor.landroid_lastupdate
       - input_number.landroid_raindelay
       - input_number.landroid_timeextension
@@ -38,7 +38,7 @@ logbook:
       - sensor.landroid_sn
       - sensor.landroid_mac
       - sensor.landroid_bat
-      - sensor.landroid_mac
+      - sensor.landroid_id
       - sensor.landroid_lastupdate
       - input_number.landroid_raindelay
       - input_number.landroid_timeextension
@@ -87,6 +87,11 @@ sensor:
         friendly_name: MAC-Address
         value_template: !secret landroid_mac
         icon_template: mdi:barcode
+
+      landroid_id:
+        friendly_name: Id number
+        value_template: "{{ state_attr('sensor.landroid_mower_status', 'id') }}"
+        icon_template: mdi:numeric
 
       landroid_bat:
         friendly_name: Battery level
@@ -299,7 +304,7 @@ script:
     sequence:
       service: landroid_cloud.start
       data:
-        id: !secret landroid_id
+        id: sensor.landroid_id
 
 # Stops the mower and sends it home
   landroid_home:
@@ -307,7 +312,7 @@ script:
     sequence:
       service: landroid_cloud.home
       data:
-        id: !secret landroid_id
+        id: sensor.landroid_id
 
 # Pause the mower
   landroid_pause:
@@ -315,7 +320,7 @@ script:
     sequence:
       service: landroid_cloud.pause
       data:
-        id: !secret landroid_id
+        id: sensor.landroid_id
 
 # Set rain delay and time extension
   landroid_set_config:
@@ -323,7 +328,7 @@ script:
     sequence:
       service: landroid_cloud.config
       data_template:
-        id: !secret landroid_id
+        id: sensor.landroid_id
         raindelay: "{{ states('input_number.landroid_raindelay') | int }}"
         timeextension: "{{ states('input_number.landroid_timeextension') | int }}"
         
