@@ -16,7 +16,6 @@ recorder:
       - sensor.landroid_sn
       - sensor.landroid_mac
       - sensor.landroid_bat
-      - sensor.landroid_mac
       - sensor.landroid_lastupdate
       - input_number.landroid_raindelay
       - input_number.landroid_timeextension
@@ -38,7 +37,6 @@ logbook:
       - sensor.landroid_sn
       - sensor.landroid_mac
       - sensor.landroid_bat
-      - sensor.landroid_mac
       - sensor.landroid_lastupdate
       - input_number.landroid_raindelay
       - input_number.landroid_timeextension
@@ -91,8 +89,8 @@ sensor:
       landroid_bat:
         friendly_name: Battery level
         value_template: >-
-          {% if is_state_attr('sensor.landroid_mower_battery', 'charging', 1) -%}Lädt
-          {%- else -%}Entlädt
+          {% if is_state_attr('sensor.landroid_mower_battery', 'charging', 1) -%}Charging
+          {%- else -%}Discharging
           {%- endif %}
         icon_template: >-
           {% set level = states('sensor.landroid_mower_battery') | float -%}
