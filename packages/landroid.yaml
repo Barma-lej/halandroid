@@ -243,7 +243,7 @@ automation:
     action:
     - service: persistent_notification.create
       data_template:
-        title: 🏎️ Lanroid
+        title: 🏎️ Landroid
         message: "*{{ trigger.to_state.state }}* <- {{ trigger.from_state.state }} - {{ states('sensor.date_time') }}"
 
 # Error notificaion
@@ -261,7 +261,7 @@ automation:
     action:
     - service: persistent_notification.create
       data_template:
-        title: 🏎️ Lanroid
+        title: 🏎️ Landroid
         message: "*{{ trigger.to_state.state }}* <- {{ trigger.from_state.state }} - {{ states('sensor.date_time') }}"
 
 # Sync Landroid states
