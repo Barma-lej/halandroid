@@ -53,4 +53,13 @@ Search `sensor.landroid_mower_battery`, `sensor.landroid_mower_error`, `sensor.l
 
 #### _Удачи_:)
 
+### If your lawnmower has been banned.
+Services and app stopped working
+
+* Go to [My Landroids](https://account.worxlandroid.com/product-items)
+* Unlink your Landroid
+* Open app on mobile device
+* Add Landroid
+
+
 <a href="https://www.buymeacoffee.com/barma" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/white_img.png" alt="Buy Me A Coffee" style="height: auto !important;width: auto !important;" ></a>
