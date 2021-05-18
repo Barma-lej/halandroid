@@ -88,11 +88,13 @@ template:
       icon: mdi:fan
       unit_of_measurement: "min"
       attributes:
-          time_formatted: >
-            {% set t = state_attr("sensor.landroid_mower_status", "blade_time") | int %}
-            {% if t != 0 %}
-              {{ "%0d d %0.02d h %0.02d min" | format(t // 1440, ((t % 1440) // 60), t % 60) }}
-            {% endif %}
+        time_formatted: >
+          {% set t = state_attr("sensor.landroid_mower_status", "blade_time") | int %}
+          {% if t != 0 %}
+            {{ "%0d d %0.02d h %0.02d min" | format(t // 1440, ((t % 1440) // 60), t % 60) }}
+          {%- else -%}
+            {{ '0 min' }}
+          {% endif %}
 
     - name: Landroid Totaltime
       unique_id: landroid_totaltime
@@ -104,6 +106,8 @@ template:
           {% set t = state_attr("sensor.landroid_mower_status", "work_time") | int %}
           {% if t != 0 %}
             {{ "%0d d %0.02d h %0.02d min" | format(t // 1440, ((t % 1440) // 60), t % 60) }}
+          {%- else -%}
+            {{ '0 min' }}
           {% endif %}
 
     - name: Landroid Dist
