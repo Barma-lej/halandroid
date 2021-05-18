@@ -1,207 +1,194 @@
+type: vertical-stack
 cards:
-  - elements:
-      - entity: sensor.landroid_wifi
-        style:
-          '--paper-item-icon-color': 'rgb(3, 169, 244)'
-          left: 0%
-          opacity: 1
-          top: 0%
-          transform: none
+  - type: picture-elements
+    image: /local/mower/landroid_flower.png
+    elements:
+      - type: state-icon
         title: WIFI Quality
-        type: state-icon
-      - entity: sensor.landroid_wifi
+        entity: sensor.landroid_wifi
         style:
-          color: 'rgb(3, 169, 244)'
-          font-weight: bold
+          top: 0%
+          left: 0%
+          transform: none
+          '--paper-item-icon-color': 'rgb(3, 169, 244)'
+      - type: state-label
+        title: WIFI Quality
+        entity: sensor.landroid_wifi
+        style:
+          top: 1%
           left: 9%
-          opacity: 1
-          top: 1%
           transform: none
-        title: WIFI Quality
-        type: state-label
-      - entity: sensor.landroid_bat
-        style:
-          '--paper-item-icon-color': 'rgb(3, 169, 244)'
-          opacity: 1
-          right: 0%
-          top: 0%
-          transform: none
+          font-weight: bold
+          color: 'rgb(3, 169, 244)'
+      - type: state-icon
         title: Battery Status
-        type: state-icon
-      - entity: sensor.landroid_mower_battery
+        entity: sensor.landroid_mower_battery
         style:
-          color: 'rgb(3, 169, 244)'
-          font-weight: bold
-          opacity: 1
-          right: 8%
-          top: 1%
+          top: 0%
+          right: 0%
           transform: none
+          '--paper-item-icon-color': 'rgb(3, 169, 244)'
+      - type: state-label
         title: Battery
-        type: state-label
-      - entity: sensor.landroid_mower_status
+        entity: sensor.landroid_mower_battery
         style:
-          color: 'rgb(3, 169, 244)'
-          font-size: 150%
+          top: 1%
+          right: 8%
+          transform: none
           font-weight: bold
-          left: 0%
-          opacity: 1
+          color: 'rgb(3, 169, 244)'
+      - type: state-label
+        title: Status
+        entity: sensor.landroid_mower_status
+        style:
           top: 7%
+          left: 0%
           transform: none
-        title: Status
-        type: state-label
-      - entity: sensor.landroid_mower_error
-        style:
-          color: 'rgb(3, 169, 244)'
           font-size: 150%
           font-weight: bold
-          left: 0%
-          opacity: 1
-          top: 13%
-          transform: none
+          color: 'rgb(3, 169, 244)'
+      - type: state-label
         title: Status
-        type: state-label
-      - entity: sensor.landroid_pitch
+        entity: sensor.landroid_mower_error
         style:
-          '--paper-item-icon-color': 'rgb(3, 169, 244)'
-          opacity: 1
-          right: 0%
+          top: 13%
+          left: 0%
+          transform: none
+          font-size: 150%
+          font-weight: bold
+          color: 'rgb(3, 169, 244)'
+      - type: state-icon
+        title: Pitch
+        entity: sensor.landroid_pitch
+        style:
           top: 9%
+          right: 0%
           transform: none
+          '--paper-item-icon-color': 'rgb(3, 169, 244)'
+      - type: state-label
         title: Pitch
-        type: state-icon
-      - entity: sensor.landroid_pitch
+        entity: sensor.landroid_pitch
         style:
-          color: 'rgb(3, 169, 244)'
-          font-weight: bold
-          opacity: 1
-          right: 8%
           top: 10%
+          right: 8%
           transform: none
-        title: Pitch
-        type: state-label
-      - entity: sensor.landroid_roll
+          font-weight: bold
+          color: 'rgb(3, 169, 244)'
+      - type: state-icon
+        title: Roll
+        entity: sensor.landroid_roll
         style:
-          '--paper-item-icon-color': 'rgb(3, 169, 244)'
-          opacity: 1
-          right: 0%
           top: 18%
-          transform: none
-        title: Roll
-        type: state-icon
-      - entity: sensor.landroid_roll
-        style:
-          color: 'rgb(3, 169, 244)'
-          font-weight: bold
-          opacity: 1
-          right: 8%
-          top: 19%
-          transform: none
-        title: Roll
-        type: state-label
-      - entity: sensor.landroid_yaw
-        style:
-          '--paper-item-icon-color': 'rgb(3, 169, 244)'
-          opacity: 1
           right: 0%
-          top: 26%
           transform: none
-        title: Yaw
-        type: state-icon
-      - entity: sensor.landroid_yaw
+          '--paper-item-icon-color': 'rgb(3, 169, 244)'
+      - type: state-label
+        title: Roll
+        entity: sensor.landroid_roll
         style:
-          color: 'rgb(3, 169, 244)'
-          font-weight: bold
-          opacity: 1
+          top: 19%
           right: 8%
-          top: 27%
           transform: none
+          font-weight: bold
+          color: 'rgb(3, 169, 244)'
+      - type: state-icon
         title: Yaw
-        type: state-label
-      - entity: sensor.landroid_dist
+        entity: sensor.landroid_yaw
         style:
-          '--paper-item-icon-color': 'rgb(3, 169, 244)'
-          left: 31%
-          opacity: 1
           top: 26%
+          right: 0%
           transform: none
-        title: Total Distance
-        type: state-icon
-      - entity: sensor.landroid_dist
-        style:
-          color: 'rgb(3, 169, 244)'
-          font-weight: bold
-          left: 40%
-          opacity: 1
-          top: 27%
-          transform: none
-        title: Total Distance
-        type: state-label
-      - entity: sensor.landroid_totaltime
-        style:
           '--paper-item-icon-color': 'rgb(3, 169, 244)'
-          left: 31%
-          opacity: 1
-          top: 41%
-          transform: none
-        title: Total Time
-        type: state-icon
-      - entity: sensor.landroid_totaltime
+      - type: state-label
+        title: Yaw
+        entity: sensor.landroid_yaw
         style:
-          color: 'rgb(3, 169, 244)'
-          font-weight: bold
-          left: 40%
-          opacity: 1
-          top: 40%
+          top: 27%
+          right: 8%
           transform: none
+          font-weight: bold
+          color: 'rgb(3, 169, 244)'
+      - type: state-icon
+        title: Total Distance
+        entity: sensor.landroid_dist
+        style:
+          top: 26%
+          left: 31%
+          transform: none
+          '--paper-item-icon-color': 'rgb(3, 169, 244)'
+      - type: state-label
+        title: Total Distance
+        entity: sensor.landroid_dist
+        style:
+          top: 27%
+          left: 40%
+          transform: none
+          font-weight: bold
+          color: 'rgb(3, 169, 244)'
+      - type: state-icon
         title: Total Time
-        type: state-label
-      - attribute: time_formatted
         entity: sensor.landroid_totaltime
         style:
+          top: 41%
+          left: 31%
+          transform: none
+          '--paper-item-icon-color': 'rgb(3, 169, 244)'
+      - type: state-label
+        title: Total Time
+        entity: sensor.landroid_totaltime
+        style:
+          top: 40%
+          left: 40%
+          transform: none
+          font-weight: bold
           color: 'rgb(3, 169, 244)'
+      - type: state-label
+        title: Total Time
+        entity: sensor.landroid_totaltime
+        attribute: time_formatted
+        style:
+          top: 45%
+          left: 40%
+          transform: none
           font-size: 10px
           font-style: italic
           font-weight: bold
-          left: 40%
-          opacity: 1
-          top: 45%
-          transform: none
-        title: Total Time
-        type: state-label
-      - entity: sensor.landroid_bladetime
-        style:
-          '--paper-item-icon-color': 'rgb(3, 169, 244)'
-          left: 31%
-          opacity: 1
-          top: 56%
-          transform: none
-        title: Blade Time
-        type: state-icon
-      - entity: sensor.landroid_bladetime
-        style:
           color: 'rgb(3, 169, 244)'
-          font-weight: bold
-          left: 40%
-          opacity: 1
-          top: 55%
-          transform: none
+      - type: state-icon
         title: Blade Time
-        type: state-label
-      - attribute: time_formatted
         entity: sensor.landroid_bladetime
         style:
+          top: 56%
+          left: 31%
+          transform: none
+          '--paper-item-icon-color': 'rgb(3, 169, 244)'
+      - type: state-label
+        title: Blade Time
+        entity: sensor.landroid_bladetime
+        style:
+          top: 55%
+          left: 40%
+          transform: none
+          font-weight: bold
           color: 'rgb(3, 169, 244)'
+      - type: state-label
+        title: Blade Time
+        entity: sensor.landroid_bladetime
+        attribute: time_formatted
+        style:
+          top: 60%
+          left: 40%
+          transform: none
           font-size: 10px
           font-style: italic
           font-weight: bold
-          left: 40%
-          opacity: 1
-          top: 60%
-          transform: none
-        title: Blade Time
-        type: state-label
-      - entity: input_boolean.landroid_sched_settings
+          color: 'rgb(3, 169, 244)'
+      - type: image
+        title: Scheduler
+        entity: input_boolean.landroid_sched_settings
         image: /local/mower/timer-off.png
+        tap_action:
+          action: toggle
         state_filter:
           'off': brightness(100%) saturate(1)
           'on': brightness(90%) saturate(1)
@@ -211,45 +198,45 @@ cards:
           bottom: 4%
           left: 45%
           transform: 'translate(-280%, 25%) scale(0.7, 0.7)'
-        tap_action:
-          action: toggle
-        title: Scheduler
-        type: image
-      - icon: 'mdi:play'
-        style:
-          color: 'rgb(250, 250, 250)'
-          bottom: 4%
-          left: 45%
-          transform: 'translate(-260%, 0%) scale(1.6, 1.6)'
+      - type: icon
+        title: Mow
+        icon: 'mdi:play'
         tap_action:
           action: call-service
           service: script.landroid_start
-        title: Mow
-        type: icon
-      - icon: 'mdi:pause'
         style:
-          color: 'rgb(250, 250, 250)'
           bottom: 4%
           left: 45%
-          transform: 'translate(0%, 0%) scale(1.6, 1.6)'
+          transform: 'translate(-260%, 0%) scale(1.6, 1.6)'
+          color: 'rgb(250, 250, 250)'
+      - type: icon
+        title: Pause
+        icon: 'mdi:pause'
         tap_action:
           action: call-service
           service: script.landroid_pause
-        title: Pause
-        type: icon
-      - icon: 'mdi:home'
         style:
-          color: 'rgb(250, 250, 250)'
           bottom: 4%
           left: 45%
-          transform: 'translate(260%, 0%) scale(1.6, 1.6)'
+          transform: 'translate(0%, 0%) scale(1.6, 1.6)'
+          color: 'rgb(250, 250, 250)'
+      - type: icon
+        title: Stop & Drive Home
+        icon: 'mdi:home'
         tap_action:
           action: call-service
           service: script.landroid_home
-        title: Stop & Drive Home
-        type: icon
-      - entity: input_boolean.landroid_info_toggle
+        style:
+          bottom: 4%
+          left: 45%
+          transform: 'translate(260%, 0%) scale(1.6, 1.6)'
+          color: 'rgb(250, 250, 250)'
+      - type: image
+        title: Information
+        entity: input_boolean.landroid_info_toggle
         image: /local/mower/info-off.png
+        tap_action:
+          action: toggle
         state_filter:
           'off': brightness(100%) saturate(1)
           'on': brightness(90%) saturate(1)
@@ -259,64 +246,57 @@ cards:
           bottom: 4%
           left: 45%
           transform: 'translate(240%, 25%) scale(0.7, 0.7)'
-        tap_action:
-          action: toggle
-        title: Information
-        type: image
-    image: /local/mower/landroid_flower.png
-    type: picture-elements
   - type: conditional
     conditions:
       - entity: input_boolean.landroid_sched_settings
         state: 'on'
     card:
       type: entities
+      title: Config
+      show_header_toggle: false
       entities:
         - entity: input_number.landroid_raindelay
         - entity: input_number.landroid_timeextension
         - entity: script.landroid_set_config
-      title: Config
+  - type: conditional
+    conditions:
+      - entity: input_boolean.landroid_info_toggle
+        state: 'on'
+    card:
+      type: entities
+      title: Information
       show_header_toggle: false
-  - card:
       entities:
-        - entities:
+        - type: 'custom:fold-entity-row'
+          head: sensor.landroid_lastupdate
+          entities:
             - entity: sensor.landroid_ip
             - entity: sensor.landroid_sn
             - entity: sensor.landroid_mac
-            - attribute: firmware_version
+            - type: attribute
               entity: sensor.landroid_mower_status
-              icon: 'mdi:information-variant'
+              attribute: firmware_version
               name: Firmware
-              type: attribute
-          head: sensor.landroid_lastupdate
-          type: 'custom:fold-entity-row'
-        - label: Configuration
-          type: section
-        - attribute: raindelay
+              icon: 'mdi:information-variant'
+        - type: section
+          label: Configuration
+        - type: attribute
+          attribute: raindelay
           entity: sensor.landroid_mower_status
           icon: 'mdi:weather-lightning-rainy'
           name: Rain delay
           suffix: min
-          type: attribute
-        - attribute: timeextension
+        - type: attribute
           entity: sensor.landroid_mower_status
-          icon: 'mdi:clock'
+          attribute: timeextension
           name: Time extension
           suffix: '%'
-          type: attribute
-        - entities:
+          icon: 'mdi:clock'
+        - type: 'custom:fold-entity-row'
+          head:
+            type: section
+            label: Automation
+          entities:
             - entity: automation.landroid_notify_error
             - entity: automation.landroid_notify_status
             - entity: automation.landroid_sync_values
-          head:
-            label: Automation
-            type: section
-          type: 'custom:fold-entity-row'
-      show_header_toggle: false
-      title: Information
-      type: entities
-    conditions:
-      - entity: input_boolean.landroid_info_toggle
-        state: 'on'
-    type: conditional
-type: vertical-stack
