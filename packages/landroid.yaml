@@ -91,7 +91,7 @@ template:
           time_formatted: >
             {% set t = state_attr("sensor.landroid_mower_status", "blade_time") | int %}
             {% if t != 0 %}
-              {{ "%0d Tg. %0.02d Std. %0.02d Min." | format(t // 1440, ((t % 1440) // 60), t % 60) }}
+              {{ "%0d d %0.02d h %0.02d min" | format(t // 1440, ((t % 1440) // 60), t % 60) }}
             {% endif %}
 
     - name: Landroid Totaltime
@@ -103,7 +103,7 @@ template:
         time_formatted: >
           {% set t = state_attr("sensor.landroid_mower_status", "work_time") | int %}
           {% if t != 0 %}
-            {{ "%0d Tg. %0.02d Std. %0.02d Min." | format(t // 1440, ((t % 1440) // 60), t % 60) }}
+            {{ "%0d d %0.02d h %0.02d min" | format(t // 1440, ((t % 1440) // 60), t % 60) }}
           {% endif %}
 
     - name: Landroid Dist
@@ -203,7 +203,7 @@ automation:
     action:
       - service: persistent_notification.create
         data:
-          title: 🏎️ Lanroid M500
+          title: 🏎️ Lanroid Mower
           message: "{{ trigger.to_state.state }} <- {{ trigger.from_state.state }} - {{ states('sensor.date_time') }}"
 
 # Error notificaion
@@ -221,7 +221,7 @@ automation:
     action:
       - service: persistent_notification.create
         data:
-          title: 🏎️ Lanroid M500
+          title: 🏎️ Lanroid Mower
           message: "{{ trigger.to_state.state }} <- {{ trigger.from_state.state }} - {{ states('sensor.date_time') }}"
 
 # Sync Landroid states
@@ -259,7 +259,7 @@ script:
     sequence:
       service: landroid_cloud.start
       data:
-        id: !secret landroid_id
+        id: "{{ state_attr('sensor.landroid_mower_status','id') }}"
 
 # Stops the mower and sends it home
   landroid_home:
@@ -267,7 +267,7 @@ script:
     sequence:
       service: landroid_cloud.home
       data:
-        id: !secret landroid_id
+        id: "{{ state_attr('sensor.landroid_mower_status','id') }}"
 
 # Pause the mower
   landroid_pause:
@@ -275,7 +275,7 @@ script:
     sequence:
       service: landroid_cloud.pause
       data:
-        id: !secret landroid_id
+        id: "{{ state_attr('sensor.landroid_mower_status','id') }}"
 
 # Set rain delay and time extension
   landroid_set_config:
@@ -283,6 +283,6 @@ script:
     sequence:
       service: landroid_cloud.config
       data:
-        id: !secret landroid_id
+        id: "{{ state_attr('sensor.landroid_mower_status','id') }}"
         raindelay: "{{ states('input_number.landroid_raindelay') | int }}"
         timeextension: "{{ states('input_number.landroid_timeextension') | int }}"
