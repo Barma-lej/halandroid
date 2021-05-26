@@ -12,6 +12,8 @@ For the package to work, you need to install Landroid Cloud Integration: https:/
 
 ## Home Assistant
 
+It is minimum 2021.4 version of Home Assistant required
+
 1. In configuration.yaml add string _packages: !include_dir_named packages_:
 ```yaml
 homeassistant:
