@@ -1,4 +1,4 @@
-<a href="https://www.buymeacoffee.com/barma" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: auto !important;width: auto !important;" ></a>
+[![Donate](https://img.shields.io/badge/donate-Coffee-yellow.svg)](https://www.buymeacoffee.com/barma)
 
 # Worx Landroid package for Home Assistant
 Worx Landroid package for Home Assistant based on Landroid Cloud by @MTrab
