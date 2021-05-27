@@ -7,13 +7,13 @@ Worx Landroid package for Home Assistant based on Landroid Cloud by @MTrab
 
 ![Landroid](media/halandroid20200522.png)
 
-## Landroid Cloud installation
-For the package to work, you need to install Landroid Cloud Integration: https://github.com/MTrab/landroid_cloud
+## Requirements
 
-## Package installation
+1. **Home Assistant** version 2021.4 or above
+2. **Landroid Cloud** Integration. Install [using HACS](https://github.com/hacs/integration) or [see this guide](https://github.com/MTrab/landroid_cloud#installation)
+3. **fold-entity-row** plugin. Install [using HACS](https://github.com/hacs/integration) or [see this guide](https://github.com/thomasloven/lovelace-fold-entity-row#installing)
 
-_It is minimum 2021.4 version of Home Assistant required_
-
+## Installation
 1. In configuration.yaml add string _packages: !include_dir_named packages_:
 ```yaml
 homeassistant:
@@ -49,11 +49,8 @@ Search `sensor.landroid_mower_battery`, `sensor.landroid_mower_error`, `sensor.l
     expose: true
 ```
 8. Check config and restart Home Assistant
-#### NOTE: you will require the "fold-entity-row" plugin. This can be found using HACS or via the repository https://github.com/thomasloven/lovelace-fold-entity-row
 
 **_Enjoy_**
-
-**_Удачи_:)**
 
 ### If your lawnmower has been banned.
 Services and app stopped working
