@@ -1,0 +1,73 @@
+# Customize #########################################################
+homeassistant:
+  customize:
+# Sensor ##########
+    sensor.landroid_mower_battery:
+      friendly_name: Charge de la batterie
+      device_class: battery
+
+    sensor.landroid_mower_error:
+      friendly_name: Erreur
+    sensor.landroid_mower_status:
+      friendly_name: Status
+
+    sensor.landroid_ip:
+      friendly_name: Adresse IP
+    sensor.landroid_sn:
+      friendly_name: Numéro de série
+    sensor.landroid_mac:
+      friendly_name: Adresse MAC
+
+    sensor.landroid_bladetime:
+      friendly_name: Temps de coupe des lames
+    sensor.landroid_totaltime:
+      friendly_name: Temps de travail
+    sensor.landroid_dist:
+      friendly_name: Distance parcourue
+    sensor.landroid_lastupdate:
+      friendly_name: Dernière mise à jour
+      icon: mdi:update
+    sensor.landroid_wifi:
+      friendly_name: Qualité de la connexion Wifi
+    sensor.landroid_yaw:
+      friendly_name: Azimut
+    sensor.landroid_roll:
+      friendly_name: Roulis
+    sensor.landroid_pitch:
+      friendly_name: Inclinaison
+
+# Input Number ####
+    input_number.landroid_raindelay:
+      friendly_name: Délai de pluie
+    input_number.landroid_timeextension:
+      friendly_name: Ajustement de la durée
+
+    input_boolean.landroid_sched_settings:
+      friendly_name: Plan de tonte
+    input_boolean.landroid_info_toggle:
+      friendly_name: Information
+
+# Automation ######
+    automation.landroid_notify_status:
+      friendly_name: Notification de status Landroid
+      icon: mdi:bell
+    automation.landroid_notify_error:
+      friendly_name: Notification d'erreurs Landroid
+      icon: mdi:bell
+
+    automation.landroid_sync_values:
+      friendly_name: Mise à jour des données Landroid
+      icon: mdi:sync
+# Scripts #########
+    script.landroid_start:
+      friendly_name: Tonte
+      icon: mdi:play
+    script.landroid_pause:
+      friendly_name: Retour à la maison
+      icon: mdi:home
+    script.landroid_stop:
+      friendly_name: Arrêter la tonte
+      icon: mdi:stop
+    script.landroid_set_config:
+      friendly_name: Enregistrer la configuration
+      icon: mdi:content-save-settings
