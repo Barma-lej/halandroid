@@ -28,7 +28,7 @@ landroid_sn: LANDROID_SERIAL_NUMBER_IF_YOU_NEED_IT_OR_''
 landroid_mac: LANDROID_MAC_ADDRESS_IF_YOU_NEED_IT_OR_''
 ```
 
-3. Copy folders **www** and **packages** with all content in your homeassistant folder
+3. Copy folders **www** and **packages** with all content in your homeassistant configuration folder (you can find configuration.yaml there)
 
 4. If you need different as English language (Current is only in German) then add to folder **package** a file with your language from a folder *lang/landroid_LANGUAGE_CODE.yaml* e.g. [lang/landroid_de.yaml](lang/landroid_de.yaml).
 
