@@ -4,7 +4,7 @@ cards:
     image: /local/mower/landroid_flower.png
     elements:
       - type: state-icon
-        title: WLAN Qualität
+        title: Qualité de la connexion WIFI
         entity: sensor.landroid_wifi
         style:
           top: 0%
@@ -12,7 +12,7 @@ cards:
           transform: none
           '--paper-item-icon-color': 'rgb(3, 169, 244)'
       - type: state-label
-        title: WLAN Qualität
+        title: Qualité de la connexion WIFI
         entity: sensor.landroid_wifi
         style:
           top: 1%
@@ -21,7 +21,7 @@ cards:
           font-weight: bold
           color: 'rgb(3, 169, 244)'
       - type: state-icon
-        title: Akku Status
+        title: Etat de la batterie
         entity: sensor.landroid_mower_battery
         style:
           top: 0%
@@ -29,7 +29,7 @@ cards:
           transform: none
           '--paper-item-icon-color': 'rgb(3, 169, 244)'
       - type: state-label
-        title: Akkuladung
+        title: Charge de la batterie
         entity: sensor.landroid_mower_battery
         style:
           top: 1%
@@ -58,7 +58,7 @@ cards:
           font-weight: bold
           color: 'rgb(3, 169, 244)'
       - type: state-icon
-        title: Nicken/Тангаж
+        title: Tangage
         entity: sensor.landroid_pitch
         style:
           top: 9%
@@ -66,7 +66,7 @@ cards:
           transform: none
           '--paper-item-icon-color': 'rgb(3, 169, 244)'
       - type: state-label
-        title: Nicken/Тангаж
+        title: Tangage
         entity: sensor.landroid_pitch
         style:
           top: 10%
@@ -75,7 +75,7 @@ cards:
           font-weight: bold
           color: 'rgb(3, 169, 244)'
       - type: state-icon
-        title: Rollen/Крен
+        title: Roulis
         entity: sensor.landroid_roll
         style:
           top: 18%
@@ -83,7 +83,7 @@ cards:
           transform: none
           '--paper-item-icon-color': 'rgb(3, 169, 244)'
       - type: state-label
-        title: Rollen/Крен
+        title: Roulis
         entity: sensor.landroid_roll
         style:
           top: 19%
@@ -92,7 +92,7 @@ cards:
           font-weight: bold
           color: 'rgb(3, 169, 244)'
       - type: state-icon
-        title: Gieren/Рысканье
+        title: Yaw
         entity: sensor.landroid_yaw
         style:
           top: 26%
@@ -100,7 +100,7 @@ cards:
           transform: none
           '--paper-item-icon-color': 'rgb(3, 169, 244)'
       - type: state-label
-        title: Gieren/Рысканье
+        title: Yaw
         entity: sensor.landroid_yaw
         style:
           top: 27%
@@ -109,7 +109,7 @@ cards:
           font-weight: bold
           color: 'rgb(3, 169, 244)'
       - type: state-icon
-        title: Gesamte Distanz
+        title: Distance Totale
         entity: sensor.landroid_dist
         style:
           top: 26%
@@ -117,7 +117,7 @@ cards:
           transform: none
           '--paper-item-icon-color': 'rgb(3, 169, 244)'
       - type: state-label
-        title: Gesamte Distanz
+        title: Distance Totale
         entity: sensor.landroid_dist
         style:
           top: 27%
@@ -126,7 +126,7 @@ cards:
           font-weight: bold
           color: 'rgb(3, 169, 244)'
       - type: state-icon
-        title: Gesamte Arbeitszeit
+        title: Temps de Travail Total
         entity: sensor.landroid_totaltime
         style:
           top: 41%
@@ -134,7 +134,7 @@ cards:
           transform: none
           '--paper-item-icon-color': 'rgb(3, 169, 244)'
       - type: state-label
-        title: Gesamte Arbeitszeit
+        title: Temps de Travail Total
         entity: sensor.landroid_totaltime
         style:
           top: 40%
@@ -143,7 +143,7 @@ cards:
           font-weight: bold
           color: 'rgb(3, 169, 244)'
       - type: state-label
-        title: Gesamte Arbeitszeit
+        title: Temps de Travail Total
         entity: sensor.landroid_totaltime
         attribute: time_formatted
         style:
@@ -155,7 +155,7 @@ cards:
           font-weight: bold
           color: 'rgb(3, 169, 244)'
       - type: state-icon
-        title: Klingenarbeitszeit
+        title: Temps de travail des lames
         entity: sensor.landroid_bladetime
         style:
           top: 56%
@@ -163,7 +163,7 @@ cards:
           transform: none
           '--paper-item-icon-color': 'rgb(3, 169, 244)'
       - type: state-label
-        title: Klingenarbeitszeit
+        title: Temps de travail des lames
         entity: sensor.landroid_bladetime
         style:
           top: 55%
@@ -172,7 +172,7 @@ cards:
           font-weight: bold
           color: 'rgb(3, 169, 244)'
       - type: state-label
-        title: Klingenarbeitszeit
+        title: Temps de travail des lames
         entity: sensor.landroid_bladetime
         attribute: time_formatted
         style:
@@ -184,7 +184,7 @@ cards:
           font-weight: bold
           color: 'rgb(3, 169, 244)'
       - type: image
-        title: Mähplan
+        title: Planification
         entity: input_boolean.landroid_sched_settings
         image: /local/mower/timer-off.png
         tap_action:
@@ -199,7 +199,7 @@ cards:
           left: 45%
           transform: 'translate(-280%, 25%) scale(0.7, 0.7)'
       - type: icon
-        title: Mähen
+        title: Tonte
         icon: 'mdi:play'
         tap_action:
           action: call-service
@@ -221,7 +221,7 @@ cards:
           transform: 'translate(0%, 0%) scale(1.6, 1.6)'
           color: 'rgb(250, 250, 250)'
       - type: icon
-        title: Stop & Nach Hause fahren
+        title: Arrêter et retourner à la base
         icon: 'mdi:home'
         tap_action:
           action: call-service
@@ -252,7 +252,7 @@ cards:
         state: 'on'
     card:
       type: entities
-      title: Konfiguration
+      title: Configuration
       show_header_toggle: false
       entities:
         - entity: input_number.landroid_raindelay
@@ -279,23 +279,23 @@ cards:
               name: Firmware
               icon: 'mdi:information-variant'
         - type: section
-          label: Konfiguration
+          ²: Configuration
         - type: attribute
           attribute: raindelay
           entity: sensor.landroid_mower_status
           icon: 'mdi:weather-lightning-rainy'
-          name: Regenverzögerung
+          name: Délai de pluie
           suffix: min
         - type: attribute
           entity: sensor.landroid_mower_status
           attribute: timeextension
-          name: Daueranpassung
+          name: Ajustement du temps de coupe
           suffix: '%'
           icon: 'mdi:clock'
         - type: 'custom:fold-entity-row'
           head:
             type: section
-            label: Automatisierungen
+            label: Automatisations
           entities:
             - entity: automation.landroid_notify_error
             - entity: automation.landroid_notify_status
