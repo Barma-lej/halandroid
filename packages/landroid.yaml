@@ -207,7 +207,7 @@ automation:
     action:
       - service: persistent_notification.create
         data:
-          title: 🏎️ Lanroid Mower
+          title: 🏎️ Landroid Mower
           message: "{{ trigger.to_state.state }} <- {{ trigger.from_state.state }} - {{ states('sensor.date_time') }}"
 
 # Error notificaion
@@ -225,7 +225,7 @@ automation:
     action:
       - service: persistent_notification.create
         data:
-          title: 🏎️ Lanroid Mower
+          title: 🏎️ Landroid Mower
           message: "{{ trigger.to_state.state }} <- {{ trigger.from_state.state }} - {{ states('sensor.date_time') }}"
 
 # Sync Landroid states
