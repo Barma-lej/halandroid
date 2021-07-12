@@ -51,6 +51,15 @@ Search `sensor.landroid_mower_battery`, `sensor.landroid_mower_error`, `sensor.l
 
 **_Enjoy_**
 
+## mini FAQ
+
+### How to setup multiple mowers?
+
+1. Set different names of your mowers eg. *mower* and *mower2*
+2. Make a copy of *landroid.yaml* as *landroid2.yaml* in the same folder (**packages**)
+3. Rename all positions of *mower* to *mower2* in *landroid2.yaml*
+4. In lovelace create a second card and rename all positions of *mower* to *mower2*
+
 ### If your lawnmower has been banned.
 Services and app stopped working
 
