@@ -394,6 +394,15 @@ cards:
               icon: mdi:information-variant
         - type: section
           label: Configuration
+        - type: button
+          name: Restart
+          icon: mdi:restart
+          tap_action:
+            action: call-service
+            service: landroid_cloud.restart
+            service_data:
+              id: '{{ state_attr("sensor.landroid_mower_status","id") }}'
+          action_name: Restart
         - type: attribute
           attribute: raindelay
           entity: sensor.landroid_mower_status

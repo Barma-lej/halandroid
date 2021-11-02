@@ -38,7 +38,18 @@ OR
 
 Search for `mower` in the files **package/landroid_de.yaml**, **package/landroid_LANGUAGE_CODE.yaml** and in **new Lovelace card** and replace it with your lawnmower's name
 
-7. If you use a Google Assistant, then use switch **landroid_mowing** in your Google Assistant integration:
+7. **For LandXCape or Kress mower owners**
+
+Uncomment the relevant line in the `landroid.yaml` file
+```
+landroid_cloud:
+  email: !secret mower_mail
+  password: !secret mower_pass
+  #type: landxcape
+  #type: kress
+```
+
+8. If you use a Google Assistant, then use switch **landroid_mowing** in your Google Assistant integration:
 ```yaml
   switch.landroid_mowing:
     name: Mähroboter

@@ -7,6 +7,8 @@
 landroid_cloud:
   email: !secret mower_mail
   password: !secret mower_pass
+  #type: landxcape
+  #type: kress
 
 # Recorder ##########################################################
 recorder:
