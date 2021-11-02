@@ -5,59 +5,241 @@
 
 # Cloud #############################################################
 landroid_cloud:
-  email: !secret landroid_mail
-  password: !secret landroid_pass
+  email: !secret mower_mail
+  password: !secret mower_pass
 
 # Recorder ##########################################################
 recorder:
   exclude:
     entities:
-      - sensor.landroid_ip
-      - sensor.landroid_sn
-      - sensor.landroid_mac
-      - sensor.landroid_lastupdate
-      - input_number.landroid_raindelay
-      - input_number.landroid_timeextension
-      - input_boolean.landroid_info_toggle
-      - input_boolean.landroid_sched_settings
-      - automation.landroid_notify_status
-      - automation.landroid_notify_error
-      - automation.landroid_sync_values
-      - script.landroid_start
-      - script.landroid_stop
-      - script.landroid_pause
-      - script.landroid_set_config
+    # Swithes ###############
+      #- swith.mower_mowing
+      #- swith.mower_home
+      #- swith.mower_edgecut
+      #- swith.mower_partymode
+      #- swith.mower_lock
+
+    # Sensors ###############
+      - sensor.mower_ip
+      #- sensor.mower_bladetime
+      #- sensor.mower_current bladetime
+      #- sensor.mower_totaltime
+      #- sensor.mower_distance
+      #- sensor.mower_lastupdate
+      #- sensor.mower_wifi
+      #- sensor.mower_yaw
+      #- sensor.mower_roll
+      #- sensor.mower_pitch
+
+    # Input selects #########
+      - input_select.mower_zone
+
+    # Input numbers #########
+      - input_number.mower_raindelay
+      - input_number.mower_timeextension
+      - input_number.mower_zone0_distance
+      - input_number.mower_zone1_distance
+      - input_number.mower_zone2_distance
+      - input_number.mower_zone3_distance
+      - input_number.mower_zone0_probability
+      - input_number.mower_zone1_probability
+      - input_number.mower_zone2_probability
+      - input_number.mower_zone3_probability
+
+    # Input booleans ########
+      - input_boolean.mower_sched_settings
+      - input_boolean.mower_info_toggle
+      - input_boolean.mower_zone_enable
+      - input_boolean.mower_view_config
+      - input_boolean.mower_view_setzones
+
+    # Automations ######
+      - automation.mower_notify_status
+      - automation.mower_notify_error
+      - automation.mower_sync_values
+      - automation.mower_views_switch
+
+    # Scripts ##########
+      - script.mower_set_config
+      - script.mower_setzone
+      - script.mower_setzones
+      - script.mower_views_toggle
 
 # Logbook ###########################################################
 logbook:
   exclude:
     entities:
-      - sensor.landroid_ip
-      - sensor.landroid_sn
-      - sensor.landroid_mac
-      - sensor.landroid_lastupdate
-      - input_number.landroid_raindelay
-      - input_number.landroid_timeextension
-      - input_boolean.landroid_info_toggle
-      - input_boolean.landroid_sched_settings
-      - automation.landroid_notify_status
-      - automation.landroid_notify_error
-      - automation.landroid_sync_values
-      - script.landroid_start
-      - script.landroid_stop
-      - script.landroid_pause
-      - script.landroid_set_config
+    # Swithes ###############
+      #- swith.mower_mowing
+      #- swith.mower_home
+      #- swith.mower_edgecut
+      #- swith.mower_partymode
+      #- swith.mower_lock
+
+    # Sensors ###############
+      - sensor.mower_ip
+      #- sensor.mower_bladetime
+      #- sensor.mower_current bladetime
+      #- sensor.mower_totaltime
+      #- sensor.mower_distance
+      #- sensor.mower_lastupdate
+      #- sensor.mower_wifi
+      #- sensor.mower_yaw
+      #- sensor.mower_roll
+      #- sensor.mower_pitch
+
+    # Input selects #########
+      - input_select.mower_zone
+
+    # Input numbers #########
+      - input_number.mower_raindelay
+      - input_number.mower_timeextension
+      - input_number.mower_zone0_distance
+      - input_number.mower_zone1_distance
+      - input_number.mower_zone2_distance
+      - input_number.mower_zone3_distance
+      - input_number.mower_zone0_probability
+      - input_number.mower_zone1_probability
+      - input_number.mower_zone2_probability
+      - input_number.mower_zone3_probability
+
+    # Input booleans ########
+      - input_boolean.mower_sched_settings
+      - input_boolean.mower_info_toggle
+      - input_boolean.mower_zone_enable
+      - input_boolean.mower_view_config
+      - input_boolean.mower_view_setzones
+
+    # Automations ######
+      - automation.mower_notify_status
+      - automation.mower_notify_error
+      - automation.mower_sync_values
+      - automation.mower_views_switch
+
+    # Scripts ##########
+      - script.mower_set_config
+      - script.mower_setzone
+      - script.mower_setzones
+      - script.mower_views_toggle
 
 # Switch ############################################################
 switch:
   - platform: template
     switches:
-      landroid_mowing:
+      mower_mowing:
+        unique_id: mower_mowing
         value_template: "{{ is_state_attr('sensor.landroid_mower_status', 'status_id', 7) }}"
         turn_on:
-          service: script.landroid_start
+          service: landroid_cloud.start
+          data:
+            id: "{{ state_attr('sensor.landroid_mower_status','id') }}"
         turn_off:
-          service: script.landroid_stop
+          service: landroid_cloud.pause
+          data:
+            id: "{{ state_attr('sensor.landroid_mower_status','id') }}"
+        icon_template: >-
+          {% if is_state_attr('sensor.landroid_mower_status', 'status_id', 2)
+            or is_state_attr('sensor.landroid_mower_status', 'status_id', 3)
+            or is_state_attr('sensor.landroid_mower_status', 'status_id', 4)
+            or is_state_attr('sensor.landroid_mower_status', 'status_id', 5)
+            or is_state_attr('sensor.landroid_mower_status', 'status_id', 6)
+            or is_state_attr('sensor.landroid_mower_status', 'status_id', 7)
+            or is_state_attr('sensor.landroid_mower_status', 'status_id', 30)
+            or is_state_attr('sensor.landroid_mower_status', 'status_id', 32)
+            or is_state_attr('sensor.landroid_mower_status', 'status_id', 33) %}
+            mdi:pause
+          {% else %}
+            mdi:play
+          {% endif %}
+
+      mower_home:
+        unique_id: mower_home
+        value_template: >-
+          {{ is_state_attr('sensor.landroid_mower_status', 'status_id', 4)
+          or is_state_attr('sensor.landroid_mower_status', 'status_id', 5)
+          or is_state_attr('sensor.landroid_mower_status', 'status_id', 6)
+          or is_state_attr('sensor.landroid_mower_status', 'status_id', 30) }}
+        turn_on:
+          service: landroid_cloud.home
+          data:
+            id: "{{ state_attr('sensor.landroid_mower_status','id') }}"
+        turn_off:
+          service: landroid_cloud.pause
+          data:
+            id: "{{ state_attr('sensor.landroid_mower_status','id') }}"
+        icon_template: >-
+          {% if is_state_attr('sensor.landroid_mower_status', 'status_id', 1) %}
+            mdi:home
+          {% else %}
+            mdi:home-import-outline
+          {% endif %}
+        #    mdi:home-lightning-bolt
+
+      mower_edgecut:
+        unique_id: mower_edgecut
+        value_template: "{{ is_state_attr('sensor.landroid_mower_status', 'status_id', 32) }}"
+        turn_on:
+          service: landroid_cloud.edgecut
+          data:
+            id: "{{ state_attr('sensor.landroid_mower_status','id') }}"
+        turn_off:
+          service: landroid_cloud.pause
+          data:
+            id: "{{ state_attr('sensor.landroid_mower_status','id') }}"
+        icon_template: >-
+          {% if is_state_attr('sensor.landroid_mower_status', 'status_id', 32)  %}
+            mdi:motion-pause
+          {% else %}
+            mdi:motion-play
+          {% endif %}
+        #entity_picture_template: >-
+        #  {% if is_state_attr('sensor.landroid_mower_status', 'status_id', 32) %}
+        #    /local/mower/cut-to-edge-on.png
+        #  {% else %}
+        #    /local/mower/cut-to-edge.png
+        #  {% endif %}
+
+      mower_partymode:
+        unique_id: mower_partymode
+        value_template: "{{ is_state_attr('sensor.landroid_mower_status', 'partymode_enabled', true) }}"
+        turn_on:
+          service: landroid_cloud.partymode
+          data:
+            id: "{{ state_attr('sensor.landroid_mower_status','id') }}"
+            enable: true
+        turn_off:
+          service: landroid_cloud.partymode
+          data:
+            id: "{{ state_attr('sensor.landroid_mower_status','id') }}"
+            enable: false
+        icon_template: >-
+          {% if is_state_attr('sensor.landroid_mower_status', 'partymode_enabled', true)  %}
+            mdi:sleep-off
+          {% else %}
+            mdi:sleep
+          {% endif %}
+        #  service: script.mower_partymode
+
+      mower_lock:
+        unique_id: mower_lock
+        value_template: "{{ is_state_attr('sensor.landroid_mower_status', 'locked', true) }}"
+        turn_on:
+          service: landroid_cloud.lock
+          data:
+            id: "{{ state_attr('sensor.landroid_mower_status','id') }}"
+            enable: true
+        turn_off:
+          service: landroid_cloud.lock
+          data:
+            id: "{{ state_attr('sensor.landroid_mower_status','id') }}"
+            enable: false
+        icon_template: >-
+          {% if is_state_attr('sensor.landroid_mower_status', 'locked', true)  %}
+            mdi:lock
+          {% else %}
+            mdi:lock-open-variant
+          {% endif %}
+        #    mdi:lock-open
 
 # Sensor ############################################################
 # sensor.landroid_mower_battery
@@ -65,39 +247,43 @@ switch:
 # sensor.landroid_mower_status
 template:
   sensor:
-# Info ############
-    - name: Landroid IP
-      unique_id: landroid_ip
-      state: !secret landroid_ip
+  # Info ############
+    - name: Mower IP
+      unique_id: mower_ip
+      state: !secret mower_ip
       icon: mdi:ip-network
 
-    - name: Landroid SN
-      unique_id: landroid_sn
-      state: !secret landroid_sn
-      icon: mdi:numeric
-
-    - name: Landroid MAC
-      unique_id: landroid_mac
-      state: !secret landroid_mac
-      icon: mdi:barcode
-
-# Status ##########
-    - name: Landroid Bladetime
-      unique_id: landroid_bladetime
-      state: "{{ state_attr('sensor.landroid_mower_status', 'blade_time') }}"
+  # Status ##########
+    - name: Mower bladetime
+      unique_id: mower_bladetime
+      state: "{{ state_attr('sensor.landroid_mower_status', 'total_blade_time') }}"
       icon: mdi:fan
       unit_of_measurement: "min"
       attributes:
         time_formatted: >
-          {% set t = state_attr("sensor.landroid_mower_status", "blade_time") | int %}
+          {% set t = state_attr("sensor.landroid_mower_status", "total_blade_time") | int %}
           {% if t != 0 %}
-            {{ "%0d d %0.02d h %0.02d min" | format(t // 1440, ((t % 1440) // 60), t % 60) }}
+            {{ "%0d Tg. %0.02d Std. %0.02d Min." | format(t // 1440, ((t % 1440) // 60), t % 60) }}
           {%- else -%}
             {{ '0 min' }}
           {% endif %}
 
-    - name: Landroid Totaltime
-      unique_id: landroid_totaltime
+    - name: Mower current bladetime
+      unique_id: mower_current_bladetime
+      state: "{{ state_attr('sensor.landroid_mower_status', 'current_blade_time') }}"
+      icon: mdi:fan
+      unit_of_measurement: "min"
+      attributes:
+        time_formatted: >
+          {% set t = state_attr("sensor.landroid_mower_status", "current_blade_time") | int %}
+          {% if t != 0 %}
+            {{ "%0d Tg. %0.02d Std. %0.02d Min." | format(t // 1440, ((t % 1440) // 60), t % 60) }}
+          {%- else -%}
+            {{ '0 min' }}
+          {% endif %}
+
+    - name: Mower totaltime
+      unique_id: mower_totaltime
       state: "{{ state_attr('sensor.landroid_mower_status', 'work_time') }}"
       icon: mdi:bus-clock
       unit_of_measurement: "min"
@@ -105,29 +291,24 @@ template:
         time_formatted: >
           {% set t = state_attr("sensor.landroid_mower_status", "work_time") | int %}
           {% if t != 0 %}
-            {{ "%0d d %0.02d h %0.02d min" | format(t // 1440, ((t % 1440) // 60), t % 60) }}
+            {{ "%0d Tg. %0.02d Std. %0.02d Min." | format(t // 1440, ((t % 1440) // 60), t % 60) }}
           {%- else -%}
             {{ '0 min' }}
           {% endif %}
 
-    - name: Landroid Dist
-      unique_id: landroid_dist
+    - name: Mower distance
+      unique_id: mower_distance
       state: "{{ (state_attr('sensor.landroid_mower_status', 'distance') | float) / 1000 }}"
       icon: mdi:map-marker-distance
       unit_of_measurement: "km"
 
-    - name: Landroid lastupdate
-      unique_id: landroid_lastupdate
+    - name: Mower lastupdate
+      unique_id: mower_lastupdate
       state: "{{ as_timestamp(strptime( state_attr('sensor.landroid_mower_status', 'last_update'), '%H:%M:%S %d/%m/%Y')) | timestamp_custom('%d.%m.%Y %H:%M:%S') }}"
       icon: mdi:clock
 
-# -55 or higher: 4 bars
-# -56 to -66: 3 bars
-# -67 to -77: 2 bars
-# -78 to -88: 1 bar
-# -89 or lower: 0 bars
-    - name: Landroid WIFI
-      unique_id: landroid_wifi
+    - name: Mower WIFI
+      unique_id: mower_wifi
       state: "{{ state_attr('sensor.landroid_mower_status', 'rssi') }}"
       device_class: signal_strength
       unit_of_measurement: "dBm"
@@ -139,28 +320,45 @@ template:
         {% elif strength > -89 -%}mdi:wifi-strength-1
         {%- else -%}mdi:wifi-strength-outline
         {%- endif %}
+      # -55 or higher: 4 bars
+      # -56 to -66: 3 bars
+      # -67 to -77: 2 bars
+      # -78 to -88: 1 bar
+      # -89 or lower: 0 bars
 
-    - name: Landroid Yaw
-      unique_id: landroid_yaw
+    - name: Mower yaw
+      unique_id: mower_yaw
       state: "{{ state_attr('sensor.landroid_mower_status', 'yaw') }}"
       icon: mdi:axis-z-rotate-clockwise
       unit_of_measurement: "°"
 
-    - name: Landroid Roll
-      unique_id: landroid_roll
+    - name: Mower roll
+      unique_id: mower_roll
       state: "{{ state_attr('sensor.landroid_mower_status', 'roll') }}"
       icon: mdi:axis-x-rotate-clockwise
       unit_of_measurement: "°"
 
-    - name: Landroid Pitch
-      unique_id: landroid_pitch
+    - name: Mower pitch
+      unique_id: mower_pitch
       state: "{{ state_attr('sensor.landroid_mower_status', 'pitch') }}"
       icon: mdi:seat-flat-angled
       unit_of_measurement: "°"
 
+# Input Select ######################################################
+input_select:
+  mower_zone:
+    name: Mower zone
+    initial: "0"
+    options:
+      - "0"
+      - "1"
+      - "2"
+      - "3"
+    icon: mdi:vector-difference
+
 # Input Number ######################################################
 input_number:
-  landroid_raindelay:
+  mower_raindelay:
     name: Rain delay
     initial: 150
     min: 0
@@ -169,7 +367,7 @@ input_number:
     unit_of_measurement: "min"
     icon: mdi:weather-lightning-rainy
 
-  landroid_timeextension:
+  mower_timeextension:
     name: Time extension
     initial: 0
     min: -100
@@ -178,23 +376,103 @@ input_number:
     unit_of_measurement: "%"
     icon: mdi:clock-out
 
+  # Multizone
+  mower_zone0_distance:
+    name: "Zone 0: Distance"
+    initial: 0
+    min: 0
+    max: 1000
+    step: 1
+    unit_of_measurement: "m"
+    icon: mdi:numeric-0-box-outline
+  mower_zone1_distance:
+    name: "Zone 1: Distance"
+    initial: 0
+    min: 0
+    max: 1000
+    step: 1
+    unit_of_measurement: "m"
+    icon: mdi:numeric-1-box-outline
+  mower_zone2_distance:
+    name: "Zone 2: Distance"
+    initial: 0
+    min: 0
+    max: 1000
+    step: 1
+    unit_of_measurement: "m"
+    icon: mdi:numeric-2-box-outline
+  mower_zone3_distance:
+    name: "Zone 3: Distance"
+    initial: 0
+    min: 0
+    max: 1000
+    step: 1
+    unit_of_measurement: "m"
+    icon: mdi:numeric-3-box-outline
+
+  mower_zone0_probability:
+    name: "Zone 0: Probability"
+    initial: 0
+    min: 0
+    max: 100
+    step: 10
+    unit_of_measurement: "%"
+    icon: mdi:numeric-0-circle-outline
+  mower_zone1_probability:
+    name: "Zone 1: Probability"
+    initial: 0
+    min: 0
+    max: 100
+    step: 10
+    unit_of_measurement: "%"
+    icon: mdi:numeric-1-circle-outline
+  mower_zone2_probability:
+    name: "Zone 2: Probability"
+    initial: 0
+    min: 0
+    max: 100
+    step: 10
+    unit_of_measurement: "%"
+    icon: mdi:numeric-2-circle-outline
+  mower_zone3_probability:
+    name: "Zone 3: Probability"
+    initial: 0
+    min: 0
+    max: 100
+    step: 10
+    unit_of_measurement: "%"
+    icon: mdi:numeric-3-circle-outline
+
 # Input Boolean #####################################################
 input_boolean:
-# Booleans for Lovelace
-  landroid_sched_settings:
+  # Booleans for Lovelace
+  mower_sched_settings:
     name: Scheduler settings
-    icon: mdi:file-hidden
     initial: false
-  landroid_info_toggle:
+    icon: mdi:timer
+
+  mower_info_toggle:
     name: Info toggle
-    icon: mdi:file-hidden
     initial: false
+    icon: mdi:information
+
+  mower_zone_enable:
+    name: Enable multizone
+    initial: false
+    icon: mdi:vector-difference
+
+  # Booleans for views in Lovelace
+  mower_view_config:
+    name: Configuration
+    icon: mdi:tools
+  mower_view_setzones:
+    name: Multizone
+    icon: mdi:vector-difference
 
 # Automations #######################################################
 automation:
-# Status notificaion
-  - id: landroid_notify_status
-    alias: Landroid Notify Status
+  - id: mower_notify_status
+    alias: Mower status notificaion
     initial_state: false
     trigger:
       - platform: state
@@ -207,12 +485,11 @@ automation:
     action:
       - service: persistent_notification.create
         data:
-          title: 🏎️ Landroid Mower
-          message: "{{ trigger.to_state.state }} <- {{ trigger.from_state.state }} - {{ states('sensor.date_time') }}"
+          title: 🏎️ Lanroid M500
+          message: "{{ trigger.from_state.state }} -> {{ trigger.to_state.state }} - {{ states('sensor.date_time') }}"
 
-# Error notificaion
-  - id: landroid_notify_error
-    alias: Landroid Notify Error
+  - id: mower_notify_error
+    alias: Mower error notificaion
     initial_state: true
     trigger:
       - platform: state
@@ -225,68 +502,115 @@ automation:
     action:
       - service: persistent_notification.create
         data:
-          title: 🏎️ Landroid Mower
-          message: "{{ trigger.to_state.state }} <- {{ trigger.from_state.state }} - {{ states('sensor.date_time') }}"
+          title: 🏎️ Lanroid M500
+          message: "{{ trigger.from_state.state }} -> {{ trigger.to_state.state }} - {{ states('sensor.date_time') }}"
 
-# Sync Landroid states
-  - id: landroid_sync_values
-    alias: Landroid sync values
+  - id: mower_sync_values
+    alias: Mower sync values
     trigger:
       - platform: homeassistant
         event: start
 
       - platform: state
-        entity_id: sensor.landroid_lastupdate
+        entity_id: sensor.mower_lastupdate
 
     action:
-# Get rain delay
+      # Get rain delay
       - service: input_number.set_value
+        target:
+          entity_id: input_number.mower_raindelay
         data:
-          entity_id: input_number.landroid_raindelay
           value: "{{ state_attr('sensor.landroid_mower_status','raindelay') | int }}"
-# Get time extension
+      # Get time extension
       - service: input_number.set_value
+        target:
+          entity_id: input_number.mower_timeextension
         data:
-          entity_id: input_number.landroid_timeextension
           value: "{{ state_attr('sensor.landroid_mower_status','timeextension') | int }}"
+      # Get mower zone
+      - service: input_select.select_option
+        target:
+          entity_id: input_select.mower_zone
+        data:
+          option: "{{ state_attr('sensor.landroid_mower_status','mowing_zone') }}"
 
 # Scripts ###########################################################
 # Services
 # landroid_cloud.start
-# landroid_cloud.stop
+# landroid_cloud.home
 # landroid_cloud.pause
+# landroid_cloud.configure landroid_cloud.config (can be used to set rain delay and time extension)
+# landroid_cloud.partymode (if a partymode capable device was found)
+# landroid_cloud.setzone
+# landroid_cloud.lock
+# landroid_cloud.restart
+# landroid_cloud.edgecut (only for models with the function available in the app)
 
 script:
-# Starts the mower
-  landroid_start:
-    alias: Landroid Start
-    sequence:
-      service: landroid_cloud.start
-      data:
-        id: "{{ state_attr('sensor.landroid_mower_status','id') }}"
-
-# Stops the mower and sends it home
-  landroid_home:
-    alias: Landroid Home
-    sequence:
-      service: landroid_cloud.home
-      data:
-        id: "{{ state_attr('sensor.landroid_mower_status','id') }}"
-
-# Pause the mower
-  landroid_pause:
-    alias: Landroid Pause
-    sequence:
-      service: landroid_cloud.pause
-      data:
-        id: "{{ state_attr('sensor.landroid_mower_status','id') }}"
-
-# Set rain delay and time extension
-  landroid_set_config:
-    alias: Landroid set config
+  mower_set_config:
+    alias: Mower set rain delay and time extension
     sequence:
       service: landroid_cloud.config
       data:
         id: "{{ state_attr('sensor.landroid_mower_status','id') }}"
-        raindelay: "{{ states('input_number.landroid_raindelay') | int }}"
-        timeextension: "{{ states('input_number.landroid_timeextension') | int }}"
+        raindelay: "{{ states('input_number.mower_raindelay') | int }}"
+        timeextension: "{{ states('input_number.mower_timeextension') | int }}"
+
+  mower_setzone:
+    alias: Mower set mowing zone
+    mode: restart
+    sequence:
+      - service: input_select.select_next
+        target:
+          entity_id: input_select.mower_zone
+
+      - delay: "00:00:03"
+
+      - service: landroid_cloud.setzone
+        data:
+          id: "{{ state_attr('sensor.landroid_mower_status','id') }}"
+          zone: "{{ states('input_select.mower_zone') | int }}"
+
+  mower_setzones:
+    alias: Mower set multizone distances
+    sequence:
+      service: landroid_cloud.config
+      data:
+        id: "{{ state_attr('sensor.landroid_mower_status','id') }}"
+        multizone_distances: >-
+          {% if is_state('input_boolean.mower_zone_enable', 'on') -%}
+            [{{ states('input_number.mower_zone0_distance') | int }},
+            {{ states('input_number.mower_zone1_distance') | int }},
+            {{ states('input_number.mower_zone2_distance') | int }},
+            {{ states('input_number.mower_zone3_distance') | int }}]
+          {%- else -%}
+            [0,0,0,0]
+          {%- endif %}
+        multizone_probabilities: >-
+          {% if is_state('input_boolean.mower_zone_enable', 'on') -%}
+            [{{ ((states('input_number.mower_zone0_probability') | int) / 10)  | round(0) }},
+            {{ ((states('input_number.mower_zone1_probability') | int) / 10)  | round(0) }},
+            {{ ((states('input_number.mower_zone2_probability') | int) / 10)  | round(0) }},
+            {{ ((states('input_number.mower_zone3_probability') | int) / 10)  | round(0) }}]
+          {%- else -%}
+            [0,0,0,0]
+          {%- endif %}
+
+  mower_views_toggle:
+    description: "View configuration panel like tabs"
+    mode: restart
+    fields:
+      entity_id:
+        description: "Current switch"
+        example: "input_boolean.mower_view_config"
+    sequence:
+      - service: input_boolean.turn_off
+        data:
+          entity_id: >
+            {% for item in states["input_boolean"] if item.object_id.startswith("mower_view_") and
+                                                      item.entity_id != entity_id -%}
+              {% if not loop.first %},{% endif %}{{ item.entity_id }}
+            {%- endfor %}
+      - service: input_boolean.turn_on
+        data:
+          entity_id: "{{ entity_id }}"

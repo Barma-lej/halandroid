@@ -1,73 +1,167 @@
 # Customize #########################################################
 homeassistant:
   customize:
-# Sensor ##########
+  # Switches ###########
+    switch.mower_mowing:
+      friendly_name: Mähen
+    switch.mower_home:
+      friendly_name: Stop & Nach Hause fahren
+    switch.mower_edgecut:
+      friendly_name: Rasenkanten-Schnitt
+    switch.mower_partymode:
+      friendly_name: Partymodus
+    switch.mower_lock:
+      friendly_name: Sperren
+
+  # Sensors ############
     sensor.landroid_mower_battery:
       friendly_name: Akkuladung
       device_class: battery
-
     sensor.landroid_mower_error:
       friendly_name: Fehler
     sensor.landroid_mower_status:
       friendly_name: Status
 
-    sensor.landroid_ip:
+    sensor.mower_ip:
       friendly_name: IP-Adresse
-    sensor.landroid_sn:
-      friendly_name: Seriennummer
-    sensor.landroid_mac:
-      friendly_name: MAC-Adresse
 
-    sensor.landroid_bladetime:
+    sensor.mower_bladetime:
       friendly_name: Klingenarbeitszeit
-    sensor.landroid_totaltime:
+    sensor.mower_current_bladetime:
+      friendly_name: Aktuelle Klingenarbeitszeit
+    sensor.mower_totaltime:
       friendly_name: Arbeitszeit
-    sensor.landroid_dist:
+    sensor.mower_distance:
       friendly_name: Ges. Distanz
-    sensor.landroid_lastupdate:
+    sensor.mower_lastupdate:
       friendly_name: Aktualisiert seit
       icon: mdi:update
-    sensor.landroid_wifi:
+    sensor.mower_wifi:
       friendly_name: WLAN Qualität
-    sensor.landroid_yaw:
+    sensor.mower_yaw:
       friendly_name: Gieren/Рысканье
-    sensor.landroid_roll:
+    sensor.mower_roll:
       friendly_name: Rollen/Крен
-    sensor.landroid_pitch:
+    sensor.mower_pitch:
       friendly_name: Nicken/Тангаж
 
-# Input Number ####
-    input_number.landroid_raindelay:
+  # Input Selects ######
+    input_select.mower_zone:
+      friendly_name: Mähzone
+
+  # Input Numbers ######
+    input_number.mower_raindelay:
       friendly_name: Regenverzögerung
-    input_number.landroid_timeextension:
+    input_number.mower_timeextension:
       friendly_name: Dauer anpassen
 
-    input_boolean.landroid_sched_settings:
+    input_number.mower_zone0_distance:
+      friendly_name: "Mähzone 0: Entfernung"
+    input_number.mower_zone1_distance:
+      friendly_name: "Mähzone 1: Entfernung"
+    input_number.mower_zone2_distance:
+      friendly_name: "Mähzone 2: Entfernung"
+    input_number.mower_zone3_distance:
+      friendly_name: "Mähzone 3: Entfernung"
+
+    input_number.mower_zone0_probability:
+      friendly_name: "Mähzone 0: Wahrscheinlichkeit"
+    input_number.mower_zone1_probability:
+      friendly_name: "Mähzone 1: Wahrscheinlichkeit"
+    input_number.mower_zone2_probability:
+      friendly_name: "Mähzone 2: Wahrscheinlichkeit"
+    input_number.mower_zone3_probability:
+      friendly_name: "Mähzone 3: Wahrscheinlichkeit"
+
+  # Input Booleans #####
+    input_boolean.mower_sched_settings:
       friendly_name: Mähplan
-    input_boolean.landroid_info_toggle:
+    input_boolean.mower_info_toggle:
       friendly_name: Information
+    input_boolean.mower_zone_enable:
+      friendly_name: Multizone aktivieren
 
-# Automation ######
-    automation.landroid_notify_status:
-      friendly_name: Landroid Status Benachrichtigung
+    input_boolean.mower_view_config:
+      friendly_name: Konfiguration
+    input_boolean.mower_view_setzones:
+      friendly_name: Multizone
+
+    #input_boolean.mower_view_0:
+    #  friendly_name: So.
+    #input_boolean.mower_view_1:
+    #  friendly_name: Mo.
+    #input_boolean.mower_view_2:
+    #  friendly_name: Di.
+    #input_boolean.mower_view_3:
+    #  friendly_name: Mi.
+    #input_boolean.mower_view_4:
+    #  friendly_name: Do.
+    #input_boolean.mower_view_5:
+    #  friendly_name: Fr.
+    #input_boolean.mower_view_6:
+    #  friendly_name: Sa.
+
+    #input_boolean.mower_0_sched_enable:
+    #  friendly_name: Sonntag
+    #input_boolean.mower_1_sched_enable:
+    #  friendly_name: Montag
+    #input_boolean.mower_2_sched_enable:
+    #  friendly_name: Dienstag
+    #input_boolean.mower_3_sched_enable:
+    #  friendly_name: Mittwoch
+    #input_boolean.mower_4_sched_enable:
+    #  friendly_name: Donnerstag
+    #input_boolean.mower_5_sched_enable:
+    #  friendly_name: Freitag
+    #input_boolean.mower_6_sched_enable:
+    #  friendly_name: Samstag
+
+    #input_boolean.mower_0_cuttoedge:
+    #  friendly_name: Cut to edge
+    #input_boolean.mower_1_cuttoedge:
+    #  friendly_name: Cut to edge
+    #input_boolean.mower_2_cuttoedge:
+    #  friendly_name: Cut to edge
+    #input_boolean.mower_3_cuttoedge:
+    #  friendly_name: Cut to edge
+    #input_boolean.mower_4_cuttoedge:
+    #  friendly_name: Cut to edge
+    #input_boolean.mower_5_cuttoedge:
+    #  friendly_name: Cut to edge
+    #input_boolean.mower_6_cuttoedge:
+    #  friendly_name: Cut to edge
+
+
+  # Automations ########
+    automation.mower_notify_status:
+      friendly_name: Statusbenachrichtigung
       icon: mdi:bell
-    automation.landroid_notify_error:
-      friendly_name: Landroid Fehler Benachrichtigung
+    automation.mower_notify_error:
+      friendly_name: Fehlerbenachrichtigung
       icon: mdi:bell
 
-    automation.landroid_sync_values:
-      friendly_name: Landroid Datenaktualisierung
+    automation.mower_sync_values:
+      friendly_name: Datensynchronisation
       icon: mdi:sync
+
+    #automation.mower_views_switch:
+    #  friendly_name: Registerkarten umschalten
+    #  icon: mdi:tab
+
+
 # Scripts #########
-    script.landroid_start:
-      friendly_name: Mähen
-      icon: mdi:play
-    script.landroid_pause:
-      friendly_name: Mähen pausieren
-      icon: mdi:home
-    script.landroid_stop:
-      friendly_name: Mähen beenden
-      icon: mdi:stop
-    script.landroid_set_config:
+    script.mower_set_config:
       friendly_name: Konfiguration speichern
       icon: mdi:content-save-settings
+
+    script.mower_setzone:
+      friendly_name: Zonenauswahl
+      icon: mdi:vector-difference
+
+    script.mower_setzones:
+      friendly_name: Multizone übernehmen
+      icon: mdi:content-save-settings
+
+    script.mower_views_toggle:
+      friendly_name: Registerkarten umschalten
+      icon: mdi:tab

@@ -3,83 +3,83 @@ homeassistant:
   customize:
   # Switches ###########
     switch.mower_mowing:
-      friendly_name: Tonte
+      friendly_name: Mowing
     switch.mower_home:
-      friendly_name: Retour à la maison
+      friendly_name: Home
     switch.mower_edgecut:
-      friendly_name: Coupe à bord
+      friendly_name: Cut-to-edge
     switch.mower_partymode:
-      friendly_name: Mode de fete
+      friendly_name: Partymode
     switch.mower_lock:
-      friendly_name: La serrure
+      friendly_name: Lock
 
   # Sensors ############
     sensor.landroid_mower_battery:
-      friendly_name: Charge de la batterie
+      friendly_name: Battery charge
       device_class: battery
     sensor.landroid_mower_error:
-      friendly_name: Erreur
+      friendly_name: Error
     sensor.landroid_mower_status:
       friendly_name: Status
 
     sensor.mower_ip:
-      friendly_name: Adresse IP
+      friendly_name: IP address
 
     sensor.mower_bladetime:
-      friendly_name: Temps de coupe des lames
+      friendly_name: Bladetime
     sensor.mower_current_bladetime:
-      friendly_name: Actuel temps de coupe des lames
+      friendly_name: Current bladetime
     sensor.mower_totaltime:
-      friendly_name: Temps de travail
+      friendly_name: Total time
     sensor.mower_distance:
-      friendly_name: Distance parcourue
+      friendly_name: Distance
     sensor.mower_lastupdate:
-      friendly_name: Dernière mise à jour
+      friendly_name: Last update
       icon: mdi:update
     sensor.mower_wifi:
-      friendly_name: Qualité de la connexion Wifi
+      friendly_name: WiFi quality
     sensor.mower_yaw:
-      friendly_name: Azimut
+      friendly_name: Yaw
     sensor.mower_roll:
-      friendly_name: Roulis
+      friendly_name: Roll
     sensor.mower_pitch:
-      friendly_name: Tangage
+      friendly_name: Pitch
 
   # Input Selects ######
     input_select.mower_zone:
-      friendly_name: Zone de tonte
+      friendly_name: Mowing zone
 
   # Input Numbers ######
     input_number.mower_raindelay:
-      friendly_name: Délai de pluie
+      friendly_name: Rain delay
     input_number.mower_timeextension:
-      friendly_name: Délais supplémentaire
+      friendly_name: Time extension
 
     input_number.mower_zone0_distance:
-      friendly_name: "Zone de tonte 0: Distance"
+      friendly_name: "Mowing zone 0: Distance"
     input_number.mower_zone1_distance:
-      friendly_name: "Zone de tonte 1: Distance"
+      friendly_name: "Mowing zone 1: Distance"
     input_number.mower_zone2_distance:
-      friendly_name: "Zone de tonte 2: Distance"
+      friendly_name: "Mowing zone 2: Distance"
     input_number.mower_zone3_distance:
-      friendly_name: "Zone de tonte 3: Distance"
+      friendly_name: "Mowing zone 3: Distance"
 
     input_number.mower_zone0_probability:
-      friendly_name: "Zone de tonte 0: Probabilité"
+      friendly_name: "Mowing zone 0: Probability"
     input_number.mower_zone1_probability:
-      friendly_name: "Zone de tonte 1: Probabilité"
+      friendly_name: "Mowing zone 1: Probability"
     input_number.mower_zone2_probability:
-      friendly_name: "Zone de tonte 2: Probabilité"
+      friendly_name: "Mowing zone 2: Probability"
     input_number.mower_zone3_probability:
-      friendly_name: "Zone de tonte 3: Probabilité"
+      friendly_name: "Mowing zone 3: Probability"
 
   # Input Booleans #####
     input_boolean.mower_sched_settings:
-      friendly_name: Paramètres
+      friendly_name: Settings
     input_boolean.mower_info_toggle:
-      friendly_name: Informations
+      friendly_name: Information
     input_boolean.mower_zone_enable:
-      friendly_name: Activer le multizone
+      friendly_name: Enable multizone
 
     input_boolean.mower_view_config:
       friendly_name: Configuration
@@ -87,81 +87,81 @@ homeassistant:
       friendly_name: Multizone
 
     #input_boolean.mower_view_0:
-    #  friendly_name: Di.
+    #  friendly_name: Su.
     #input_boolean.mower_view_1:
-    #  friendly_name: Lu.
+    #  friendly_name: Mo.
     #input_boolean.mower_view_2:
-    #  friendly_name: Ma.
+    #  friendly_name: Tu.
     #input_boolean.mower_view_3:
-    #  friendly_name: Me.
+    #  friendly_name: We.
     #input_boolean.mower_view_4:
-    #  friendly_name: Je.
+    #  friendly_name: Th.
     #input_boolean.mower_view_5:
-    #  friendly_name: Ve.
+    #  friendly_name: Fr.
     #input_boolean.mower_view_6:
     #  friendly_name: Sa.
 
     #input_boolean.mower_0_sched_enable:
-    #  friendly_name: Dimanche
+    #  friendly_name: Sunday
     #input_boolean.mower_1_sched_enable:
-    #  friendly_name: Lundi
+    #  friendly_name: Monday
     #input_boolean.mower_2_sched_enable:
-    #  friendly_name: Mardi
+    #  friendly_name: Tuesday
     #input_boolean.mower_3_sched_enable:
-    #  friendly_name: Mercredi
+    #  friendly_name: Wednesday
     #input_boolean.mower_4_sched_enable:
-    #  friendly_name: Jeudi
+    #  friendly_name: Thursday
     #input_boolean.mower_5_sched_enable:
-    #  friendly_name: Vendredi
+    #  friendly_name: Friday
     #input_boolean.mower_6_sched_enable:
-    #  friendly_name: Samedi
+    #  friendly_name: Saturday
 
     #input_boolean.mower_0_cuttoedge:
-    #  friendly_name: Coupe à bord
+    #  friendly_name: Cut-to-edge
     #input_boolean.mower_1_cuttoedge:
-    #  friendly_name: Coupe à bord
+    #  friendly_name: Cut-to-edge
     #input_boolean.mower_2_cuttoedge:
-    #  friendly_name: Coupe à bord
+    #  friendly_name: Cut-to-edge
     #input_boolean.mower_3_cuttoedge:
-    #  friendly_name: Coupe à bord
+    #  friendly_name: Cut-to-edge
     #input_boolean.mower_4_cuttoedge:
-    #  friendly_name: Coupe à bord
+    #  friendly_name: Cut-to-edge
     #input_boolean.mower_5_cuttoedge:
-    #  friendly_name: Coupe à bord
+    #  friendly_name: Cut-to-edge
     #input_boolean.mower_6_cuttoedge:
-    #  friendly_name: Coupe à bord
+    #  friendly_name: Cut-to-edge
 
 
   # Automations ########
     automation.mower_notify_status:
-      friendly_name: Notification de status Landroid
+      friendly_name: Status notification
       icon: mdi:bell
     automation.mower_notify_error:
-      friendly_name: Notification d'erreurs Landroid
+      friendly_name: Error notification
       icon: mdi:bell
 
     automation.mower_sync_values:
-      friendly_name: Mise à jour des données Landroid
+      friendly_name: Data synchronization
       icon: mdi:sync
 
     #automation.mower_views_switch:
-    #  friendly_name: Carte d'enregistrement umschalten
+    #  friendly_name: Toggle tabs
     #  icon: mdi:tab
 
 
 # Scripts #########
     script.mower_set_config:
-      friendly_name: Enregistrer la configuration
+      friendly_name: Apply settings
       icon: mdi:content-save-settings
 
     script.mower_setzone:
-      friendly_name: Sélection des zones
+      friendly_name: Zone selection
       icon: mdi:vector-difference
 
     script.mower_setzones:
-      friendly_name: Enregistrer la multizone
+      friendly_name: Apply multizone
       icon: mdi:content-save-settings
 
     script.mower_views_toggle:
-      friendly_name: Basculer les onglets
+      friendly_name: Toggle tabs
       icon: mdi:tab
