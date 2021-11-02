@@ -10,7 +10,7 @@ Worx Landroid package for Home Assistant based on [Landroid Cloud by @MTrab](htt
 
 1. **Home Assistant** version 2021.4 or above
 2. **Landroid Cloud** Integration. Install [using HACS](https://github.com/hacs/integration) or [see this guide](https://github.com/MTrab/landroid_cloud#installation)
-3. **fold-entity-row** plugin. Install [using HACS](https://github.com/hacs/integration) or [see this guide](https://github.com/thomasloven/lovelace-fold-entity-row#installing), it is possible you also need **card-tools** add-on installed
+3. **fold-entity-row** plugin. Install [using HACS](https://github.com/hacs/integration) or [see this guide](https://github.com/thomasloven/lovelace-fold-entity-row#installing), it is possible you also need to install [**card-tools**](https://github.com/thomasloven/card-tools) add-on
 
 ## Installation
 1. In configuration.yaml add string _packages: !include_dir_named packages_:
