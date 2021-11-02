@@ -21,9 +21,9 @@ homeassistant:
 
 2. Edit your secrets.yaml.
 ```yaml
-landroid_mail: YOUR_EMAIL_IN_MY_LANDROID
-landroid_pass: YOUR_PASSWORD_IN_MY_LANDROID
-landroid_ip: YOUR_LANDROID_IP_ADDRESS_IF_YOU_NEED_IT_OR_''
+mower_mail: YOUR_EMAIL_IN_MY_LANDROID
+mower_pass: YOUR_PASSWORD_IN_MY_LANDROID
+mower_ip: YOUR_LANDROID_IP_ADDRESS_IF_YOU_NEED_IT_OR_''
 ```
 
 3. Copy folders **www** and **packages** with all content in your homeassistant configuration folder (you can find configuration.yaml there)
