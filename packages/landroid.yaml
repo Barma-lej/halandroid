@@ -296,8 +296,13 @@ template:
             {{ '0 min' }}
           {% endif %}
 
+<<<<<<< HEAD
     - name: Mower distance
       unique_id: mower_distance
+=======
+    - name: Landroid Distance
+      unique_id: landroid_dist
+>>>>>>> 125700567f68c287ec9f15c6a88843370976f551
       state: "{{ (state_attr('sensor.landroid_mower_status', 'distance') | float) / 1000 }}"
       icon: mdi:map-marker-distance
       unit_of_measurement: "km"
