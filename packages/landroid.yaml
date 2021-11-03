@@ -263,7 +263,7 @@ template:
       unit_of_measurement: "min"
       attributes:
         time_formatted: >
-          {% set t = state_attr("sensor.landroid_mower_status", "total_blade_time") | int %}
+          {% set t = state_attr("sensor.landroid_mower_status", "total_blade_time") | int(0) %}
           {% if t != 0 %}
             {{ "%0d Tg. %0.02d Std. %0.02d Min." | format(t // 1440, ((t % 1440) // 60), t % 60) }}
           {%- else -%}
@@ -277,7 +277,7 @@ template:
       unit_of_measurement: "min"
       attributes:
         time_formatted: >
-          {% set t = state_attr("sensor.landroid_mower_status", "current_blade_time") | int %}
+          {% set t = state_attr("sensor.landroid_mower_status", "current_blade_time") | int(0) %}
           {% if t != 0 %}
             {{ "%0d Tg. %0.02d Std. %0.02d Min." | format(t // 1440, ((t % 1440) // 60), t % 60) }}
           {%- else -%}
@@ -291,7 +291,7 @@ template:
       unit_of_measurement: "min"
       attributes:
         time_formatted: >
-          {% set t = state_attr("sensor.landroid_mower_status", "work_time") | int %}
+          {% set t = state_attr("sensor.landroid_mower_status", "work_time") | int(0) %}
           {% if t != 0 %}
             {{ "%0d Tg. %0.02d Std. %0.02d Min." | format(t // 1440, ((t % 1440) // 60), t % 60) }}
           {%- else -%}
@@ -300,7 +300,7 @@ template:
 
     - name: Mower distance
       unique_id: mower_distance
-      state: "{{ (state_attr('sensor.landroid_mower_status', 'distance') | float) / 1000 }}"
+      state: "{{ (state_attr('sensor.landroid_mower_status', 'distance') | float(0)) / 1000 }}"
       icon: mdi:map-marker-distance
       unit_of_measurement: "km"
 
@@ -315,7 +315,7 @@ template:
       device_class: signal_strength
       unit_of_measurement: "dBm"
       icon: >-
-        {% set strength = state_attr("sensor.landroid_mower_status", "rssi") | float -%}
+        {% set strength = state_attr("sensor.landroid_mower_status", "rssi") | float(0) -%}
         {%- if strength > -56 -%}mdi:wifi-strength-4
         {% elif strength > -67 -%}mdi:wifi-strength-3
         {% elif strength > -78 -%}mdi:wifi-strength-2
@@ -522,13 +522,13 @@ automation:
         target:
           entity_id: input_number.mower_raindelay
         data:
-          value: "{{ state_attr('sensor.landroid_mower_status','raindelay') | int }}"
+          value: "{{ state_attr('sensor.landroid_mower_status','raindelay') | int(0) }}"
       # Get time extension
       - service: input_number.set_value
         target:
           entity_id: input_number.mower_timeextension
         data:
-          value: "{{ state_attr('sensor.landroid_mower_status','timeextension') | int }}"
+          value: "{{ state_attr('sensor.landroid_mower_status','timeextension') | int(0) }}"
       # Get mower zone
       - service: input_select.select_option
         target:
@@ -555,8 +555,8 @@ script:
       service: landroid_cloud.config
       data:
         id: "{{ state_attr('sensor.landroid_mower_status','id') }}"
-        raindelay: "{{ states('input_number.mower_raindelay') | int }}"
-        timeextension: "{{ states('input_number.mower_timeextension') | int }}"
+        raindelay: "{{ states('input_number.mower_raindelay') | int(0) }}"
+        timeextension: "{{ states('input_number.mower_timeextension') | int(0) }}"
 
   mower_setzone:
     alias: Mower set mowing zone
@@ -571,7 +571,7 @@ script:
       - service: landroid_cloud.setzone
         data:
           id: "{{ state_attr('sensor.landroid_mower_status','id') }}"
-          zone: "{{ states('input_select.mower_zone') | int }}"
+          zone: "{{ states('input_select.mower_zone') | int(0) }}"
 
   mower_setzones:
     alias: Mower set multizone distances
@@ -581,19 +581,19 @@ script:
         id: "{{ state_attr('sensor.landroid_mower_status','id') }}"
         multizone_distances: >-
           {% if is_state('input_boolean.mower_zone_enable', 'on') -%}
-            [{{ states('input_number.mower_zone0_distance') | int }},
-            {{ states('input_number.mower_zone1_distance') | int }},
-            {{ states('input_number.mower_zone2_distance') | int }},
-            {{ states('input_number.mower_zone3_distance') | int }}]
+            [{{ states('input_number.mower_zone0_distance') | int(0) }},
+            {{ states('input_number.mower_zone1_distance') | int(0) }},
+            {{ states('input_number.mower_zone2_distance') | int(0) }},
+            {{ states('input_number.mower_zone3_distance') | int(0) }}]
           {%- else -%}
             [0,0,0,0]
           {%- endif %}
         multizone_probabilities: >-
           {% if is_state('input_boolean.mower_zone_enable', 'on') -%}
-            [{{ ((states('input_number.mower_zone0_probability') | int) / 10)  | round(0) }},
-            {{ ((states('input_number.mower_zone1_probability') | int) / 10)  | round(0) }},
-            {{ ((states('input_number.mower_zone2_probability') | int) / 10)  | round(0) }},
-            {{ ((states('input_number.mower_zone3_probability') | int) / 10)  | round(0) }}]
+            [{{ ((states('input_number.mower_zone0_probability') | int(0)) / 10)  | round(0) }},
+            {{ ((states('input_number.mower_zone1_probability') | int(0)) / 10)  | round(0) }},
+            {{ ((states('input_number.mower_zone2_probability') | int(0)) / 10)  | round(0) }},
+            {{ ((states('input_number.mower_zone3_probability') | int(0)) / 10)  | round(0) }}]
           {%- else -%}
             [0,0,0,0]
           {%- endif %}
