@@ -474,7 +474,7 @@ input_boolean:
 # Automations #######################################################
 automation:
   - id: mower_notify_status
-    alias: Mower status notification
+    alias: Mower Notify Status
     initial_state: false
     trigger:
       - platform: state
@@ -491,7 +491,7 @@ automation:
           message: "{{ trigger.from_state.state }} -> {{ trigger.to_state.state }} - {{ states('sensor.date_time') }}"
 
   - id: mower_notify_error
-    alias: Mower error notification
+    alias: Mower Notify Error
     initial_state: true
     trigger:
       - platform: state
