@@ -2,7 +2,7 @@
 [![Donate](https://img.shields.io/badge/donate-Coffee-ff813f.svg)](https://www.buymeacoffee.com/barma)
 
 # Worx Landroid package for Home Assistant
-Worx Landroid package for Home Assistant based on [Landroid Cloud by @MTrab](https://github.com/MTrab/landroid_cloud)
+Worx Landroid package for Home Assistant based on custom component [Landroid Cloud by @MTrab](https://github.com/MTrab/landroid_cloud)
 
 ![Landroid](media/halandroid20211102_main.png)![Landroid](media/halandroid20211102_settings.png)![Landroid](media/halandroid20211102_info.png)
 
