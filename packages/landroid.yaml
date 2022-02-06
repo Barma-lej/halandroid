@@ -14,14 +14,14 @@ landroid_cloud:
 recorder:
   exclude:
     entities:
-    # Swithes ###############
+      # Swithes ###############
       #- swith.mower_mowing
       #- swith.mower_home
       #- swith.mower_edgecut
       #- swith.mower_partymode
       #- swith.mower_lock
 
-    # Sensors ###############
+      # Sensors ###############
       - sensor.mower_ip
       #- sensor.mower_bladetime
       #- sensor.mower_current bladetime
@@ -33,10 +33,10 @@ recorder:
       #- sensor.mower_roll
       #- sensor.mower_pitch
 
-    # Input selects #########
+      # Input selects #########
       - input_select.mower_zone
 
-    # Input numbers #########
+      # Input numbers #########
       - input_number.mower_raindelay
       - input_number.mower_timeextension
       - input_number.mower_zone0_distance
@@ -48,20 +48,20 @@ recorder:
       - input_number.mower_zone2_probability
       - input_number.mower_zone3_probability
 
-    # Input booleans ########
+      # Input booleans ########
       - input_boolean.mower_sched_settings
       - input_boolean.mower_info_toggle
       - input_boolean.mower_zone_enable
       - input_boolean.mower_view_config
       - input_boolean.mower_view_setzones
 
-    # Automations ######
+      # Automations ######
       - automation.mower_notify_status
       - automation.mower_notify_error
       - automation.mower_sync_values
       - automation.mower_views_switch
 
-    # Scripts ##########
+      # Scripts ##########
       - script.mower_set_config
       - script.mower_setzone
       - script.mower_setzones
@@ -71,14 +71,14 @@ recorder:
 logbook:
   exclude:
     entities:
-    # Swithes ###############
+      # Swithes ###############
       #- swith.mower_mowing
       #- swith.mower_home
       #- swith.mower_edgecut
       #- swith.mower_partymode
       #- swith.mower_lock
 
-    # Sensors ###############
+      # Sensors ###############
       - sensor.mower_ip
       #- sensor.mower_bladetime
       #- sensor.mower_current bladetime
@@ -90,10 +90,10 @@ logbook:
       #- sensor.mower_roll
       #- sensor.mower_pitch
 
-    # Input selects #########
+      # Input selects #########
       - input_select.mower_zone
 
-    # Input numbers #########
+      # Input numbers #########
       - input_number.mower_raindelay
       - input_number.mower_timeextension
       - input_number.mower_zone0_distance
@@ -105,20 +105,20 @@ logbook:
       - input_number.mower_zone2_probability
       - input_number.mower_zone3_probability
 
-    # Input booleans ########
+      # Input booleans ########
       - input_boolean.mower_sched_settings
       - input_boolean.mower_info_toggle
       - input_boolean.mower_zone_enable
       - input_boolean.mower_view_config
       - input_boolean.mower_view_setzones
 
-    # Automations ######
+      # Automations ######
       - automation.mower_notify_status
       - automation.mower_notify_error
       - automation.mower_sync_values
       - automation.mower_views_switch
 
-    # Scripts ##########
+      # Scripts ##########
       - script.mower_set_config
       - script.mower_setzone
       - script.mower_setzones
@@ -249,13 +249,13 @@ switch:
 # sensor.landroid_mower_status
 template:
   sensor:
-  # Info ############
+    # Info ############
     - name: Mower IP
       unique_id: mower_ip
       state: !secret mower_ip
       icon: mdi:ip-network
 
-  # Status ##########
+    # Status ##########
     - name: Mower bladetime
       unique_id: mower_bladetime
       state: "{{ state_attr('sensor.landroid_mower_status', 'total_blade_time') }}"
@@ -306,7 +306,7 @@ template:
 
     - name: Mower lastupdate
       unique_id: mower_lastupdate
-      state: "{{ as_timestamp(strptime( state_attr('sensor.landroid_mower_status', 'last_update'), '%H:%M:%S %d/%m/%Y')) | timestamp_custom('%d.%m.%Y %H:%M:%S') }}"
+      state: "{{ as_timestamp( strptime( state_attr('sensor.landroid_mower_status', 'last_update'), '%H:%M:%S %d/%m/%Y', 0), 0) | timestamp_custom('%d.%m.%Y %H:%M:%S') }}"
       icon: mdi:clock
 
     - name: Mower WIFI
