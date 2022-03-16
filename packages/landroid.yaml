@@ -248,103 +248,103 @@ switch:
 # sensor.landroid_mower_error
 # sensor.landroid_mower_status
 template:
-  sensor:
-    # Info ############
-    - name: Mower IP
-      unique_id: mower_ip
-      state: !secret mower_ip
-      icon: mdi:ip-network
+  - sensor:
+      # Info ############
+      - name: Mower IP
+        unique_id: mower_ip
+        state: !secret mower_ip
+        icon: mdi:ip-network
 
-    # Status ##########
-    - name: Mower bladetime
-      unique_id: mower_bladetime
-      state: "{{ state_attr('sensor.landroid_mower_status', 'total_blade_time') }}"
-      icon: mdi:fan
-      unit_of_measurement: "min"
-      attributes:
-        time_formatted: >
-          {% set t = state_attr("sensor.landroid_mower_status", "total_blade_time") | int(0) %}
-          {% if t != 0 %}
-            {{ "%0d Tg. %0.02d Std. %0.02d Min." | format(t // 1440, ((t % 1440) // 60), t % 60) }}
-          {%- else -%}
-            {{ '0 min' }}
-          {% endif %}
+      # Status ##########
+      - name: Mower bladetime
+        unique_id: mower_bladetime
+        state: "{{ state_attr('sensor.landroid_mower_status', 'total_blade_time') }}"
+        icon: mdi:fan
+        unit_of_measurement: "min"
+        attributes:
+          time_formatted: >
+            {% set t = state_attr("sensor.landroid_mower_status", "total_blade_time") | int(0) %}
+            {% if t != 0 %}
+              {{ "%0d Tg. %0.02d Std. %0.02d Min." | format(t // 1440, ((t % 1440) // 60), t % 60) }}
+            {%- else -%}
+              {{ '0 min' }}
+            {% endif %}
 
-    - name: Mower current bladetime
-      unique_id: mower_current_bladetime
-      state: "{{ state_attr('sensor.landroid_mower_status', 'current_blade_time') }}"
-      icon: mdi:fan
-      unit_of_measurement: "min"
-      attributes:
-        time_formatted: >
-          {% set t = state_attr("sensor.landroid_mower_status", "current_blade_time") | int(0) %}
-          {% if t != 0 %}
-            {{ "%0d Tg. %0.02d Std. %0.02d Min." | format(t // 1440, ((t % 1440) // 60), t % 60) }}
-          {%- else -%}
-            {{ '0 min' }}
-          {% endif %}
+      - name: Mower current bladetime
+        unique_id: mower_current_bladetime
+        state: "{{ state_attr('sensor.landroid_mower_status', 'current_blade_time') }}"
+        icon: mdi:fan
+        unit_of_measurement: "min"
+        attributes:
+          time_formatted: >
+            {% set t = state_attr("sensor.landroid_mower_status", "current_blade_time") | int(0) %}
+            {% if t != 0 %}
+              {{ "%0d Tg. %0.02d Std. %0.02d Min." | format(t // 1440, ((t % 1440) // 60), t % 60) }}
+            {%- else -%}
+              {{ '0 min' }}
+            {% endif %}
 
-    - name: Mower totaltime
-      unique_id: mower_totaltime
-      state: "{{ state_attr('sensor.landroid_mower_status', 'work_time') }}"
-      icon: mdi:bus-clock
-      unit_of_measurement: "min"
-      attributes:
-        time_formatted: >
-          {% set t = state_attr("sensor.landroid_mower_status", "work_time") | int(0) %}
-          {% if t != 0 %}
-            {{ "%0d Tg. %0.02d Std. %0.02d Min." | format(t // 1440, ((t % 1440) // 60), t % 60) }}
-          {%- else -%}
-            {{ '0 min' }}
-          {% endif %}
+      - name: Mower totaltime
+        unique_id: mower_totaltime
+        state: "{{ state_attr('sensor.landroid_mower_status', 'work_time') }}"
+        icon: mdi:bus-clock
+        unit_of_measurement: "min"
+        attributes:
+          time_formatted: >
+            {% set t = state_attr("sensor.landroid_mower_status", "work_time") | int(0) %}
+            {% if t != 0 %}
+              {{ "%0d Tg. %0.02d Std. %0.02d Min." | format(t // 1440, ((t % 1440) // 60), t % 60) }}
+            {%- else -%}
+              {{ '0 min' }}
+            {% endif %}
 
-    - name: Mower distance
-      unique_id: mower_distance
-      state: "{{ (state_attr('sensor.landroid_mower_status', 'distance') | float(0)) / 1000 }}"
-      icon: mdi:map-marker-distance
-      unit_of_measurement: "km"
+      - name: Mower distance
+        unique_id: mower_distance
+        state: "{{ (state_attr('sensor.landroid_mower_status', 'distance') | float(0)) / 1000 }}"
+        icon: mdi:map-marker-distance
+        unit_of_measurement: "km"
 
-    - name: Mower lastupdate
-      unique_id: mower_lastupdate
-      state: "{{ as_timestamp( strptime( state_attr('sensor.landroid_mower_status', 'last_update'), '%H:%M:%S %d/%m/%Y', 0), 0) | timestamp_custom('%d.%m.%Y %H:%M:%S') }}"
-      icon: mdi:clock
+      - name: Mower lastupdate
+        unique_id: mower_lastupdate
+        state: "{{ as_timestamp( strptime( state_attr('sensor.landroid_mower_status', 'last_update'), '%H:%M:%S %d/%m/%Y', 0), 0) | timestamp_custom('%d.%m.%Y %H:%M:%S') }}"
+        icon: mdi:clock
 
-    - name: Mower WIFI
-      unique_id: mower_wifi
-      state: "{{ state_attr('sensor.landroid_mower_status', 'rssi') }}"
-      device_class: signal_strength
-      unit_of_measurement: "dBm"
-      icon: >-
-        {% set strength = state_attr("sensor.landroid_mower_status", "rssi") | float(0) -%}
-        {%- if strength > -56 -%}mdi:wifi-strength-4
-        {% elif strength > -67 -%}mdi:wifi-strength-3
-        {% elif strength > -78 -%}mdi:wifi-strength-2
-        {% elif strength > -89 -%}mdi:wifi-strength-1
-        {%- else -%}mdi:wifi-strength-outline
-        {%- endif %}
-      # -55 or higher: 4 bars
-      # -56 to -66: 3 bars
-      # -67 to -77: 2 bars
-      # -78 to -88: 1 bar
-      # -89 or lower: 0 bars
+      - name: Mower WIFI
+        unique_id: mower_wifi
+        state: "{{ state_attr('sensor.landroid_mower_status', 'rssi') }}"
+        device_class: signal_strength
+        unit_of_measurement: "dBm"
+        icon: >-
+          {% set strength = state_attr("sensor.landroid_mower_status", "rssi") | float(0) -%}
+          {%- if strength > -56 -%}mdi:wifi-strength-4
+          {% elif strength > -67 -%}mdi:wifi-strength-3
+          {% elif strength > -78 -%}mdi:wifi-strength-2
+          {% elif strength > -89 -%}mdi:wifi-strength-1
+          {%- else -%}mdi:wifi-strength-outline
+          {%- endif %}
+        # -55 or higher: 4 bars
+        # -56 to -66: 3 bars
+        # -67 to -77: 2 bars
+        # -78 to -88: 1 bar
+        # -89 or lower: 0 bars
 
-    - name: Mower yaw
-      unique_id: mower_yaw
-      state: "{{ state_attr('sensor.landroid_mower_status', 'yaw') }}"
-      icon: mdi:axis-z-rotate-clockwise
-      unit_of_measurement: "°"
+      - name: Mower yaw
+        unique_id: mower_yaw
+        state: "{{ state_attr('sensor.landroid_mower_status', 'yaw') }}"
+        icon: mdi:axis-z-rotate-clockwise
+        unit_of_measurement: "°"
 
-    - name: Mower roll
-      unique_id: mower_roll
-      state: "{{ state_attr('sensor.landroid_mower_status', 'roll') }}"
-      icon: mdi:axis-x-rotate-clockwise
-      unit_of_measurement: "°"
+      - name: Mower roll
+        unique_id: mower_roll
+        state: "{{ state_attr('sensor.landroid_mower_status', 'roll') }}"
+        icon: mdi:axis-x-rotate-clockwise
+        unit_of_measurement: "°"
 
-    - name: Mower pitch
-      unique_id: mower_pitch
-      state: "{{ state_attr('sensor.landroid_mower_status', 'pitch') }}"
-      icon: mdi:seat-flat-angled
-      unit_of_measurement: "°"
+      - name: Mower pitch
+        unique_id: mower_pitch
+        state: "{{ state_attr('sensor.landroid_mower_status', 'pitch') }}"
+        icon: mdi:seat-flat-angled
+        unit_of_measurement: "°"
 
 # Input Select ######################################################
 input_select:
