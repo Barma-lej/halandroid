@@ -590,10 +590,10 @@ script:
           {%- endif %}
         multizone_probabilities: >-
           {% if is_state('input_boolean.mower_zone_enable', 'on') -%}
-            [{{ ((states('input_number.mower_zone0_probability') | int(0)) / 10)  | round(0) }},
-            {{ ((states('input_number.mower_zone1_probability') | int(0)) / 10)  | round(0) }},
-            {{ ((states('input_number.mower_zone2_probability') | int(0)) / 10)  | round(0) }},
-            {{ ((states('input_number.mower_zone3_probability') | int(0)) / 10)  | round(0) }}]
+            [{{ ((states('input_number.mower_zone0_probability') | int(0)) / 10) | round(0) }},
+            {{ ((states('input_number.mower_zone1_probability') | int(0)) / 10) | round(0) }},
+            {{ ((states('input_number.mower_zone2_probability') | int(0)) / 10) | round(0) }},
+            {{ ((states('input_number.mower_zone3_probability') | int(0)) / 10) | round(0) }}]
           {%- else -%}
             [0,0,0,0]
           {%- endif %}
