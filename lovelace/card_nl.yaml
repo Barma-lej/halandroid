@@ -1,0 +1,448 @@
+type: vertical-stack
+cards:
+  - type: picture-elements
+    image: /local/mower/landroid_flower.jpg
+    elements:
+      - type: state-icon
+        title: WiFi-kwaliteit
+        entity: sensor.mower_wifi
+        style:
+          top: 0%
+          left: 0%
+          transform: none
+          '--paper-item-icon-color': rgb(3, 169, 244)
+      - type: state-label
+        title: WiFi-kwaliteit
+        entity: sensor.mower_wifi
+        style:
+          top: 1%
+          left: 9%
+          transform: none
+          font-weight: bold
+          color: rgb(3, 169, 244)
+      - type: state-icon
+        title: Feestmodus
+        entity: switch.mower_partymode
+        state-color: true
+        tap_action:
+          action: toggle
+        style:
+          top: 0%
+          left: 41%
+          transform: none
+          '--paper-item-icon-color': rgb(3, 169, 244)
+      - type: state-icon
+        title: Vergrendeling
+        entity: switch.mower_lock
+        state-color: true
+        tap_action:
+          action: toggle
+        style:
+          top: 0%
+          left: 56%
+          transform: none
+          '--paper-item-icon-color': rgb(3, 169, 244)
+      - type: state-icon
+        title: Batterij Status
+        entity: sensor.landroid_mower_battery
+        style:
+          top: 0%
+          right: 0%
+          transform: none
+          '--paper-item-icon-color': rgb(3, 169, 244)
+      - type: state-label
+        title: Batterypercentage
+        entity: sensor.landroid_mower_battery
+        style:
+          top: 1%
+          right: 8%
+          transform: none
+          font-weight: bold
+          color: rgb(3, 169, 244)
+      - type: state-label
+        title: Status
+        entity: sensor.landroid_mower_status
+        style:
+          top: 8%
+          left: 0%
+          transform: none
+          font-size: 150%
+          font-weight: bold
+          color: rgb(3, 169, 244)
+      - type: state-label
+        title: Status
+        entity: sensor.landroid_mower_error
+        style:
+          top: 14%
+          left: 0%
+          transform: none
+          font-size: 150%
+          font-weight: bold
+          color: rgb(3, 169, 244)
+      - type: state-icon
+        title: Pitch
+        entity: sensor.mower_pitch
+        style:
+          top: 9%
+          right: 0%
+          transform: none
+          '--paper-item-icon-color': rgb(3, 169, 244)
+      - type: state-label
+        title: Pitch
+        entity: sensor.mower_pitch
+        style:
+          top: 10%
+          right: 8%
+          transform: none
+          font-weight: bold
+          color: rgb(3, 169, 244)
+      - type: state-icon
+        title: Roll
+        entity: sensor.mower_roll
+        style:
+          top: 18%
+          right: 0%
+          transform: none
+          '--paper-item-icon-color': rgb(3, 169, 244)
+      - type: state-label
+        title: Roll
+        entity: sensor.mower_roll
+        style:
+          top: 19%
+          right: 8%
+          transform: none
+          font-weight: bold
+          color: rgb(3, 169, 244)
+      - type: state-icon
+        title: Yaw
+        entity: sensor.mower_yaw
+        style:
+          top: 26%
+          right: 0%
+          transform: none
+          '--paper-item-icon-color': rgb(3, 169, 244)
+      - type: state-label
+        title: Yaw
+        entity: sensor.mower_yaw
+        style:
+          top: 27%
+          right: 8%
+          transform: none
+          font-weight: bold
+          color: rgb(3, 169, 244)
+      - type: state-icon
+        title: Totale afstand
+        entity: sensor.mower_distance
+        style:
+          top: 26%
+          left: 31%
+          transform: none
+          '--paper-item-icon-color': rgb(3, 169, 244)
+      - type: state-label
+        title: Totale afstand
+        entity: sensor.mower_distance
+        style:
+          top: 27%
+          left: 40%
+          transform: none
+          font-weight: bold
+          color: rgb(3, 169, 244)
+      - type: state-icon
+        title: Totale werktijd
+        entity: sensor.mower_totaltime
+        style:
+          top: 41%
+          left: 31%
+          transform: none
+          '--paper-item-icon-color': rgb(3, 169, 244)
+      - type: state-label
+        title: Totale werktijd
+        entity: sensor.mower_totaltime
+        style:
+          top: 40%
+          left: 40%
+          transform: none
+          font-weight: bold
+          color: rgb(3, 169, 244)
+      - type: state-label
+        title: Totale werktijd
+        entity: sensor.mower_totaltime
+        attribute: time_formatted
+        style:
+          top: 45%
+          left: 40%
+          transform: none
+          font-size: 10px
+          font-style: italic
+          font-weight: bold
+          color: rgb(3, 169, 244)
+      - type: state-icon
+        title: Werktijd messen
+        entity: sensor.mower_bladetime
+        style:
+          top: 56%
+          left: 31%
+          transform: none
+          '--paper-item-icon-color': rgb(3, 169, 244)
+      - type: state-label
+        title: Huidige werktijd messen
+        entity: sensor.mower_current_bladetime
+        attribute: time_formatted
+        style:
+          top: 55%
+          left: 40%
+          transform: none
+          font-weight: bold
+          color: rgb(3, 169, 244)
+      - type: state-label
+        title: Werktijd messen
+        entity: sensor.mower_bladetime
+        attribute: time_formatted
+        style:
+          top: 60%
+          left: 40%
+          transform: none
+          font-size: 10px
+          font-style: italic
+          font-weight: bold
+          color: rgb(3, 169, 244)
+      - type: image
+        title: Informatie
+        entity: input_boolean.mower_info_toggle
+        image: /local/mower/information-off.png
+        tap_action:
+          action: toggle
+        state_filter:
+          'off': brightness(100%) saturate(1)
+          'on': brightness(90%) saturate(1)
+        state_image:
+          'on': /local/mower/information.png
+        style:
+          bottom: '-1%'
+          left: 15%
+      - type: image
+        title: Configuratie
+        entity: input_boolean.mower_sched_settings
+        image: /local/mower/timer-off.png
+        tap_action:
+          action: toggle
+        state_filter:
+          'off': brightness(100%) saturate(1)
+          'on': brightness(90%) saturate(1)
+        state_image:
+          'on': /local/mower/timer.png
+        style:
+          bottom: '-1%'
+          left: 29%
+      - type: image
+        title: Maaizone
+        entity: input_select.mower_zone
+        tap_action:
+          action: call-service
+          service: script.mower_setzone
+          target:
+            entity_id: input_select.mower_zone
+        state_image:
+          '0': /local/mower/numeric-0-box-multiple.png
+          '1': /local/mower/numeric-1-box-multiple.png
+          '2': /local/mower/numeric-2-box-multiple.png
+          '3': /local/mower/numeric-3-box-multiple.png
+        style:
+          bottom: '-1%'
+          left: 43%
+      - type: state-icon
+        title: Maaien
+        entity: switch.mower_mowing
+        state-color: true
+        tap_action:
+          action: toggle
+        style:
+          bottom: 2%
+          left: 53%
+          transform: scale(2, 2)
+          '--paper-item-icon-color': white
+      - type: state-icon
+        title: Randroutine
+        entity: switch.mower_edgecut
+        state-color: true
+        tap_action:
+          action: toggle
+        style:
+          bottom: 2%
+          left: 67%
+          transform: scale(1.6, 1.6)
+          '--paper-item-icon-color': white
+      - type: state-icon
+        title: Stop & ga naar Huis
+        entity: switch.mower_home
+        state-color: true
+        tap_action:
+          action: toggle
+        style:
+          bottom: 2%
+          left: 81%
+          transform: scale(1.6, 1.6)
+          '--paper-item-icon-color': white
+  - type: conditional
+    conditions:
+      - entity: input_boolean.mower_sched_settings
+        state: 'on'
+    card:
+      type: vertical-stack
+      cards:
+        - type: horizontal-stack
+          cards:
+            - type: button
+              entity: input_boolean.mower_view_config
+              show_icon: false
+              show_state: false
+              tap_action:
+                action: call-service
+                service: script.mower_views_toggle
+                service_data:
+                  entity_id: input_boolean.mower_view_config
+                target: {}
+            - type: button
+              entity: input_boolean.mower_view_setzones
+              show_name: true
+              show_icon: false
+              tap_action:
+                action: call-service
+                service: script.mower_views_toggle
+                service_data:
+                  entity_id: input_boolean.mower_view_setzones
+                target: {}
+        - type: conditional
+          conditions:
+            - entity: input_boolean.mower_view_config
+              state: 'on'
+          card:
+            type: entities
+            title: Configuratie
+            show_header_toggle: false
+            footer:
+              type: buttons
+              entities:
+                - entity: script.mower_set_config
+                  icon: mdi:content-save-settings
+                  name: Toepassen
+            entities:
+              - entity: input_number.mower_raindelay
+              - entity: input_number.mower_timeextension
+        - type: conditional
+          conditions:
+            - entity: input_boolean.mower_view_setzones
+              state: 'on'
+          card:
+            type: entities
+            title: Multizone
+            show_header_toggle: false
+            footer:
+              type: buttons
+              entities:
+                - entity: script.mower_setzones
+                  icon: mdi:content-save-settings
+                  name: Toepassen
+            entities:
+              - entity: input_boolean.mower_zone_enable
+              - type: custom:hui-conditional-card
+                conditions:
+                  - entity: input_boolean.mower_zone_enable
+                    state: 'on'
+                card:
+                  type: entities
+                  entities:
+                    - type: section
+                      label: Distance
+                    - entity: input_number.mower_zone0_distance
+                    - entity: input_number.mower_zone1_distance
+                    - entity: input_number.mower_zone2_distance
+                    - entity: input_number.mower_zone3_distance
+                    - type: section
+                      label: Probability
+                    - entity: input_number.mower_zone0_probability
+                    - entity: input_number.mower_zone1_probability
+                    - entity: input_number.mower_zone2_probability
+                    - entity: input_number.mower_zone3_probability
+  - type: conditional
+    conditions:
+      - entity: input_boolean.mower_info_toggle
+        state: 'on'
+    card:
+      type: entities
+      title: Informatie
+      show_header_toggle: false
+      entities:
+        - type: custom:fold-entity-row
+          head: sensor.mower_lastupdate
+          entities:
+            - entity: sensor.mower_ip
+            - type: attribute
+              name: Serienummer
+              entity: sensor.landroid_mower_status
+              attribute: serial
+              icon: mdi:numeric
+            - type: attribute
+              name: MAC-Adres
+              entity: sensor.landroid_mower_status
+              attribute: mac
+              icon: mdi:barcode
+            - type: attribute
+              name: Firmware Versie
+              entity: sensor.landroid_mower_status
+              attribute: firmware_version
+              icon: mdi:information-variant
+        - type: section
+          label: Configuration
+        - type: button
+          name: Herstarten
+          icon: mdi:restart
+          tap_action:
+            action: call-service
+            service: landroid_cloud.restart
+            service_data:
+              id: '{{ state_attr("sensor.landroid_mower_status","id") }}'
+          action_name: Restart
+        - type: attribute
+          attribute: raindelay
+          entity: sensor.landroid_mower_status
+          icon: mdi:weather-lightning-rainy
+          name: Regenvertraging
+          suffix: min
+        - type: attribute
+          entity: sensor.landroid_mower_status
+          attribute: timeextension
+          name: Tijduitstel
+          suffix: '%'
+          icon: mdi:clock
+        - type: custom:fold-entity-row
+          head:
+            type: section
+            label: Multizone
+          entities:
+            - type: custom:hui-glance-card
+              state_color: true
+              columns: 4
+              entities:
+                - input_number.mower_zone0_distance
+                - input_number.mower_zone1_distance
+                - input_number.mower_zone2_distance
+                - input_number.mower_zone3_distance
+            - type: section
+              label: Probability
+            - type: custom:hui-glance-card
+              state_color: true
+              columns: 4
+              entities:
+                - input_number.mower_zone0_probability
+                - input_number.mower_zone1_probability
+                - input_number.mower_zone2_probability
+                - input_number.mower_zone3_probability
+        - type: custom:fold-entity-row
+          head:
+            type: section
+            label: Automations
+          entities:
+            - entity: automation.mower_notify_error
+            - entity: automation.mower_notify_status
+            - entity: automation.mower_sync_values
