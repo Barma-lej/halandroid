@@ -383,7 +383,7 @@ input_number:
     name: "Zone 0: Distance"
     initial: 0
     min: 0
-    max: 1000
+    max: 350
     step: 1
     unit_of_measurement: "m"
     icon: mdi:numeric-0-box-outline
@@ -391,7 +391,7 @@ input_number:
     name: "Zone 1: Distance"
     initial: 0
     min: 0
-    max: 1000
+    max: 350
     step: 1
     unit_of_measurement: "m"
     icon: mdi:numeric-1-box-outline
@@ -399,7 +399,7 @@ input_number:
     name: "Zone 2: Distance"
     initial: 0
     min: 0
-    max: 1000
+    max: 350
     step: 1
     unit_of_measurement: "m"
     icon: mdi:numeric-2-box-outline
@@ -407,7 +407,7 @@ input_number:
     name: "Zone 3: Distance"
     initial: 0
     min: 0
-    max: 1000
+    max: 350
     step: 1
     unit_of_measurement: "m"
     icon: mdi:numeric-3-box-outline
