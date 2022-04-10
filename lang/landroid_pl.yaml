@@ -11,7 +11,7 @@ homeassistant:
     switch.mower_partymode:
       friendly_name: Partymode
     switch.mower_lock:
-      friendly_name: Blockada
+      friendly_name: Blokada
 
     # Sensors ############
     sensor.landroid_mower_battery:
