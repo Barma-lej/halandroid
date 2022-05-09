@@ -364,7 +364,7 @@ input_number:
     name: Rain delay
     initial: 150
     min: 0
-    max: 300
+    max: 1410
     step: 30
     unit_of_measurement: "min"
     icon: mdi:weather-lightning-rainy
