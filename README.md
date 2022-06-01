@@ -8,7 +8,11 @@
 
 Worx Landroid package for Home Assistant based on custom component [Landroid Cloud by @MTrab](https://github.com/MTrab/landroid_cloud)
 
-![Landroid](media/halandroid20211102_main.png)![Landroid](media/halandroid20211102_settings.png)![Landroid](media/halandroid20211102_info.png)
+![Landroid](media/halandroid20211102_main.png)
+
+![Landroid](media/halandroid20211102_settings.png)
+
+![Landroid](media/halandroid20211102_info.png)
 
 ## Requirements
 
