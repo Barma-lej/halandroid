@@ -10,7 +10,7 @@ cards:
           top: 0%
           left: 0%
           transform: none
-          '--paper-item-icon-color': rgb(3, 169, 244)
+          "--paper-item-icon-color": rgb(3, 169, 244)
       - type: state-label
         title: Qualità WiFi
         entity: sensor.mower_wifi
@@ -30,7 +30,7 @@ cards:
           top: 0%
           left: 41%
           transform: none
-          '--paper-item-icon-color': rgb(3, 169, 244)
+          "--paper-item-icon-color": rgb(3, 169, 244)
       - type: state-icon
         title: Blocco
         entity: switch.mower_lock
@@ -41,18 +41,18 @@ cards:
           top: 0%
           left: 56%
           transform: none
-          '--paper-item-icon-color': rgb(3, 169, 244)
+          "--paper-item-icon-color": rgb(3, 169, 244)
       - type: state-icon
         title: Stato Batteria
-        entity: sensor.landroid_mower_battery
+        entity: sensor.mower_battery
         style:
           top: 0%
           right: 0%
           transform: none
-          '--paper-item-icon-color': rgb(3, 169, 244)
+          "--paper-item-icon-color": rgb(3, 169, 244)
       - type: state-label
         title: Carica Batteria
-        entity: sensor.landroid_mower_battery
+        entity: sensor.mower_battery
         style:
           top: 1%
           right: 8%
@@ -61,7 +61,7 @@ cards:
           color: rgb(3, 169, 244)
       - type: state-label
         title: Stato
-        entity: sensor.landroid_mower_status
+        entity: vacuum.mower
         style:
           top: 8%
           left: 0%
@@ -71,7 +71,8 @@ cards:
           color: rgb(3, 169, 244)
       - type: state-label
         title: Stato
-        entity: sensor.landroid_mower_error
+        entity: vacuum.mower
+        attribute: error
         style:
           top: 14%
           left: 0%
@@ -86,7 +87,7 @@ cards:
           top: 9%
           right: 0%
           transform: none
-          '--paper-item-icon-color': rgb(3, 169, 244)
+          "--paper-item-icon-color": rgb(3, 169, 244)
       - type: state-label
         title: Pendenza
         entity: sensor.mower_pitch
@@ -103,7 +104,7 @@ cards:
           top: 18%
           right: 0%
           transform: none
-          '--paper-item-icon-color': rgb(3, 169, 244)
+          "--paper-item-icon-color": rgb(3, 169, 244)
       - type: state-label
         title: Inclinazione laterale
         entity: sensor.mower_roll
@@ -120,7 +121,7 @@ cards:
           top: 26%
           right: 0%
           transform: none
-          '--paper-item-icon-color': rgb(3, 169, 244)
+          "--paper-item-icon-color": rgb(3, 169, 244)
       - type: state-label
         title: Imbardata
         entity: sensor.mower_yaw
@@ -137,7 +138,7 @@ cards:
           top: 26%
           left: 31%
           transform: none
-          '--paper-item-icon-color': rgb(3, 169, 244)
+          "--paper-item-icon-color": rgb(3, 169, 244)
       - type: state-label
         title: Distanza Totale
         entity: sensor.mower_distance
@@ -154,7 +155,7 @@ cards:
           top: 41%
           left: 31%
           transform: none
-          '--paper-item-icon-color': rgb(3, 169, 244)
+          "--paper-item-icon-color": rgb(3, 169, 244)
       - type: state-label
         title: Attività totale
         entity: sensor.mower_totaltime
@@ -183,7 +184,7 @@ cards:
           top: 56%
           left: 31%
           transform: none
-          '--paper-item-icon-color': rgb(3, 169, 244)
+          "--paper-item-icon-color": rgb(3, 169, 244)
       - type: state-label
         title: Taglio
         entity: sensor.mower_current_bladetime
@@ -213,12 +214,12 @@ cards:
         tap_action:
           action: toggle
         state_filter:
-          'off': brightness(100%) saturate(1)
-          'on': brightness(90%) saturate(1)
+          "off": brightness(100%) saturate(1)
+          "on": brightness(90%) saturate(1)
         state_image:
-          'on': /local/mower/information.png
+          "on": /local/mower/information.png
         style:
-          bottom: '-1%'
+          bottom: "-1%"
           left: 15%
       - type: image
         title: Configurazione
@@ -227,12 +228,12 @@ cards:
         tap_action:
           action: toggle
         state_filter:
-          'off': brightness(100%) saturate(1)
-          'on': brightness(90%) saturate(1)
+          "off": brightness(100%) saturate(1)
+          "on": brightness(90%) saturate(1)
         state_image:
-          'on': /local/mower/timer.png
+          "on": /local/mower/timer.png
         style:
-          bottom: '-1%'
+          bottom: "-1%"
           left: 29%
       - type: image
         title: Zone di taglio
@@ -243,12 +244,12 @@ cards:
           target:
             entity_id: input_select.mower_zone
         state_image:
-          '0': /local/mower/numeric-0-box-multiple.png
-          '1': /local/mower/numeric-1-box-multiple.png
-          '2': /local/mower/numeric-2-box-multiple.png
-          '3': /local/mower/numeric-3-box-multiple.png
+          "0": /local/mower/numeric-0-box-multiple.png
+          "1": /local/mower/numeric-1-box-multiple.png
+          "2": /local/mower/numeric-2-box-multiple.png
+          "3": /local/mower/numeric-3-box-multiple.png
         style:
-          bottom: '-1%'
+          bottom: "-1%"
           left: 43%
       - type: state-icon
         title: Taglia
@@ -260,7 +261,7 @@ cards:
           bottom: 2%
           left: 53%
           transform: scale(2, 2)
-          '--paper-item-icon-color': white
+          "--paper-item-icon-color": white
       - type: state-icon
         title: Taglio Perimetrale
         entity: switch.mower_edgecut
@@ -271,7 +272,7 @@ cards:
           bottom: 2%
           left: 67%
           transform: scale(1.6, 1.6)
-          '--paper-item-icon-color': white
+          "--paper-item-icon-color": white
       - type: state-icon
         title: Rientra alla base
         entity: switch.mower_home
@@ -282,11 +283,11 @@ cards:
           bottom: 2%
           left: 81%
           transform: scale(1.6, 1.6)
-          '--paper-item-icon-color': white
+          "--paper-item-icon-color": white
   - type: conditional
     conditions:
       - entity: input_boolean.mower_sched_settings
-        state: 'on'
+        state: "on"
     card:
       type: vertical-stack
       cards:
@@ -315,7 +316,7 @@ cards:
         - type: conditional
           conditions:
             - entity: input_boolean.mower_view_config
-              state: 'on'
+              state: "on"
           card:
             type: entities
             title: Configurazione
@@ -328,11 +329,11 @@ cards:
                   name: Applica
             entities:
               - entity: input_number.mower_raindelay
-              - entity: input_number.mower_timeextension
+              - entity: input_number.mower_time_extension
         - type: conditional
           conditions:
             - entity: input_boolean.mower_view_setzones
-              state: 'on'
+              state: "on"
           card:
             type: entities
             title: Multi-zona
@@ -348,7 +349,7 @@ cards:
               - type: custom:hui-conditional-card
                 conditions:
                   - entity: input_boolean.mower_zone_enable
-                    state: 'on'
+                    state: "on"
                 card:
                   type: entities
                   entities:
@@ -367,7 +368,7 @@ cards:
   - type: conditional
     conditions:
       - entity: input_boolean.mower_info_toggle
-        state: 'on'
+        state: "on"
     card:
       type: entities
       title: Informazioni
@@ -379,17 +380,17 @@ cards:
             - entity: sensor.mower_ip
             - type: attribute
               name: Numero di serie
-              entity: sensor.landroid_mower_status
+              entity: vacuum.mower
               attribute: serial
               icon: mdi:numeric
             - type: attribute
               name: Indirizzo MAC
-              entity: sensor.landroid_mower_status
+              entity: vacuum.mower
               attribute: mac
               icon: mdi:barcode
             - type: attribute
               name: Firmware
-              entity: sensor.landroid_mower_status
+              entity: vacuum.mower
               attribute: firmware_version
               icon: mdi:information-variant
         - type: section
@@ -400,20 +401,20 @@ cards:
           tap_action:
             action: call-service
             service: landroid_cloud.restart
-            service_data:
-              id: '{{ state_attr("sensor.landroid_mower_status","id") }}'
+            target:
+              entity_id: vacuum.mower
           action_name: Riavvia
         - type: attribute
-          attribute: raindelay
-          entity: sensor.landroid_mower_status
+          attribute: rain_delay
+          entity: vacuum.mower
           icon: mdi:weather-lightning-rainy
           name: Ritardo pioggia
           suffix: min
         - type: attribute
-          entity: sensor.landroid_mower_status
-          attribute: timeextension
+          entity: vacuum.mower
+          attribute: time_extension
           name: Estensione Tempo
-          suffix: '%'
+          suffix: "%"
           icon: mdi:clock
         - type: custom:fold-entity-row
           head:

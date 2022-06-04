@@ -3,13 +3,6 @@
 # Based on Landroid Cloud by @MTrab
 # https://github.com/MTrab/landroid_cloud
 
-# Cloud #############################################################
-landroid_cloud:
-  email: !secret mower_mail
-  password: !secret mower_pass
-  #type: landxcape
-  #type: kress
-
 # Recorder ##########################################################
 recorder:
   exclude:
@@ -130,25 +123,26 @@ switch:
     switches:
       mower_mowing:
         unique_id: mower_mowing
-        value_template: "{{ is_state_attr('sensor.landroid_mower_status', 'status_id', 7) }}"
+        value_template: >-
+          {{ is_state('vacuum.mower', 'mowing')
+          or is_state('vacuum.mower', 'starting')
+          or is_state('vacuum.mower', 'zoning')
+          or is_state('vacuum.mower', 'edgecut')
+          or is_state('vacuum.mower', 'initializing') }}
         turn_on:
-          service: landroid_cloud.start
-          data:
-            id: "{{ state_attr('sensor.landroid_mower_status','id') }}"
+          service: vacuum.start
+          target:
+            entity_id: vacuum.mower
         turn_off:
-          service: landroid_cloud.pause
-          data:
-            id: "{{ state_attr('sensor.landroid_mower_status','id') }}"
+          service: vacuum.pause
+          target:
+            entity_id: vacuum.mower
         icon_template: >-
-          {% if is_state_attr('sensor.landroid_mower_status', 'status_id', 2)
-            or is_state_attr('sensor.landroid_mower_status', 'status_id', 3)
-            or is_state_attr('sensor.landroid_mower_status', 'status_id', 4)
-            or is_state_attr('sensor.landroid_mower_status', 'status_id', 5)
-            or is_state_attr('sensor.landroid_mower_status', 'status_id', 6)
-            or is_state_attr('sensor.landroid_mower_status', 'status_id', 7)
-            or is_state_attr('sensor.landroid_mower_status', 'status_id', 30)
-            or is_state_attr('sensor.landroid_mower_status', 'status_id', 32)
-            or is_state_attr('sensor.landroid_mower_status', 'status_id', 33) %}
+          {% if is_state('vacuum.mower', 'mowing')
+            or is_state('vacuum.mower', 'starting')
+            or is_state('vacuum.mower', 'zoning')
+            or is_state('vacuum.mower', 'edgecut')
+            or is_state('vacuum.mower', 'initializing') %}
             mdi:pause
           {% else %}
             mdi:play
@@ -157,96 +151,77 @@ switch:
       mower_home:
         unique_id: mower_home
         value_template: >-
-          {{ is_state_attr('sensor.landroid_mower_status', 'status_id', 4)
-          or is_state_attr('sensor.landroid_mower_status', 'status_id', 5)
-          or is_state_attr('sensor.landroid_mower_status', 'status_id', 6)
-          or is_state_attr('sensor.landroid_mower_status', 'status_id', 30) }}
+          {{ is_state('vacuum.mower', 'returning') }}
         turn_on:
-          service: landroid_cloud.home
-          data:
-            id: "{{ state_attr('sensor.landroid_mower_status','id') }}"
+          service: vacuum.return_to_base
+          target:
+            entity_id: vacuum.mower
         turn_off:
-          service: landroid_cloud.pause
-          data:
-            id: "{{ state_attr('sensor.landroid_mower_status','id') }}"
+          service: vacuum.pause
+          target:
+            entity_id: vacuum.mower
         icon_template: >-
-          {% if is_state_attr('sensor.landroid_mower_status', 'status_id', 1) %}
-            mdi:home
+          {% if is_state('vacuum.mower', 'docked') %}
+            mdi:home-lightning-bolt
           {% else %}
             mdi:home-import-outline
           {% endif %}
-        #    mdi:home-lightning-bolt
 
       mower_edgecut:
         unique_id: mower_edgecut
-        value_template: "{{ is_state_attr('sensor.landroid_mower_status', 'status_id', 32) }}"
+        value_template: "{{ is_state('vacuum.mower', 'edgecut') }}"
         turn_on:
           service: landroid_cloud.edgecut
-          data:
-            id: "{{ state_attr('sensor.landroid_mower_status','id') }}"
+          target:
+            entity_id: vacuum.mower
         turn_off:
-          service: landroid_cloud.pause
-          data:
-            id: "{{ state_attr('sensor.landroid_mower_status','id') }}"
+          service: vacuum.pause
+          target:
+            entity_id: vacuum.mower
         icon_template: >-
-          {% if is_state_attr('sensor.landroid_mower_status', 'status_id', 32)  %}
+          {% if is_state('vacuum.mower', 'edgecut')  %}
             mdi:motion-pause
           {% else %}
             mdi:motion-play
           {% endif %}
-        #entity_picture_template: >-
-        #  {% if is_state_attr('sensor.landroid_mower_status', 'status_id', 32) %}
-        #    /local/mower/cut-to-edge-on.png
-        #  {% else %}
-        #    /local/mower/cut-to-edge.png
-        #  {% endif %}
 
       mower_partymode:
         unique_id: mower_partymode
-        value_template: "{{ is_state_attr('sensor.landroid_mower_status', 'partymode_enabled', true) }}"
+        value_template: "{{ is_state_attr('vacuum.mower', 'partymode_enabled', true) }}"
         turn_on:
           service: landroid_cloud.partymode
-          data:
-            id: "{{ state_attr('sensor.landroid_mower_status','id') }}"
-            enable: true
+          target:
+            entity_id: vacuum.mower
         turn_off:
           service: landroid_cloud.partymode
-          data:
-            id: "{{ state_attr('sensor.landroid_mower_status','id') }}"
-            enable: false
+          target:
+            entity_id: vacuum.mower
         icon_template: >-
-          {% if is_state_attr('sensor.landroid_mower_status', 'partymode_enabled', true)  %}
+          {% if is_state_attr('vacuum.mower', 'partymode_enabled', true) %}
             mdi:sleep-off
           {% else %}
             mdi:sleep
           {% endif %}
-        #  service: script.mower_partymode
 
       mower_lock:
         unique_id: mower_lock
-        value_template: "{{ is_state_attr('sensor.landroid_mower_status', 'locked', true) }}"
+        value_template: "{{ is_state_attr('vacuum.mower', 'locked', true) }}"
         turn_on:
           service: landroid_cloud.lock
-          data:
-            id: "{{ state_attr('sensor.landroid_mower_status','id') }}"
-            enable: true
+          target:
+            entity_id: vacuum.mower
         turn_off:
           service: landroid_cloud.lock
-          data:
-            id: "{{ state_attr('sensor.landroid_mower_status','id') }}"
-            enable: false
+          target:
+            entity_id: vacuum.mower
         icon_template: >-
-          {% if is_state_attr('sensor.landroid_mower_status', 'locked', true)  %}
+          {% if is_state_attr('vacuum.mower', 'locked', true)  %}
             mdi:lock
           {% else %}
             mdi:lock-open-variant
           {% endif %}
-        #    mdi:lock-open
 
 # Sensor ############################################################
-# sensor.landroid_mower_battery
-# sensor.landroid_mower_error
-# sensor.landroid_mower_status
 template:
   - sensor:
       # Info ############
@@ -255,15 +230,21 @@ template:
         state: !secret mower_ip
         icon: mdi:ip-network
 
-      # Status ##########
+      # States ####################
+      - name: "mower_battery"
+        unique_id: mower_battery
+        state: "{{ state_attr('vacuum.mower','battery_level') | int(0) }}"
+        device_class: battery
+        unit_of_measurement: "%"
+
       - name: Mower bladetime
         unique_id: mower_bladetime
-        state: "{{ state_attr('sensor.landroid_mower_status', 'total_blade_time') }}"
+        state: "{{ state_attr('vacuum.mower', 'total_blade_time') }}"
         icon: mdi:fan
         unit_of_measurement: "min"
         attributes:
           time_formatted: >
-            {% set t = state_attr("sensor.landroid_mower_status", "total_blade_time") | int(0) %}
+            {% set t = state_attr("vacuum.mower", "total_blade_time") | int(0) %}
             {% if t != 0 %}
               {{ "%0d Tg. %0.02d Std. %0.02d Min." | format(t // 1440, ((t % 1440) // 60), t % 60) }}
             {%- else -%}
@@ -272,12 +253,12 @@ template:
 
       - name: Mower current bladetime
         unique_id: mower_current_bladetime
-        state: "{{ state_attr('sensor.landroid_mower_status', 'current_blade_time') }}"
+        state: "{{ state_attr('vacuum.mower', 'current_blade_time') }}"
         icon: mdi:fan
         unit_of_measurement: "min"
         attributes:
           time_formatted: >
-            {% set t = state_attr("sensor.landroid_mower_status", "current_blade_time") | int(0) %}
+            {% set t = state_attr("vacuum.mower", "current_blade_time") | int(0) %}
             {% if t != 0 %}
               {{ "%0d Tg. %0.02d Std. %0.02d Min." | format(t // 1440, ((t % 1440) // 60), t % 60) }}
             {%- else -%}
@@ -286,12 +267,12 @@ template:
 
       - name: Mower totaltime
         unique_id: mower_totaltime
-        state: "{{ state_attr('sensor.landroid_mower_status', 'work_time') }}"
+        state: "{{ state_attr('vacuum.mower', 'work_time') }}"
         icon: mdi:bus-clock
         unit_of_measurement: "min"
         attributes:
           time_formatted: >
-            {% set t = state_attr("sensor.landroid_mower_status", "work_time") | int(0) %}
+            {% set t = state_attr("vacuum.mower", "work_time") | int(0) %}
             {% if t != 0 %}
               {{ "%0d Tg. %0.02d Std. %0.02d Min." | format(t // 1440, ((t % 1440) // 60), t % 60) }}
             {%- else -%}
@@ -300,22 +281,22 @@ template:
 
       - name: Mower distance
         unique_id: mower_distance
-        state: "{{ (state_attr('sensor.landroid_mower_status', 'distance') | float(0)) / 1000 }}"
+        state: "{{ (state_attr('vacuum.mower', 'distance') | float(0) ) / 1000 }}"
         icon: mdi:map-marker-distance
         unit_of_measurement: "km"
 
       - name: Mower lastupdate
         unique_id: mower_lastupdate
-        state: "{{ as_timestamp( strptime( state_attr('sensor.landroid_mower_status', 'last_update'), '%H:%M:%S %d/%m/%Y', 0), 0) | timestamp_custom('%d.%m.%Y %H:%M:%S') }}"
+        state: "{{ as_timestamp( strptime( state_attr('vacuum.mower', 'last_update'), '%H:%M:%S %d/%m/%Y', 0), 0) | timestamp_custom('%d.%m.%Y %H:%M:%S') }}"
         icon: mdi:clock
 
       - name: Mower WIFI
         unique_id: mower_wifi
-        state: "{{ state_attr('sensor.landroid_mower_status', 'rssi') }}"
+        state: "{{ state_attr('vacuum.mower', 'rssi') }}"
         device_class: signal_strength
         unit_of_measurement: "dBm"
         icon: >-
-          {% set strength = state_attr("sensor.landroid_mower_status", "rssi") | float(0) -%}
+          {% set strength = state_attr("vacuum.mower", "rssi") | float(0) -%}
           {%- if strength > -56 -%}mdi:wifi-strength-4
           {% elif strength > -67 -%}mdi:wifi-strength-3
           {% elif strength > -78 -%}mdi:wifi-strength-2
@@ -330,19 +311,19 @@ template:
 
       - name: Mower yaw
         unique_id: mower_yaw
-        state: "{{ state_attr('sensor.landroid_mower_status', 'yaw') }}"
+        state: "{{ state_attr('vacuum.mower', 'yaw') }}"
         icon: mdi:axis-z-rotate-clockwise
         unit_of_measurement: "°"
 
       - name: Mower roll
         unique_id: mower_roll
-        state: "{{ state_attr('sensor.landroid_mower_status', 'roll') }}"
+        state: "{{ state_attr('vacuum.mower', 'roll') }}"
         icon: mdi:axis-x-rotate-clockwise
         unit_of_measurement: "°"
 
       - name: Mower pitch
         unique_id: mower_pitch
-        state: "{{ state_attr('sensor.landroid_mower_status', 'pitch') }}"
+        state: "{{ state_attr('vacuum.mower', 'pitch') }}"
         icon: mdi:seat-flat-angled
         unit_of_measurement: "°"
 
@@ -478,7 +459,7 @@ automation:
     initial_state: false
     trigger:
       - platform: state
-        entity_id: sensor.landroid_mower_status
+        entity_id: vacuum.mower
 
     condition:
       - condition: template
@@ -495,7 +476,8 @@ automation:
     initial_state: true
     trigger:
       - platform: state
-        entity_id: sensor.landroid_mower_error
+        entity_id: vacuum.mower
+        attribute: error
 
     condition:
       - condition: template
@@ -509,6 +491,7 @@ automation:
 
   - id: mower_sync_values
     alias: Mower sync values
+    initial_state: false
     trigger:
       - platform: homeassistant
         event: start
@@ -522,25 +505,22 @@ automation:
         target:
           entity_id: input_number.mower_raindelay
         data:
-          value: "{{ state_attr('sensor.landroid_mower_status','raindelay') | int(0) }}"
+          value: "{{ state_attr('vacuum.mower','raindelay') | int(0) }}"
       # Get time extension
       - service: input_number.set_value
         target:
           entity_id: input_number.mower_timeextension
         data:
-          value: "{{ state_attr('sensor.landroid_mower_status','timeextension') | int(0) }}"
+          value: "{{ state_attr('vacuum.mower','timeextension') | int(0) }}"
       # Get mower zone
       - service: input_select.select_option
         target:
           entity_id: input_select.mower_zone
         data:
-          option: "{{ state_attr('sensor.landroid_mower_status','mowing_zone') }}"
+          option: "{{ state_attr('vacuum.mower','mowing_zone') }}"
 
 # Scripts ###########################################################
 # Services
-# landroid_cloud.start
-# landroid_cloud.home
-# landroid_cloud.pause
 # landroid_cloud.configure landroid_cloud.config (can be used to set rain delay and time extension)
 # landroid_cloud.partymode (if a partymode capable device was found)
 # landroid_cloud.setzone
@@ -553,8 +533,9 @@ script:
     alias: Mower set rain delay and time extension
     sequence:
       service: landroid_cloud.config
+      target:
+        entity_id: vacuum.mower
       data:
-        id: "{{ state_attr('sensor.landroid_mower_status','id') }}"
         raindelay: "{{ states('input_number.mower_raindelay') | int(0) }}"
         timeextension: "{{ states('input_number.mower_timeextension') | int(0) }}"
 
@@ -569,16 +550,18 @@ script:
       - delay: "00:00:03"
 
       - service: landroid_cloud.setzone
+        target:
+          entity_id: vacuum.mower
         data:
-          id: "{{ state_attr('sensor.landroid_mower_status','id') }}"
           zone: "{{ states('input_select.mower_zone') | int(0) }}"
 
   mower_setzones:
     alias: Mower set multizone distances
     sequence:
       service: landroid_cloud.config
+      target:
+        entity_id: vacuum.mower
       data:
-        id: "{{ state_attr('sensor.landroid_mower_status','id') }}"
         multizone_distances: >-
           {% if is_state('input_boolean.mower_zone_enable', 'on') -%}
             [{{ states('input_number.mower_zone0_distance') | int(0) }},
