@@ -468,7 +468,7 @@ automation:
     action:
       - service: persistent_notification.create
         data:
-          title: 🏎️ Lanroid M500
+          title: 🏎️ Landroid M500
           message: "{{ trigger.from_state.state }} -> {{ trigger.to_state.state }} - {{ states('sensor.date_time') }}"
 
   - id: mower_notify_error
@@ -486,7 +486,7 @@ automation:
     action:
       - service: persistent_notification.create
         data:
-          title: 🏎️ Lanroid M500
+          title: 🏎️ Landroid M500
           message: "{{ trigger.from_state.state }} -> {{ trigger.to_state.state }} - {{ states('sensor.date_time') }}"
 
   - id: mower_sync_values
