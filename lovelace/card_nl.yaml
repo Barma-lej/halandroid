@@ -329,7 +329,7 @@ cards:
                   name: Toepassen
             entities:
               - entity: input_number.mower_raindelay
-              - entity: input_number.mower_time_extension
+              - entity: input_number.mower_timeextension
         - type: conditional
           conditions:
             - entity: input_boolean.mower_view_setzones
