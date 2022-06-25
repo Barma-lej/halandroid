@@ -444,6 +444,4 @@ cards:
             type: section
             label: Automations
           entities:
-            - entity: automation.mower_notify_error
-            - entity: automation.mower_notify_status
             - entity: automation.mower_sync_values
