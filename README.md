@@ -3,6 +3,8 @@
 
 # Worx Landroid package for Home Assistant
 
+## Don't work with Landroid Cloud > 2.0.3
+
 Worx Landroid package for Home Assistant based on custom component [Landroid Cloud by @MTrab](https://github.com/MTrab/landroid_cloud)
 
 ![Landroid](media/halandroid20211102_main.png)
