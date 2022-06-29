@@ -469,7 +469,7 @@ automation:
       - service: persistent_notification.create
         data:
           title: 🏎️ Landroid M500
-          message: "{{ trigger.from_state.state }} -> {{ trigger.to_state.state }} - {{ states('sensor.date_time') }}"
+          message: "{{ trigger.from_state.state }} -> {{ trigger.to_state.state }} - {{ now().strftime('%Y-%m-%d, %H:%M') }}"
 
   - id: mower_notify_error
     alias: Mower Notify Error
@@ -487,7 +487,7 @@ automation:
       - service: persistent_notification.create
         data:
           title: 🏎️ Landroid M500
-          message: "{{ trigger.from_state.state }} -> {{ trigger.to_state.state }} - {{ states('sensor.date_time') }}"
+          message: "{{ trigger.from_state.state }} -> {{ trigger.to_state.state }} - {{ now().strftime('%Y-%m-%d, %H:%M') }}"
 
   - id: mower_sync_values
     alias: Mower sync values
