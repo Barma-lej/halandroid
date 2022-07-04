@@ -5,6 +5,8 @@
 
 ## Don't work with Landroid Cloud > 2.0.3
 
+If you use Landroid Cloud version more than 2.0.3, i have another card [here](https://github.com/Barma-lej/landroid-card)
+
 Worx Landroid package for Home Assistant based on custom component [Landroid Cloud by @MTrab](https://github.com/MTrab/landroid_cloud)
 
 ![Landroid](media/halandroid20211102_main.png)
