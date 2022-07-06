@@ -354,7 +354,7 @@ cards:
                   type: entities
                   entities:
                     - type: section
-                      label: Distance
+                      label: Afstand
                     - entity: input_number.mower_zone0_distance
                     - entity: input_number.mower_zone1_distance
                     - entity: input_number.mower_zone2_distance
@@ -394,7 +394,7 @@ cards:
               attribute: firmware_version
               icon: mdi:information-variant
         - type: section
-          label: Configuration
+          label: Configuratie
         - type: button
           name: Herstarten
           icon: mdi:restart
@@ -442,7 +442,7 @@ cards:
         - type: custom:fold-entity-row
           head:
             type: section
-            label: Automations
+            label: Automatiseringen
           entities:
             - entity: automation.mower_notify_error
             - entity: automation.mower_notify_status
