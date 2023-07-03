@@ -3,7 +3,7 @@
 [![Discussion in Home Assistant community](https://img.shields.io/badge/discussion-HA_community-03a9f4.svg)](https://community.home-assistant.io/t/worx-landroid-package/119345)
 [![Donate](https://img.shields.io/badge/donate-Coffee-ff813f.svg)](https://www.buymeacoffee.com/barma)
 
-# Worx Landroid package for Home Assistant
+# !!! DEPRECATED !!! Worx Landroid package for Home Assistant !!! DEPRECATED !!!
 
 ## Don't work with Landroid Cloud > 2.0.3
 
