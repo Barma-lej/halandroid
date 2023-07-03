@@ -1,3 +1,5 @@
+## !!! DEPRECATED !!!
+
 [![Discussion in Home Assistant community](https://img.shields.io/badge/discussion-HA_community-03a9f4.svg)](https://community.home-assistant.io/t/worx-landroid-package/119345)
 [![Donate](https://img.shields.io/badge/donate-Coffee-ff813f.svg)](https://www.buymeacoffee.com/barma)
 
